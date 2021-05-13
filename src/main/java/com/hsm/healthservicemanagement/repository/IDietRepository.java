@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.hsm.healthservicemanagement.entity.Diet;
 
 
-
+//JPA
 @Repository
 public interface IDietRepository extends JpaRepository<Diet, Integer>{
 }
