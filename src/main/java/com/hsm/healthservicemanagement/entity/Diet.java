@@ -1,39 +1,39 @@
 package com.hsm.healthservicemanagement.entity;
 
-
 import javax.persistence.Entity;
-import javax.persistence.Id;
-@Entity
-  public class Diet 
 
-  {
+import javax.persistence.Id;
+
+@Entity
+public class Diet
+{
 	@Id
 	private int dietId;
 	private String dietType;
 	private String foodtoEat;
 	private int dietDuration;
 
-	//Constructors
-  public Diet() {}
-	
-	public Diet(int dietId,String dietType,String foodtoEat,int dietDuration ) {
+	// Constructors
+	public Diet() {
+	}
+
+	public Diet(int dietId, String dietType, String foodtoEat, int dietDuration) {
 		super();
 		this.dietId = dietId;
 		this.dietType = dietType;
-		this.foodtoEat= foodtoEat;
-		this.dietDuration=dietDuration;
+		this.foodtoEat = foodtoEat;
+		this.dietDuration = dietDuration;
 	}
-	
-	//getters and setters
-    public int getDietId() {
+
+	// getters and setters
+	public int getDietId() {
 		return dietId;
 	}
 
 	public void setDietId(int dietId) {
 		this.dietId = dietId;
 	}
-	
-	
+
 	public int getDietDuration() {
 		return dietDuration;
 	}
@@ -43,7 +43,7 @@ import javax.persistence.Id;
 	}
 
 	public String getDietType() {
-		
+
 		return dietType;
 	}
 
