@@ -13,12 +13,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @EnableSwagger2
 
-public class HealthservicemanagementsystemApplication {
+public class HealthservicemanagementApplication {
 
 	Logger logger = LogManager.getLogger();
 
 	public static void main(String[] args) {
-		SpringApplication.run(HealthservicemanagementsystemApplication.class, args);
+		SpringApplication.run(HealthservicemanagementApplication.class, args);
 
 	}
 	
@@ -27,7 +27,7 @@ public class HealthservicemanagementsystemApplication {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.cg.healthservicemanagementsystem")).build();
+				.apis(RequestHandlerSelectors.basePackage("com.hsm.healthservicemanagement")).build();
 	}
 
 }
