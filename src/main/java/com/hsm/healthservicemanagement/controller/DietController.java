@@ -31,7 +31,7 @@ public class DietController {
 		return new ResponseEntity<Diet>(ds.save(diet), HttpStatus.OK);
 	}
 
-	// DELETE
+	// DELETE Diet
 	// deleteDietByDietId
 	@DeleteMapping("/diet/{id}")
 	public ResponseEntity<Diet> deleteDiet(@PathVariable("id") int id) throws DietNotFoundException {

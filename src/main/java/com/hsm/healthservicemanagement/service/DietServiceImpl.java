@@ -19,7 +19,7 @@ public class DietServiceImpl implements IDietService {
 	@Autowired
 	IDietRepository drepository;
 
-	// save
+	// save diet
 	@Override
 	public Diet save(Diet diet) {
 		return drepository.save(diet);

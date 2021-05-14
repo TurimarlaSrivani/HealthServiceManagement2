@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hsm.healthservicemanagement.entity.Diet;
 
-//Spring Boot
+//Spring Boot Application
 @Repository
 public interface IDietRepository extends JpaRepository<Diet, Integer> {
 }

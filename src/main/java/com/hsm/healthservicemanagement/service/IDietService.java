@@ -9,7 +9,7 @@ import com.hsm.healthservicemanagement.entity.Diet;
 @Service
 public interface IDietService {
 
-	// save
+	// save diet
 	public Diet save(Diet diet);
 
 	// deleteDietByDietId

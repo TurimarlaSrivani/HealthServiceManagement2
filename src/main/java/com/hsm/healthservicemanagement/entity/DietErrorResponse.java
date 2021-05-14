@@ -1,5 +1,6 @@
 package com.hsm.healthservicemanagement.entity;
 
+
 /*
 
 * 1.Create error message for pojo class
@@ -27,7 +28,7 @@ public class DietErrorResponse {
 
 	}
 
-	// getters and setters
+	// getters and setters for status,mesaage,timstamp
 
 	public int getStatus() {
 		return status;

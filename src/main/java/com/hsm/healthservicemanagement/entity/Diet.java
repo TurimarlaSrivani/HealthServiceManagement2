@@ -13,7 +13,7 @@ public class Diet
 	private String foodtoEat;
 	private int dietDuration;
 
-	// Constructors
+	// Constructors for Diet
 	public Diet() {
 	}
 

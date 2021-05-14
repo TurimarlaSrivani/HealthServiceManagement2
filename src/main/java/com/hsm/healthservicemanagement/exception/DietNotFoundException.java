@@ -8,7 +8,7 @@ package com.hsm.healthservicemanagement.exception;
  * 4.@ExceptionHandler - handle exceptions
 
  */
-
+   //DietnotfoundException
 public class DietNotFoundException extends RuntimeException {
 
 	public DietNotFoundException(String message, Throwable cause) {

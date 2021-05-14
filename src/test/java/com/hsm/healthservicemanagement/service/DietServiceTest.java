@@ -42,7 +42,7 @@ public class DietServiceTest {
 		assertEquals("vegetables", persistedDi.getFoodtoEat());
 	}
 
-	// delete
+	// delete diet
 	@Test
 	void testDeleteDiet() {
 

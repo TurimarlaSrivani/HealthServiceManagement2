@@ -22,7 +22,7 @@ public class HealthservicemanagementsystemApplication {
 
 	}
 	
-	// To Enable Swagger
+	// To Enable Swagger added dependencies in build.gradle
 
 	@Bean
 	public Docket productApi() {

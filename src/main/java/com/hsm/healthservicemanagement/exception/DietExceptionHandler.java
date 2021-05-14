@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.hsm.healthservicemanagement.entity.DietErrorResponse;
 
 
-
-
 @ControllerAdvice
 public class DietExceptionHandler {
    //Create method to handle exception
