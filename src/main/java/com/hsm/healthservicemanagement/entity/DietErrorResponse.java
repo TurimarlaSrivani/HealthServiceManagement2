@@ -11,54 +11,50 @@ package com.hsm.healthservicemanagement.entity;
 
 public class DietErrorResponse {
 
-	private int status; //error code 404
+	private int status; // error code 404
 	private String message; // Diet not found with the given id
 	private long timeStamp;
-	
-	//Constructors
+
+	// Constructors
 	public DietErrorResponse() {
-		}
-	
-	public DietErrorResponse(int status, String message,long timeStamp) {
-	   super();
-	   this.status = status;
-	   this.message = message;
-	   this.timeStamp = timeStamp;
-	
-    }
-	
+	}
+
+	public DietErrorResponse(int status, String message, long timeStamp) {
+		super();
+		this.status = status;
+		this.message = message;
+		this.timeStamp = timeStamp;
+
+	}
+
 	// getters and setters
-	
+
 	public int getStatus() {
 		return status;
 	}
+
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
 	public String getMessage() {
 		return message;
 	}
+
 	public void setMessage(String message) {
 		this.message = message;
 	}
+
 	public long getTimeStamp() {
 		return timeStamp;
 	}
+
 	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
 	}
+
 	@Override
 	public String toString() {
 		return "DietErrorResponse [status=" + status + ", message=" + message + ", timeStamp=" + timeStamp + "]";
 	}
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
+}

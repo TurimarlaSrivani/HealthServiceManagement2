@@ -1,6 +1,5 @@
 package com.hsm.healthservicemanagement.service;
 
-
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -12,68 +11,64 @@ import com.hsm.healthservicemanagement.entity.Diet;
 @SpringBootTest
 
 public class DietServiceTest {
-	
+
 	@Autowired
 	IDietService dtService;
-	
-	//viewAllDietDetails
+
+	// viewAllDietDetails
 	@Test
 	void testViewAllDiet() {
-		List<Diet> diet=dtService.viewAll();
-		assertEquals(1,diet.size());
-		
+		List<Diet> diet = dtService.viewAll();
+		assertEquals(1, diet.size());
+
 	}
-	
-	//viewDietById
+
+	// viewDietById
 	@Test
 	void testViewDietById() {
 		Diet diet = dtService.viewDietById(30);
-		assertEquals("veggieiet",diet.getDietType());
-			
+		assertEquals("veggieiet", diet.getDietType());
+
 	}
-	
-	//save
+
+	// save Diet
 	@Test
 	void testSaveDiet() {
-		
-	Diet diet = new Diet(40,"cardinodiet","vegetables",50);
-	Diet persistedDi=dtService.save(diet);
-	assertEquals("cardinodiet",persistedDi.getDietType());
-	assertEquals(40,persistedDi.getDietId());
-    assertEquals("vegetables",persistedDi.getFoodtoEat());
+
+		Diet diet = new Diet(40, "cardinodiet", "vegetables", 50);
+		Diet persistedDi = dtService.save(diet);
+		assertEquals("cardinodiet", persistedDi.getDietType());
+		assertEquals(40, persistedDi.getDietId());
+		assertEquals("vegetables", persistedDi.getFoodtoEat());
 	}
-	
-	//delete
+
+	// delete
 	@Test
 	void testDeleteDiet() {
-	
-	Diet diet = new Diet(40,"cardinodiet","vegetables",50);
-	Diet persistedDi=dtService.delete(diet);
-	assertEquals("cardinodiet",persistedDi.getDietType());
-	assertEquals(40,persistedDi.getDietId());
-	assertEquals("vegetables",persistedDi.getFoodtoEat());	
-	
+
+		Diet diet = new Diet(40, "cardinodiet", "vegetables", 50);
+		Diet persistedDi = dtService.delete(diet);
+		assertEquals("cardinodiet", persistedDi.getDietType());
+		assertEquals(40, persistedDi.getDietId());
+		assertEquals("vegetables", persistedDi.getFoodtoEat());
+
 	}
-	//update
+
+	// update
 	@Test
-	  public void updateDiet() {
+	public void updateDiet() {
 		Diet d = new Diet();
 		d.setDietId(30);
 		d.setDietType("cardinodiet");
-		d.setFoodtoEat("fruits");	
+		d.setFoodtoEat("fruits");
 		d.setDietDuration(40);
 	}
-    
-   //deleteDietById
-   @Test
-   public void deleteDiet()
-   {
-	   Diet d = dtService.deleteDiet(30);
-	   assertEquals(30,d.getDietId());
-   }
+
+	// deleteDietById
+	@Test
+	public void deleteDiet() {
+		Diet d = dtService.deleteDiet(30);
+		assertEquals(30, d.getDietId());
+	}
 
 }
-
-
-
-

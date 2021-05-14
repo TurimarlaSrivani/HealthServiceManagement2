@@ -1,6 +1,5 @@
 package com.hsm.healthservicemanagement.service;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,76 +12,75 @@ import com.hsm.healthservicemanagement.entity.Diet;
 import com.hsm.healthservicemanagement.repository.IDietRepository;
 
 @Service
-public class DietServiceImpl implements IDietService{
-	
-	Logger logger=LogManager.getLogger("DietServiceImpl");
+public class DietServiceImpl implements IDietService {
+
+	Logger logger = LogManager.getLogger("DietServiceImpl");
 
 	@Autowired
 	IDietRepository drepository;
-	
-	//save
+
+	// save
 	@Override
 	public Diet save(Diet diet) {
 		return drepository.save(diet);
 	}
-	 
-	//deleteByDietId
+
+	// deleteByDietId
 	@Override
 	public Diet deleteDiet(int id) {
 		Optional<Diet> opt = drepository.findById(id);
-		if(!opt.isPresent())
-		{
+		if (!opt.isPresent()) {
 			return null;
 		}
-		Diet d=opt.get();
-         drepository.deleteById(id);
+		Diet d = opt.get();
+		drepository.deleteById(id);
 		return d;
 	}
-	
-	//viewAllDietDetails
+
+	// viewAllDietDetails
 	@Override
 	public List<Diet> viewAll() {
 		return drepository.findAll();
 	}
-	
-	//viewDietById
+
+	// viewDietById
 	@Override
 	public Diet viewDietById(int id) {
-		
+
 		Optional<Diet> opt = drepository.findById(id);
-		if(!opt.isPresent()) {
+		if (!opt.isPresent()) {
 			return null;
 		}
-	return	opt.get();	
+		return opt.get();
 	}
-	
-	//updateDietDetails
+
+	// updateDietDetails
 	@Override
 	public Diet updateDiet(Diet diet) {
-		  Optional<Diet> opt = drepository.findById(diet.getDietId());
-		  if(!opt.isPresent()) {
-			  return null;
-		  }
-		   Diet d = opt.get();
-		   d.setDietType(diet.getDietType());
-		   d.setFoodtoEat(diet.getFoodtoEat());
-		   d.setDietDuration(diet.getDietDuration());
-		   return drepository.save(d);
+		Optional<Diet> opt = drepository.findById(diet.getDietId());
+		if (!opt.isPresent()) {
+			return null;
+		}
+		Diet d = opt.get();
+		d.setDietType(diet.getDietType());
+		d.setFoodtoEat(diet.getFoodtoEat());
+		d.setDietDuration(diet.getDietDuration());
+		return drepository.save(d);
 	}
-	
-	//updateDietType
+
+	// updateDietType
 	@Override
 	public Diet updateDietType(int id, Diet diet) {
-		Optional<Diet> opt=drepository.findById( id);
-		if(!opt.isPresent()) {
+		Optional<Diet> opt = drepository.findById(id);
+		if (!opt.isPresent()) {
 			return null;
 		}
 		Diet d = opt.get();
 		d.setDietType(diet.getDietType());
 		return drepository.save(d);
 	}
-	
-	//deleteDietDetails
+
+	// deleteDietDetails
 	@Override
 	public Diet delete(Diet diet) {
 		drepository.delete(diet);
@@ -90,7 +88,3 @@ public class DietServiceImpl implements IDietService{
 	}
 
 }
-	
-	
-	
-	
