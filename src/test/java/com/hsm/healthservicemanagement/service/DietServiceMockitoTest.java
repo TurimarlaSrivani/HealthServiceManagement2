@@ -20,8 +20,9 @@ import com.hsm.healthservicemanagement.repository.IDietRepository;
 
 class DietServiceMockitoTest {
 	
-	//Mockito - imitating using mockito
-	
+	//Mock - imitating 
+	//DB
+	//Products
 	//	@InjectMocks - injects DietService and inject dependent classes/interfaces
 	//that are annotated with @Mock
 

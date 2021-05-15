@@ -25,13 +25,13 @@ public class DietController {
 	IDietService ds;
 
 	// WRITE
-	// save diet
+	// save 
 	@PostMapping("/diet")
 	public ResponseEntity<Diet> saveDiet(@RequestBody Diet diet) {
 		return new ResponseEntity<Diet>(ds.save(diet), HttpStatus.OK);
 	}
 
-	// DELETE Diet
+	// DELETE 
 	// deleteDietByDietId
 	@DeleteMapping("/diet/{id}")
 	public ResponseEntity<Diet> deleteDiet(@PathVariable("id") int id) throws DietNotFoundException {
