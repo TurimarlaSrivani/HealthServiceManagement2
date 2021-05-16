@@ -1,4 +1,4 @@
-package com.cg.hsm.controller;
+package com.hsm.healthservicemanagement.controller;
 
 /*
  * 1.Create error message for pojo class
