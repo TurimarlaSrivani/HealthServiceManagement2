@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.hsm.healthservicemanagement.Treatment;
-import com.hsm.healthservicemanagement.TreatmentStatus;
+import com.hsm.healthservicemanagement.entity.Treatment;
+import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 
 @SpringBootTest
 class TreatmentServiceTests {
