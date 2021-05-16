@@ -14,7 +14,6 @@ public class Treatment {
 
 	@Id
 	private int treatmentId;
-	private int patientCaseId;
 	private String currentTreatment;
 	private double treatmentFee;
 	private LocalDate treatmentDate;
@@ -29,22 +28,20 @@ public class Treatment {
 	public Treatment() {
 	}
 
-	public Treatment(int treatmentId, int patientCaseId, LocalDate treatmentDate, int treatmentFee,
+	public Treatment(int treatmentId,LocalDate treatmentDate, int treatmentFee,
 			String currentTreatment, TreatmentStatus treatmentStatus) {
 		super();
 		this.treatmentId = treatmentId;
-		this.patientCaseId = patientCaseId;
 		this.treatmentDate = treatmentDate;
 		this.treatmentFee = treatmentFee;
 		this.currentTreatment = currentTreatment;
 		this.treatmentStatus = treatmentStatus;
 	}
 
-	public Treatment(int treatmentId, int patientCaseId, LocalDate treatmentDate, int treatmentFee,
+	public Treatment(int treatmentId, LocalDate treatmentDate, int treatmentFee,
 			String currentTreatment) {
 		super();
 		this.treatmentId = treatmentId;
-		this.patientCaseId = patientCaseId;
 		this.treatmentDate = treatmentDate;
 		this.treatmentFee = treatmentFee;
 		this.currentTreatment = currentTreatment;
@@ -64,14 +61,6 @@ public class Treatment {
 
 	public void setTreatmentId(int treatmentId) {
 		this.treatmentId = treatmentId;
-	}
-
-	public int getPatientCaseId() {
-		return patientCaseId;
-	}
-
-	public void setPatientCaseId(int patientId) {
-		this.patientCaseId = patientId;
 	}
 
 	public String getCurrentTreatment() {
@@ -100,7 +89,7 @@ public class Treatment {
 
 	@Override
 	public String toString() {
-		return "Treatment [treatmentId=" + treatmentId + ", patientCaseId=" + patientCaseId + ", currentTreatment="
+		return "Treatment [treatmentId=" + treatmentId + ", currentTreatment="
 				+ currentTreatment + ", treatmentFee=" + treatmentFee + ", treatmentDate=" + treatmentDate + ", treatmentStatus="
 				+ treatmentStatus + "]";
 	}
