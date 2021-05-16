@@ -2,7 +2,6 @@ package com.hsm.healthservicemanagement.controller;
 
 import java.util.List;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +77,6 @@ public class PatientController {
 		return patientService.findByPatientName(name);
 	}
 
-
 	@PutMapping("/patient/{id}")
 	public Patient updateByPatientId(@PathVariable("id") int patientId) {
 		if (patientService.updateByPatientId(patientId) == null) {
@@ -87,12 +85,12 @@ public class PatientController {
 		return patientService.updateByPatientId(patientId);
 
 	}
-	
+
 	// UPDATE
-		// Updating specific property
-		@PatchMapping("/employee/{id}")
-		public Patient updatePatientName(@PathVariable("id") int id, @RequestBody Patient patient) {
-			return patientService.updatePatientName(id, patient);
-		}
+	// Updating specific property
+	@PatchMapping("/employee/{id}")
+	public Patient updatePatientName(@PathVariable("id") int id, @RequestBody Patient patient) {
+		return patientService.updatePatientName(id, patient);
+	}
 
 }
