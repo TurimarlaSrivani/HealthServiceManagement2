@@ -1,4 +1,4 @@
-package com.cg.hsm.service;
+package com.hsm.healthservicemanagement.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,10 +17,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.cg.hsm.entity.Treatment;
-import com.cg.hsm.entity.TreatmentStatus;
-import com.cg.hsm.repository.ITreatmentRepository;
-import com.cg.hsm.serviceimpl.TreatmentServiceImpl;
+import com.hsm.healthservicemanagement.entity.Treatment;
+import  com.hsm.healthservicemanagement.entity.TreatmentStatus;
+import  com.hsm.healthservicemanagement.repository.ITreatmentRepository;
+import  com.hsm.healthservicemanagement.serviceimpl.TreatmentServiceImpl;
 
 @ExtendWith(SpringExtension.class)
 public class TreatmentServiceMockitoTests {
