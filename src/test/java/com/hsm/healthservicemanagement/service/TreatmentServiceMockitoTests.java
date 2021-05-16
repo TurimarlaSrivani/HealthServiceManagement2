@@ -20,7 +20,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.hsm.healthservicemanagement.entity.Treatment;
 import  com.hsm.healthservicemanagement.entity.TreatmentStatus;
 import  com.hsm.healthservicemanagement.repository.ITreatmentRepository;
-import  com.hsm.healthservicemanagement.serviceimpl.TreatmentServiceImpl;
+import  com.hsm.healthservicemanagement.service.TreatmentServiceImpl;
 
 @ExtendWith(SpringExtension.class)
 public class TreatmentServiceMockitoTests {
