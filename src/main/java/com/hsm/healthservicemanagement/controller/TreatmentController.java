@@ -1,4 +1,4 @@
-package com.cg.hsm.controller;
+package com.hsm.healthservicemanagement.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.hsm.entity.Treatment;
-import com.cg.hsm.entity.TreatmentStatus;
-import com.cg.hsm.service.ITreatmentService;
-import com.cg.hsm.exception.TreatmentNotFoundException;
+import com.hsm.healthservicemanagement.entity.Treatment;
+import com.hsm.healthservicemanagement.entity.TreatmentStatus;
+import com.hsm.healthservicemanagement.service.ITreatmentService;
+import com.hsm.healthservicemanagement.exception.TreatmentNotFoundException;
 
 @RestController
 @CrossOrigin
