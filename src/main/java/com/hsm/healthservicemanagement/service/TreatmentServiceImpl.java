@@ -1,4 +1,4 @@
-package com.hsm.healthservicemanagement.serviceimpl;
+package com.hsm.healthservicemanagement.service;
 
 import java.time.LocalDate;
 import java.util.List;
