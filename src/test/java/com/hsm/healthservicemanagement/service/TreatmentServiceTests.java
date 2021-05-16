@@ -1,4 +1,4 @@
-package com.cg.hsm.service;
+package com.hsm.healthservicemanagement.service;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.cg.hsm.entity.Treatment;
-import com.cg.hsm.entity.TreatmentStatus;
+import com.hsm.healthservicemanagement.Treatment;
+import com.hsm.healthservicemanagement.TreatmentStatus;
 
 @SpringBootTest
 class TreatmentServiceTests {
