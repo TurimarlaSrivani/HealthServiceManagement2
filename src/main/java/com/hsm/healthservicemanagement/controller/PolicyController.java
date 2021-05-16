@@ -20,14 +20,11 @@ import com.hsm.healthservicemanagement.exception.PolicyNotFoundException;
 import com.hsm.healthservicemanagement.service.IPolicyService;
 import com.hsm.healthservicemanagement.*;
 
-
 @RestController
 public class PolicyController {
 
 	@Autowired
 	IPolicyService PolicyServiceImpl;
-
-	
 
 	// READ
 	@GetMapping("/policy/{id}")
