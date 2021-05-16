@@ -23,7 +23,7 @@ import  com.hsm.healthservicemanagement.repository.ITreatmentRepository;
 import  com.hsm.healthservicemanagement.service.TreatmentServiceImpl;
 
 @ExtendWith(SpringExtension.class)
-public class TreatmentServiceMockitoTests {
+ class TreatmentServiceMockitoTests {
 	// Mock - imitating
 	// DB -
 	// Product -
@@ -48,13 +48,13 @@ public class TreatmentServiceMockitoTests {
 	// findAllTreatmentDetails
 		@Test
 		void testFindAllTreatment() {
-			Treatment t1 = new Treatment(1, 101,LocalDate.of(2021, 10, 02), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
-			Treatment t2 = new Treatment(2, 102, LocalDate.of(2021, 10, 01), 5000, "angioplasty",TreatmentStatus.APPOINTED);
-			Treatment t3 = new Treatment(3, 103, LocalDate.of(2021, 10, 03), 5000, "vasectomy",TreatmentStatus.APPOINTED);
-			Treatment t4 = new Treatment(4, 104, LocalDate.of(2021, 10, 04), 5000, "tubectomy",TreatmentStatus.APPOINTED);
-			Treatment t5 = new Treatment(5, 105, LocalDate.of(2021, 10, 05), 5000, "dialysis",TreatmentStatus.APPOINTED);
-			Treatment t6 = new Treatment(6, 106, LocalDate.of(2021, 10, 06), 5000, "lyphoplasty",TreatmentStatus.APPOINTED);
-			Treatment t7 = new Treatment(7, 107,LocalDate.of(2021, 10, 07), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
+			Treatment t1 = new Treatment(1, LocalDate.of(2021, 10, 02), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
+			Treatment t2 = new Treatment(2, LocalDate.of(2021, 10, 01), 5000, "angioplasty",TreatmentStatus.APPOINTED);
+			Treatment t3 = new Treatment(3, LocalDate.of(2021, 10, 03), 5000, "vasectomy",TreatmentStatus.APPOINTED);
+			Treatment t4 = new Treatment(4, LocalDate.of(2021, 10, 04), 5000, "tubectomy",TreatmentStatus.APPOINTED);
+			Treatment t5 = new Treatment(5, LocalDate.of(2021, 10, 05), 5000, "dialysis",TreatmentStatus.APPOINTED);
+			Treatment t6 = new Treatment(6, LocalDate.of(2021, 10, 06), 5000, "lyphoplasty",TreatmentStatus.APPOINTED);
+			Treatment t7 = new Treatment(7, LocalDate.of(2021, 10, 07), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
 
 			List<Treatment> treatmentList = new ArrayList<>();
 			treatmentList.add(t1);
@@ -74,13 +74,12 @@ public class TreatmentServiceMockitoTests {
 	void testSave() {
 		
 
-		Treatment t = new Treatment(8, 108, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
+		Treatment t = new Treatment(8, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
 		Mockito.when(treatmentRepo.save(t)).thenReturn(t);
 
 		Treatment persistedt = treatmentService.save(t);
 
 		assertEquals(8, persistedt.getTreatmentId());
-		assertEquals(108, persistedt.getPatientCaseId());
 		assertEquals("cataract", persistedt.getCurrentTreatment());
 		assertEquals(5000, persistedt.getTreatmentFee());
 		assertEquals(LocalDate.of(2021, 10, 8), persistedt.getTreatmentDate());
@@ -91,13 +90,12 @@ public class TreatmentServiceMockitoTests {
 /*	// findByTreatmentId
 	@Test
 	void testFindByTreatmentId() {
-		Treatment t = new Treatment(8, 108, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
+		Treatment t = new Treatment(8, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
 		Mockito.when(treatmentRepo.findById(8)).thenReturn(Optional.of(t));
 
 		Treatment persistedt = treatmentService.findByTreatmentId(8);
 
 		assertEquals(8, persistedt.getTreatmentId());
-		assertEquals(108, persistedt.getPatientCaseId());
 		assertEquals("cataract", persistedt.getCurrentTreatment());
 		assertEquals(5000, persistedt.getTreatmentFee());
 		assertEquals(LocalDate.of(2021, 10, 8), persistedt.getTreatmentDate());
@@ -109,7 +107,7 @@ public class TreatmentServiceMockitoTests {
 	// update
 	@Test
 	void update() {
-		Treatment t = new Treatment(1, 101, LocalDate.of(2021, 10, 02), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
+		Treatment t = new Treatment(1, LocalDate.of(2021, 10, 02), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
 
 		Mockito.when(treatmentRepo.findById(1)).thenReturn(Optional.of(t));
 		Mockito.when(treatmentRepo.save(t)).thenReturn(t);
@@ -117,19 +115,17 @@ public class TreatmentServiceMockitoTests {
 		Treatment persistedt = treatmentService.updateTreatment(t);
 
 		assertEquals(1, persistedt.getTreatmentId());
-		assertEquals(101, persistedt.getPatientCaseId());
 		assertEquals(LocalDate.of(2021, 10, 02), persistedt.getTreatmentDate());
 		assertEquals(5000, persistedt.getTreatmentFee());
 		assertEquals("rhinoplasty", persistedt.getCurrentTreatment());
 		assertEquals(TreatmentStatus.APPOINTED, persistedt.getTreatmentStatus());
-		
-		
+			
 	} */
 
 	// deleteTreatmentByPatientId
 	@Test
 	void deleteTreatmentByTreatmentId() {
-		Treatment t = new Treatment(8, 108, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
+		Treatment t = new Treatment(8, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
 
 		Mockito.when(treatmentRepo.findById(8)).thenReturn(Optional.of(t));
 		treatmentRepo.deleteById(3);
@@ -137,7 +133,6 @@ public class TreatmentServiceMockitoTests {
 		Treatment persistedt = treatmentService.deleteTreatmentByTreatmentId(8);
 
 		assertEquals(8, persistedt.getTreatmentId());
-		assertEquals(108, persistedt.getPatientCaseId());
 		assertEquals("cataract", persistedt.getCurrentTreatment());
 		assertEquals(5000, persistedt.getTreatmentFee());
 		assertEquals(LocalDate.of(2021, 10, 8), persistedt.getTreatmentDate());
