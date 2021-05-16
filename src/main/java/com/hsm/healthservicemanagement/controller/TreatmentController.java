@@ -103,15 +103,6 @@ public class TreatmentController {
 		return new ResponseEntity<> (treatmentService.findByTreatmentDate(treatmentDate),HttpStatus.OK);
 	}
 	
-	//findByPatientCaseId
-	@GetMapping("/treatment/getPCId/{patientCaseId}")
-	public ResponseEntity<Treatment> findByPatientCaseId(@PathVariable int patientCaseId) {
-		if (treatmentService.findByPatientCaseId(patientCaseId) == null) {
-			throw new TreatmentNotFoundException("PATIENT CASE NOT FOUND: " + patientCaseId);
-		}
-		return new ResponseEntity<> (treatmentService.findByPatientCaseId(patientCaseId), HttpStatus.OK);
-	}
-	
     //findByTreatmentStatus
 		@GetMapping("/treatment/status/{treatmentStatus}")
 		public ResponseEntity<List<Treatment>> findByTreatmentStatus(@PathVariable TreatmentStatus treatmentStatus) {
