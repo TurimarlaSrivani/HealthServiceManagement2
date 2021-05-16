@@ -1,7 +1,12 @@
 package com.cg.hsm.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import java.time.LocalDate;
 
 @Entity
@@ -15,6 +20,11 @@ public class Treatment {
 	private LocalDate treatmentDate;
 	private TreatmentStatus treatmentStatus;
 
+	//@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	//@JoinColumn(name="patientCase", referencedColumnName="patientCaseId")
+	//private PatientCase patientCase;
+	
+	
 	// Constructors
 	public Treatment() {
 	}
