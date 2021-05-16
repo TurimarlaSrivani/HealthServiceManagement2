@@ -1,10 +1,10 @@
-package com.cg.hsm.service;
+package com.hsm.healthservicemanagement.service;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import com.cg.hsm.entity.Treatment;
-import com.cg.hsm.entity.TreatmentStatus;
+import com.hsm.healthservicemanagement.entity.Treatment;
+import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 
 public interface ITreatmentService {
 
