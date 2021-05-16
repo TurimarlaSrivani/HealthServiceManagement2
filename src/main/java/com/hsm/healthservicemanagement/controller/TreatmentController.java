@@ -36,7 +36,7 @@ public class TreatmentController {
 	// saveTreatment
 	@PostMapping("/treatment")
 	public ResponseEntity<Treatment> save(@RequestBody Treatment treatment) {
-		return new ResponseEntity<Treatment> (treatmentService.save(treatment),HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.save(treatment),HttpStatus.OK);
 	}
 // ---------------DELETE----------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ public class TreatmentController {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
 			throw new TreatmentNotFoundException("Treatment not found with this id");
 		}
-		return new ResponseEntity<Treatment> (treatmentService.deleteTreatmentByTreatmentId(treatmentId),HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.deleteTreatmentByTreatmentId(treatmentId),HttpStatus.OK);
 	}
 
 // ---------------UPDATE----------------------------------------------------------------------
@@ -54,9 +54,9 @@ public class TreatmentController {
 	@PatchMapping("/treatment/{treatmentId}")
 	public ResponseEntity<Treatment> updateTreatment(@PathVariable int treatmentId, @RequestBody Treatment treatment) {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
-			throw new TreatmentNotFoundException("Treatment not found with this id to update");
+			throw new TreatmentNotFoundException("Treatment not found with this id");
 		}
-		return new ResponseEntity<Treatment> (treatmentService.updateTreatment(treatment),HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.updateTreatment(treatment),HttpStatus.OK);
 	}
 
 	//updateTreatmentDateByTreatmentId
@@ -65,24 +65,24 @@ public class TreatmentController {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
 			throw new TreatmentNotFoundException("Treatment not found with this id to update");
 		}
-		return new ResponseEntity<Treatment> (treatmentService.updateTreatmentDateByTreatmentId(treatmentId, treatment),HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.updateTreatmentDateByTreatmentId(treatmentId, treatment),HttpStatus.OK);
 	}
 	
 	//updateTreatmentStatusByTreatmentId
 		@PutMapping("/treatment/stat/{treatmentId}")
 		public ResponseEntity<Treatment> updateTreatmentStatusByTreatmentId(@PathVariable int treatmentId, @RequestBody Treatment treatment) {
 			if (treatmentService.findByTreatmentId(treatmentId) == null) {
-				throw new TreatmentNotFoundException("Treatment not found with this id to update");
+				throw new TreatmentNotFoundException("Id Not Found");
 			}
-			return new ResponseEntity<Treatment> (treatmentService.updateTreatmentStatusByTreatmentId(treatmentId, treatment),HttpStatus.OK);
+			return new ResponseEntity<> (treatmentService.updateTreatmentStatusByTreatmentId(treatmentId, treatment),HttpStatus.OK);
 		}
-	
+
 //-----------------GET----------------------------------------------------------------------
 	// Read
 	// findAlltreatmentDetails
 	@GetMapping("/treatment")
 	public ResponseEntity<List<Treatment>> findAllTreatment() {
-		return new ResponseEntity<List<Treatment>> (treatmentService.findAllTreatment(),HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.findAllTreatment(),HttpStatus.OK);
 	}
 
 	// findByTreatmentId
@@ -91,7 +91,7 @@ public class TreatmentController {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
 			throw new TreatmentNotFoundException("TREATMENT NOT FOUND WITH THIS ID: " + treatmentId);
 		}
-		return new ResponseEntity<Treatment> (treatmentService.findByTreatmentId(treatmentId),HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.findByTreatmentId(treatmentId),HttpStatus.OK);
 	}
 
 	// findByTreatmentDate
@@ -100,7 +100,7 @@ public class TreatmentController {
 		if (treatmentService.findByTreatmentDate(treatmentDate) == null) {
 			throw new TreatmentNotFoundException("NO TREATMENT SCHEDULED ON: " + treatmentDate);
 		}
-		return new ResponseEntity<List<Treatment>> (treatmentService.findByTreatmentDate(treatmentDate),HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.findByTreatmentDate(treatmentDate),HttpStatus.OK);
 	}
 	
 	//findByPatientCaseId
@@ -109,7 +109,7 @@ public class TreatmentController {
 		if (treatmentService.findByPatientCaseId(patientCaseId) == null) {
 			throw new TreatmentNotFoundException("PATIENT CASE NOT FOUND: " + patientCaseId);
 		}
-		return new ResponseEntity<Treatment> (treatmentService.findByPatientCaseId(patientCaseId), HttpStatus.OK);
+		return new ResponseEntity<> (treatmentService.findByPatientCaseId(patientCaseId), HttpStatus.OK);
 	}
 	
     //findByTreatmentStatus
@@ -118,7 +118,7 @@ public class TreatmentController {
 			if (treatmentService.findByTreatmentStatus(treatmentStatus) == null) {
 				throw new TreatmentNotFoundException("PATIENT STATUS NOT FOUND: " + treatmentStatus);
 			} 
-			return new ResponseEntity<List<Treatment>> ( treatmentService.findByTreatmentStatus(treatmentStatus), HttpStatus.OK);
+			return new ResponseEntity<> ( treatmentService.findByTreatmentStatus(treatmentStatus), HttpStatus.OK);
 
 		} 
 }
