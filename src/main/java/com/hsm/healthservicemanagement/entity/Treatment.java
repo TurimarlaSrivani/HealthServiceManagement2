@@ -1,4 +1,4 @@
-package com.cg.hsm.entity;
+package com.hsm.healthservicemanagement.entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
