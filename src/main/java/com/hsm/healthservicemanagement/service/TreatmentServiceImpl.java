@@ -1,4 +1,4 @@
-package com.cg.hsm.serviceimpl;
+package com.hsm.healthservicemanagement.serviceimpl;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -7,10 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cg.hsm.entity.Treatment;
-import com.cg.hsm.entity.TreatmentStatus;
-import com.cg.hsm.repository.ITreatmentRepository;
-import com.cg.hsm.service.ITreatmentService;
+import com.hsm.healthservicemanagement.entity.Treatment;
+import com.hsm.healthservicemanagement.entity.TreatmentStatus;
+import com.hsm.healthservicemanagement.repository.ITreatmentRepository;
+import com.hsm.healthservicemanagement.service.ITreatmentService;
 
 @Service
 public class TreatmentServiceImpl implements ITreatmentService {
