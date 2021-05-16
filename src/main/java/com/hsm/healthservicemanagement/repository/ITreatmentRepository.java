@@ -1,4 +1,4 @@
-package com.cg.hsm.repository;
+package com.hsm.healthservicemanagement.repository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cg.hsm.entity.Treatment;
-import com.cg.hsm.entity.TreatmentStatus;
+import com.hsm.healthservicemanagement.entity.Treatment;
+import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 
 // Spring Data JPA
 
