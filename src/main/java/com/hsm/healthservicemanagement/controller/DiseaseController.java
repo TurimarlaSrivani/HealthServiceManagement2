@@ -21,7 +21,6 @@ import com.hsm.healthservicemanagement.exception.*;
 //import com.cg.hsm.service.DiseaseServiceImpl;
 import com.hsm.healthservicemanagement.service.IDiseaseService;
 
-
 @RestController
 public class DiseaseController {
 
@@ -29,7 +28,7 @@ public class DiseaseController {
 	@Autowired
 	IDiseaseService desService;
 
-	
+
 	@ExceptionHandler
 	public ResponseEntity<DiseaseErrorResponse> handleException(DiseaseNotFoundException exception) {
 		DiseaseErrorResponse error = new DiseaseErrorResponse();
@@ -95,6 +94,7 @@ public class DiseaseController {
 	public Disease updatedesName(@PathVariable("id") int id, @RequestBody Disease disease) {
 		return desService.update(disease);
 	}
+
 	/*
 	 * @GetMapping("/disease/{desId}") findAllPatientCasesByDiseaseId(int
 	 * diseaseId): List<PatientCase>
@@ -109,4 +109,5 @@ public class DiseaseController {
 	 * @GetMapping("/patientCase/{patientCaseId}/disease/{diseaseId}/doctor")
 	 * findPatientCaseDoctorByDiseaseId(int patientCaseId,int diseaseId): String
 	 */
+
 }

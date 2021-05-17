@@ -28,7 +28,7 @@ public class DietErrorResponse {
 
 	}
 
-	// getters and setters for status,mesaage,timstamp
+	// getters and setters 
 
 	public int getStatus() {
 		return status;

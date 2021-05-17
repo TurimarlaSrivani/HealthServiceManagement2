@@ -4,11 +4,12 @@ plugins {
 	id 'java'
 	id "org.sonarqube" version "3.2.0"
 	id 'jacoco'
-}
+
 
 group = 'com.cg'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
 
 // eclipse plugin
 apply plugin : 'eclipse'
@@ -43,14 +44,31 @@ dependencies {
     implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
     	
     // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+
 implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+
+	implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+
+
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.4.5'
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.20'
+	implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.31.Final'
 
 
 	
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.5'
 }
 
 test {
 	useJUnitPlatform()
+	project.tasks["sonarqube"].dependsOn "test"
 }
 
 // Mentioning sonarqube runs only after finishing test cases to generate report
