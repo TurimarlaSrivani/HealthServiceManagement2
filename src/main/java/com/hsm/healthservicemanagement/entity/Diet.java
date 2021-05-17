@@ -13,7 +13,7 @@ public class Diet
 	private String foodtoEat;
 	private int dietDuration;
 
-	// Constructors for Diet
+	// Constructors 
 	public Diet() {
 	}
 
@@ -58,5 +58,13 @@ public class Diet
 	public void setFoodtoEat(String foodtoEat) {
 		this.foodtoEat = foodtoEat;
 	}
+
+	@Override
+	public String toString() {
+		return "Diet [dietId=" + dietId + ", dietType=" + dietType + ", foodtoEat=" + foodtoEat + ", dietDuration="
+				+ dietDuration + "]";
+	}
+	
+	
 
 }
