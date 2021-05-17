@@ -103,7 +103,6 @@ public class TreatmentController {
 		return new ResponseEntity<> (treatmentService.findByTreatmentDate(treatmentDate),HttpStatus.OK);
 	}
 	
-	
     //findByTreatmentStatus
 		@GetMapping("/treatment/status/{treatmentStatus}")
 		public ResponseEntity<List<Treatment>> findByTreatmentStatus(@PathVariable TreatmentStatus treatmentStatus) {

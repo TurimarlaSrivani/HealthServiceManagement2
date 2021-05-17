@@ -16,7 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.hsm.healthservicemanagement.entity.Treatment;
 import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 
-
 @SpringBootTest
 class TreatmentServiceTests {
 
@@ -71,7 +70,9 @@ class TreatmentServiceTests {
 	// deleteTreatmentByTreatmentId
 	@Test
 	 void testdeleteTreatmentByTreatmentId() {
+
 	Treatment t = new Treatment(8,"rhinoplasty",5000,LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
+
 	Treatment persistedt = treatmentService.deleteTreatmentByTreatmentId(8);
 
 	assertEquals(8, persistedt.getTreatmentId());

@@ -22,12 +22,10 @@ import java.time.LocalDate;
 @ToString
 @RequiredArgsConstructor
 public class Treatment {
-
-	
 	@Id
 	@NonNull
 	private int treatmentId;
-	@NonNull
+  @NonNull
 	private String currentTreatment;
 	@NonNull
 	private double treatmentFee;
@@ -37,9 +35,5 @@ public class Treatment {
 	@Enumerated(EnumType.STRING)
 	private TreatmentStatus treatmentStatus;
 	
-	
-	//@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-			//@JoinColumn(name="patientCase", referencedColumnName="patientCaseId")
-			//private PatientCase patientCase;
-	
 }
+

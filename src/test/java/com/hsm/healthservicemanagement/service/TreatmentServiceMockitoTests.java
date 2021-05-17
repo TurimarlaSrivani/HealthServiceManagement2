@@ -18,8 +18,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.hsm.healthservicemanagement.entity.Treatment;
+
 import com.hsm.healthservicemanagement.entity.TreatmentStatus;
-import com.hsm.healthservicemanagement.repository.ITreatmentRepository;
+import  com.hsm.healthservicemanagement.repository.ITreatmentRepository;
+import  com.hsm.healthservicemanagement.service.TreatmentServiceImpl;
+
 
 @ExtendWith(SpringExtension.class)
  class TreatmentServiceMockitoTests {
@@ -47,6 +50,7 @@ import com.hsm.healthservicemanagement.repository.ITreatmentRepository;
 	// findAllTreatmentDetails
 		@Test
 		void testFindAllTreatment() {
+
 			Treatment t1 = new Treatment(1, "rhinoplasty", 5000, LocalDate.of(2021, 10, 02),TreatmentStatus.APPOINTED);
 			Treatment t2 = new Treatment(2, "angioplasty", 5000, LocalDate.of(2021, 10, 01),TreatmentStatus.APPOINTED);
 			Treatment t3 = new Treatment(3, "vasectomy", 5000, LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
@@ -73,7 +77,9 @@ import com.hsm.healthservicemanagement.repository.ITreatmentRepository;
 	void testSave() {
 		
 
+
 		Treatment t = new Treatment(8, "cataract", 5000, LocalDate.of(2021, 10, 8),TreatmentStatus.APPOINTED);
+
 		Mockito.when(treatmentRepo.save(t)).thenReturn(t);
 
 		Treatment persistedt = treatmentService.save(t);
@@ -124,6 +130,7 @@ import com.hsm.healthservicemanagement.repository.ITreatmentRepository;
 	// deleteTreatmentByPatientId
 	@Test
 	void deleteTreatmentByTreatmentId() {
+
 		Treatment t = new Treatment(8, "cataract", 5000, LocalDate.of(2021, 10, 8),TreatmentStatus.APPOINTED);
 
 		Mockito.when(treatmentRepo.findById(8)).thenReturn(Optional.of(t));
