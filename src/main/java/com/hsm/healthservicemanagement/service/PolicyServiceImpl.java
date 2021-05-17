@@ -21,7 +21,7 @@ public class PolicyServiceImpl implements IPolicyService {
 	public Policy getByPolicyId(int id) {
 
 		Optional<Policy> p = policyRepo.findById(id);
-
+         System.out.println(p);
 		if (!p.isPresent()) {
 			return null;
 		}

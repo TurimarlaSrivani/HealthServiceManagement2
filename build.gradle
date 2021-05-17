@@ -2,11 +2,18 @@ plugins {
 	id 'org.springframework.boot' version '2.4.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "org.sonarqube" version "3.2.0"
+	id 'jacoco'
 }
 
 group = 'com.cg'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+
+// eclipse plugin
+apply plugin : 'eclipse'
+apply plugin : 'org.sonarqube'
+
 
 configurations {
 	compileOnly {
@@ -38,11 +45,6 @@ dependencies {
     // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
 implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
 
-// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
-implementation group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
-
-// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
-implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
 
 	
 }
@@ -50,3 +52,6 @@ implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.
 test {
 	useJUnitPlatform()
 }
+
+// Mentioning sonarqube runs only after finishing test cases to generate report
+project.tasks["sonarqube"].dependsOn "test"

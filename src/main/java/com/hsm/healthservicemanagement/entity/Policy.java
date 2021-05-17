@@ -11,20 +11,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Data;
+
 @Entity
+@Data
 public class Policy {
 
 	@Id
-
+	@NotNull
 	private int policyId;
+	
+	@NotNull
+	@Size(min=3, max=25)
 	private String policyName;
 	private LocalDate createDate;
 	private LocalDate endDate;
 	private Integer maximumAmount;
 
+	@OneToOne(mappedBy="policy", cascade = CascadeType.ALL)
+	private Patient patient;
+	
+	@JsonBackReference
+	public Patient getpatient() {
+		return patient;
+	}
+	
 	// constructor
 	public Policy() {
 		super();
