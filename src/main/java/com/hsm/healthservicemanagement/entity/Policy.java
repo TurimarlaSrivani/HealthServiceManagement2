@@ -1,46 +1,67 @@
 package com.hsm.healthservicemanagement.entity;
 
 import java.time.LocalDate;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import lombok.Data;
 
 @Entity
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Policy {
 
+	
 	@Id
 	@NotNull
 	private int policyId;
 	
 	@NotNull
 	@Size(min=3, max=25)
+
+	@NonNull
+	private int policyId;
+	@NonNull
+
 	private String policyName;
+	@NonNull
 	private LocalDate createDate;
+	@NonNull
 	private LocalDate endDate;
+	@NonNull
 	private Integer maximumAmount;
 
-	@OneToOne(mappedBy="policy", cascade = CascadeType.ALL)
-	private Patient patient;
-	
-	@JsonBackReference
+  @JsonIgnore
 	public Patient getpatient() {
 		return patient;
 	}
+	
+	@OneToOne(mappedBy="policy", cascade = CascadeType.ALL)
+	private Patient patient;
+	
 	
 	// constructor
 	public Policy() {
@@ -102,5 +123,9 @@ public class Policy {
 		return "Policy [policyId=" + policyId + ", policyName=" + policyName + ", createDate=" + createDate
 				+ ", endDate=" + endDate + ", maximumAmount=" + maximumAmount + "]";
 	}
+
+	
+
+
 
 }

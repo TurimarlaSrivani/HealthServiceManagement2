@@ -72,5 +72,15 @@ public class PatientHistoryServiceImpl implements IPatientHistoryService {
 	public List<PatientHistory> getAllPatientHistory() {
 		return rep.findAll();
 	}
+	
+	@Override
+		public PatientHistory findByPatientId(int patientId) {
+			Optional<PatientHistory> his=rep.findById(patientId);
+			if(!his.isPresent())
+			{
+				return null;
+			}
+			return his.get();
+		}
 
 }

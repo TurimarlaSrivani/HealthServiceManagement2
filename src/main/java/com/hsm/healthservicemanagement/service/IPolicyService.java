@@ -2,8 +2,6 @@ package com.hsm.healthservicemanagement.service;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-
 import com.hsm.healthservicemanagement.entity.Policy;
 
 public interface IPolicyService {

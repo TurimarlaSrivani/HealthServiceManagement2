@@ -12,5 +12,6 @@ public interface IPatientHistoryService {
 	String deleteByPatientHistoryId(int patientHistoryId);
 	PatientHistory updatePatientHistory(PatientHistory his);
 	List<PatientHistory> getAllPatientHistory();
+	PatientHistory findByPatientId(int patientId);
 
 }

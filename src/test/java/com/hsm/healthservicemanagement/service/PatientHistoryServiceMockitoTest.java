@@ -22,6 +22,7 @@ import com.hsm.healthservicemanagement.repository.IPatientHistoryRepository;
 @ExtendWith(SpringExtension.class)
 class PatientHistoryServiceMockitoTest {
 
+	
 	@InjectMocks
 	PatientHistoryServiceImpl history;
 	
@@ -35,25 +36,25 @@ class PatientHistoryServiceMockitoTest {
 	
 	@Test
 	void testAddPatientHistory() {
-		 PatientHistory his=new PatientHistory(104,LocalDate.parse("2013-09-23"));
+		 PatientHistory his=new PatientHistory(4,104,LocalDate.parse("2013-09-23"));
 		 
 		 Mockito.when(rep.save(his)).thenReturn(his);
 		 
 		 PatientHistory persistedHis=history.addPatientHistory(his);
 		 assertEquals(104, persistedHis.getPatientHistoryId());
-		 //assertEquals(4, persistedHis.getPatientId());
+		 assertEquals(4, persistedHis.getPatientId());
 		 assertEquals(LocalDate.parse("2013-09-23"),persistedHis.getRecordedDate());
 	}
 	
 	@Test
 	void testFindByPatientHistoryId() {
-		 PatientHistory his=new PatientHistory(105,LocalDate.parse("2013-09-23"));
+		 PatientHistory his=new PatientHistory(5,105,LocalDate.parse("2013-09-23"));
 		 
 		 Mockito.when(rep.findById(105)).thenReturn(Optional.of(his));
 		 
 		 PatientHistory persistedHis=history.findByPatientHistoryId(105);
 		 assertEquals(105, persistedHis.getPatientHistoryId());
-		 //assertEquals(5, persistedHis.getPatientId());
+		 assertEquals(5, persistedHis.getPatientId());
 		 assertEquals(LocalDate.parse("2013-09-23"),persistedHis.getRecordedDate());
 	}
 	
@@ -71,9 +72,9 @@ class PatientHistoryServiceMockitoTest {
 	
 	@Test
 	void testGetAllPatientHistory() {
-		 PatientHistory his1=new PatientHistory(101,LocalDate.parse("2013-09-23"));
-		 PatientHistory his2=new PatientHistory(102,LocalDate.parse("2012-05-27"));
-		 PatientHistory his3=new PatientHistory(103,LocalDate.parse("2013-06-13"));
+		 PatientHistory his1=new PatientHistory(5,101,LocalDate.parse("2013-09-23"));
+		 PatientHistory his2=new PatientHistory(6,102,LocalDate.parse("2012-05-27"));
+		 PatientHistory his3=new PatientHistory(7,103,LocalDate.parse("2013-06-13"));
 		 
 		 List<PatientHistory> list=new ArrayList<PatientHistory>();
 		 list.add(his1);
@@ -87,20 +88,20 @@ class PatientHistoryServiceMockitoTest {
 	
 	@Test
 	void testUpdatePatientHistory() {
-		 PatientHistory his=new PatientHistory(104,LocalDate.parse("2013-09-23"));
+		 PatientHistory his=new PatientHistory(4,104,LocalDate.parse("2013-09-23"));
 		 
 		 Mockito.when(rep.findById(104)).thenReturn(Optional.of(his));
 		 Mockito.when(rep.save(his)).thenReturn(his);
 		 
 		 PatientHistory persistedHis=history.updatePatientHistory(his);
 		 assertEquals(104, persistedHis.getPatientHistoryId());
-		 //assertEquals(4, persistedHis.getPatientId());
+		 assertEquals(4, persistedHis.getPatientId());
 		 assertEquals(LocalDate.parse("2013-09-23"),persistedHis.getRecordedDate());
 	}
 	
 	@Test
 	void testDeletePatientHistoryId() {
-		 PatientHistory his=new PatientHistory(104,LocalDate.parse("2013-09-23"));
+		 PatientHistory his=new PatientHistory(3,104,LocalDate.parse("2013-09-23"));
 		 
 		 Mockito.when(rep.findById(104)).thenReturn(Optional.of(his));
 		 rep.deleteById(104);

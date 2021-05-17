@@ -26,10 +26,9 @@ class FinanceServiceTest {
 	// save
 	@Test
 	void testSave() {
-		Finance fin = new Finance(107, "Vinay", 40, 100, 10, 150, 7);
+		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
 
 		Finance persistedFin = financeService.save(fin);
-
 		assertEquals(107, persistedFin.getPatientId());
 		assertEquals("Vinay", persistedFin.getPatientName());
 		assertEquals(40, persistedFin.getRegistrationFee());
@@ -50,7 +49,7 @@ class FinanceServiceTest {
 	// deleteFinanceByPatientId
 	@Test
 	void testDeleteFinanceByPatientId() {
-		Finance fin = new Finance(107, "Vinay", 40, 100, 10, 150, 7);
+		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
 		Finance persistedFin = financeService.save(fin);
 
 		assertEquals(107, persistedFin.getPatientId());
@@ -76,14 +75,5 @@ class FinanceServiceTest {
 		Finance update = financeService.updateFinance(fin);
 		assertEquals(2, update.getFinanceId());
 	}
-/*
-	@Test
-	void updatePatientName() {
-		Finance fin = new Finance();
-		fin.setFinanceId(3);
-		fin.setPatientName("Sagar");
-		Finance updateName = financeService.updateFinanceByPatientName(3, fin);
-		assertEquals("Sagar", updateName.getPatientName());
-	}
-*/
+	
 }

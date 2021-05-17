@@ -11,6 +11,7 @@ group = 'com.cg'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+
 // eclipse plugin
 apply plugin : 'eclipse'
 apply plugin : 'org.sonarqube'
@@ -58,9 +59,8 @@ dependencies {
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.20'
 	implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.31.Final'
 
-
-
 	
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.5'
 }
 
 test {

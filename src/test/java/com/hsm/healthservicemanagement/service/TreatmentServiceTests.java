@@ -36,7 +36,7 @@ class TreatmentServiceTests {
 		Treatment t7 = new Treatment(7,"2021-10-06",5000,"cataract");
 		Treatment t8 = new Treatment(8,"2021-10-07",5000,"rhinoplasty");  */
 
-		Treatment t = new Treatment(8,LocalDate.of(2021, 10, 03),5000,"rhinoplasty",TreatmentStatus.APPOINTED);
+		Treatment t = new Treatment(8,"rhinoplasty",5000,LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
 		Treatment persistedt = treatmentService.save(t);
 
 		assertEquals(8, persistedt.getTreatmentId());
@@ -70,7 +70,9 @@ class TreatmentServiceTests {
 	// deleteTreatmentByTreatmentId
 	@Test
 	 void testdeleteTreatmentByTreatmentId() {
-	Treatment t = new Treatment(8,LocalDate.of(2021, 10, 03),5000,"rhinoplasty",TreatmentStatus.APPOINTED);
+
+	Treatment t = new Treatment(8,"rhinoplasty",5000,LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
+
 	Treatment persistedt = treatmentService.deleteTreatmentByTreatmentId(8);
 
 	assertEquals(8, persistedt.getTreatmentId());

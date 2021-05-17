@@ -21,6 +21,7 @@ import com.hsm.healthservicemanagement.repository.IPatientCaseRepository;
 @ExtendWith(SpringExtension.class)
 public class PatientCaseServiceMockitoTest {
 	
+	
 	@InjectMocks
 	PatientCaseServiceImpl pService;
 	
