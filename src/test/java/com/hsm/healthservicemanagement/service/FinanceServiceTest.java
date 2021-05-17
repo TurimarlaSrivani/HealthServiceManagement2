@@ -13,7 +13,6 @@ import com.hsm.healthservicemanagement.entity.Finance;
 @SpringBootTest
 class FinanceServiceTest {
 
-	
 	@Autowired
 	IFinanceService financeService;
 
@@ -76,14 +75,5 @@ class FinanceServiceTest {
 		Finance update = financeService.updateFinance(fin);
 		assertEquals(2, update.getFinanceId());
 	}
-/*
-	@Test
-	void updatePatientName() {
-		Finance fin = new Finance();
-		fin.setFinanceId(3);
-		fin.setPatientName("Sagar");
-		Finance updateName = financeService.updateFinanceByPatientName(3, fin);
-		assertEquals("Sagar", updateName.getPatientName());
-	}
-*/
+	
 }
