@@ -74,4 +74,5 @@ public class Patient {
 		@JoinColumn(name = "patientid_fk", referencedColumnName = "patientId")
 		private List<PatientHistory> patienthistory = new ArrayList<>();
 
+		
 }

@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.hsm.healthservicemanagement.entity.Treatment;
 import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 
+
 @SpringBootTest
 class TreatmentServiceTests {
 

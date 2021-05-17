@@ -24,10 +24,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class Disease{
 	
 	@Id
+	@NonNull
 	private int desId;
 	@NonNull
 	private String desName;

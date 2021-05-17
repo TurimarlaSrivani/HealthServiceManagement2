@@ -20,10 +20,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @ToString
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class Treatment {
 
 	@Id
+	@NonNull
 	private int treatmentId;
 	@NonNull
 	private String currentTreatment;

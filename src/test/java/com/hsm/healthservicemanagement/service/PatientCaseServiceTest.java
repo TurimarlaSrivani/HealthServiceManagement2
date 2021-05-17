@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.hsm.healthservicemanagement.entity.PatientCase;
 
 
-
 @SpringBootTest
 public class PatientCaseServiceTest {
 	

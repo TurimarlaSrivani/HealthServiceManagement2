@@ -14,6 +14,7 @@ import com.hsm.healthservicemanagement.entity.PatientHistory;
 @SpringBootTest
 class PatientHistoryServiceTest {
 
+	
 	@Autowired
 	IPatientHistoryService history;
 	
@@ -44,19 +45,19 @@ class PatientHistoryServiceTest {
 	
 	@Test
 	void testAddPatientHistory() {
-		 PatientHistory his=new PatientHistory(103,LocalDate.parse("2013-09-23"));
+		 PatientHistory his=new PatientHistory(3,103,LocalDate.parse("2013-09-23"));
 		 PatientHistory persistedHis=history.addPatientHistory(his);
 		 assertEquals(103, persistedHis.getPatientHistoryId());
-		 //assertEquals(3, persistedHis.getPatientId());
+		 assertEquals(3, persistedHis.getPatientId());
 		 assertEquals(LocalDate.parse("2013-09-23"),persistedHis.getRecordedDate());
 	}
 	
 	@Test
 	void testUpdatePatientHistory() {
-		 PatientHistory his=new PatientHistory(103,LocalDate.parse("2013-09-23"));
+		 PatientHistory his=new PatientHistory(3,103,LocalDate.parse("2013-09-23"));
 		 PatientHistory persistedHis=history.updatePatientHistory(his);
 		 assertEquals(103, persistedHis.getPatientHistoryId());
-		 //assertEquals(3, persistedHis.getPatientId());
+		 assertEquals(3, persistedHis.getPatientId());
 		 assertEquals(LocalDate.parse("2013-09-23"),persistedHis.getRecordedDate());
 	}
 	

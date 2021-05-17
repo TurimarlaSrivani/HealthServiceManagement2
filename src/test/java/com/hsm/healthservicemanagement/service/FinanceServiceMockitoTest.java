@@ -21,6 +21,7 @@ import com.hsm.healthservicemanagement.repository.IFinanceRepository;
 @ExtendWith(SpringExtension.class)
 public class FinanceServiceMockitoTest {
 
+	
 	@InjectMocks
 	FinanceServiceImpl financeService;
 

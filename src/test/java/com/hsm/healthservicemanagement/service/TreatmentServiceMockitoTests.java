@@ -21,8 +21,6 @@ import com.hsm.healthservicemanagement.entity.Treatment;
 import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 import com.hsm.healthservicemanagement.repository.ITreatmentRepository;
 
-
-
 @ExtendWith(SpringExtension.class)
  class TreatmentServiceMockitoTests {
 	// Mock - imitating

@@ -20,10 +20,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class Diet
 {
 	@Id
+	@NonNull
 	private int dietId;
 	@NonNull
 	private String dietType;

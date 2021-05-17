@@ -35,7 +35,7 @@ class PolicyServiceTest {
 
 	@Test
 	void testCreatePolicy() {
-		Policy policy = new Policy("Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
+		Policy policy = new Policy(104, "Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
 		Policy persistedPolicy = policyService.create(policy);
 		assertEquals(104, persistedPolicy.getPolicyId());
 		assertEquals("Travel", persistedPolicy.getPolicyName());

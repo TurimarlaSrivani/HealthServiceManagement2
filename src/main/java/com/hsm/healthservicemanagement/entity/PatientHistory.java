@@ -28,6 +28,7 @@ import lombok.ToString;
 public class PatientHistory {
 	
 	@Id
+	@NonNull
 	private int patientHistoryId;
 	@NonNull
 	private int patientId;

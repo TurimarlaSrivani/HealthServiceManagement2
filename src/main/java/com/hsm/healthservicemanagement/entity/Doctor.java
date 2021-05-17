@@ -29,6 +29,7 @@ import lombok.ToString;
 public class Doctor {
 	
 	@Id
+	@NonNull
 	private int doctorId;
 	@NonNull
 	private String doctorName;

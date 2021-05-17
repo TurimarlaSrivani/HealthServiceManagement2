@@ -25,6 +25,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Finance {
+	
 	@Id
 	@NonNull
 	private int financeId;

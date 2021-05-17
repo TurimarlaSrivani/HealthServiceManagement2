@@ -13,6 +13,7 @@ import com.hsm.healthservicemanagement.entity.Finance;
 @SpringBootTest
 class FinanceServiceTest {
 
+	
 	@Autowired
 	IFinanceService financeService;
 

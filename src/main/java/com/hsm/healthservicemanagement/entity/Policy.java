@@ -26,6 +26,7 @@ import lombok.ToString;
 public class Policy {
 
 	@Id
+	@NonNull
 	private int policyId;
 	@NonNull
 	private String policyName;
