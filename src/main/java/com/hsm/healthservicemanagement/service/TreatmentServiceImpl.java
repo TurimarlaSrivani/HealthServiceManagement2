@@ -1,4 +1,4 @@
-package com.hsm.healthservicemanagement.serviceimpl;
+package com.hsm.healthservicemanagement.service;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,21 +35,13 @@ public class TreatmentServiceImpl implements ITreatmentService {
 	// findByTreatmentId
 	@Override
 	public Treatment findByTreatmentId(int treatmentId) {
-		Treatment treatment = treatmentRepo.findByTreatmentId(treatmentId);
-		return treatment;
+		return treatmentRepo.findByTreatmentId(treatmentId);
 	}
 
 	// findByTreatmentDate
 	@Override
 	public List<Treatment> findByTreatmentDate(LocalDate treatmentDate) {
 		return  treatmentRepo.findByTreatmentDate(treatmentDate);
-	}
-    
-	// findByPatientCaseId
-	@Override
-	public Treatment findByPatientCaseId(int patientCaseId) {
-		Treatment treatment = treatmentRepo.findByPatientCaseId(patientCaseId);
-		return treatment;
 	}
 	
     //findByTreatmentStatus
@@ -79,7 +71,6 @@ public class TreatmentServiceImpl implements ITreatmentService {
 	public Treatment updateTreatment(Treatment treatment) {
 		Treatment t = treatmentRepo.findByTreatmentId(treatment.getTreatmentId());
 		t.setCurrentTreatment(treatment.getCurrentTreatment());
-		t.setPatientCaseId(treatment.getPatientCaseId());
 		t.setTreatmentDate(treatment.getTreatmentDate());
 		t.setTreatmentFee(treatment.getTreatmentFee());
 		t.setTreatmentId(treatment.getTreatmentId());

@@ -39,7 +39,7 @@ public class PolicyServiceMockitoTest {
 
 	@Test
 	void testGetByPoliciesId() {
-		Policy policy = new Policy(150, "Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
+		Policy policy = new Policy("Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
 
 		Mockito.when(policyRepo.findById(150)).thenReturn(Optional.of(policy));
 
@@ -54,10 +54,10 @@ public class PolicyServiceMockitoTest {
 
 	@Test
 	void testAllPolicies() {
-		Policy policy1 = new Policy(150, "Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
-		Policy policy2 = new Policy(151, "health23", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"),
+		Policy policy1 = new Policy("Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
+		Policy policy2 = new Policy("health23", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"),
 				4000);
-		Policy policy3 = new Policy(152, "heal", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 400);
+		Policy policy3 = new Policy("heal", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 400);
 
 		List<Policy> policyList = new ArrayList<>();
 		policyList.add(policy1);
@@ -73,7 +73,7 @@ public class PolicyServiceMockitoTest {
 
 	@Test
 	void testCreatePolicy() {
-		Policy policy = new Policy(104, "Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
+		Policy policy = new Policy("Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
 
 		Mockito.when(policyRepo.save(policy)).thenReturn(policy);
 
@@ -87,7 +87,7 @@ public class PolicyServiceMockitoTest {
 
 	@Test
 	void testDeletePolicy() {
-		Policy policy = new Policy(13, "History", LocalDate.parse("2014-04-23"), LocalDate.parse("2015-04-21"), 4);
+		Policy policy = new Policy("History", LocalDate.parse("2014-04-23"), LocalDate.parse("2015-04-21"), 4);
 
 		Mockito.when(policyRepo.findById(13)).thenReturn(Optional.of(policy));
 		policyRepo.deleteById(123);
@@ -102,7 +102,7 @@ public class PolicyServiceMockitoTest {
 
 	@Test
 	void testUpdatePolicy() {
-		Policy policy = new Policy(123, "History", LocalDate.parse("2014-04-23"), LocalDate.parse("2015-04-21"), 4);
+		Policy policy = new Policy("History", LocalDate.parse("2014-04-23"), LocalDate.parse("2015-04-21"), 4);
 
 		Mockito.when(policyRepo.findById(123)).thenReturn(Optional.of(policy));
 		Mockito.when(policyRepo.save(policy)).thenReturn(policy);

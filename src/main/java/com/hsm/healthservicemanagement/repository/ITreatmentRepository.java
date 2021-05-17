@@ -16,8 +16,6 @@ public interface ITreatmentRepository extends JpaRepository<Treatment, Integer >
 
 	Treatment findByTreatmentId(int treatmentId);
 
-	Treatment findByPatientCaseId(int patientCaseId);
-
 	List<Treatment> findByTreatmentDate(LocalDate treatmentDate);
 
 	List<Treatment> findByTreatmentStatus(TreatmentStatus treatmentStatus);

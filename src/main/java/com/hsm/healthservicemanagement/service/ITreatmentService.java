@@ -20,9 +20,6 @@ public interface ITreatmentService {
 	// findAllTreatmentDetails
 	List<Treatment> findAllTreatment();
 
-	// findByPatientCaseId
-	Treatment findByPatientCaseId(int patientCaseId);
-
 	// findByTreatmentId
 	Treatment findByTreatmentId(int treatmentId);
 

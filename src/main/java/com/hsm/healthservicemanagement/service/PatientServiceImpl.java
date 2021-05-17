@@ -10,9 +10,6 @@ import org.springframework.stereotype.Service;
 import com.hsm.healthservicemanagement.entity.Patient;
 import com.hsm.healthservicemanagement.repository.IPatientRepository;
 
-import com.hsm.healthservicemanagement.entity.Patient;
-import com.hsm.healthservicemanagement.entity.Address;
-
 @Service
 public  class PatientServiceImpl implements IPatientService {
 
