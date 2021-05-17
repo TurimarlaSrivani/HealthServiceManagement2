@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hsm.healthservicemanagement.entity.Policy;
@@ -21,18 +22,20 @@ import com.hsm.healthservicemanagement.service.IPolicyService;
 import com.hsm.healthservicemanagement.*;
 
 @RestController
+@RequestMapping("/policy-service")
 public class PolicyController {
 
 	@Autowired
 	IPolicyService PolicyServiceImpl;
 
 	// READ
-	@GetMapping("/policy/{id}")
-	public ResponseEntity<Policy> getByPolicyId(@PathVariable("id") int policyId) {
-		System.out.println(policyId);
-		Policy policy = PolicyServiceImpl.getByPolicyId(policyId);
+	@GetMapping("/policyid/{id}")
+	public ResponseEntity<Policy> getByPolicyId(@PathVariable int id) {
+		System.out.println(id);
+		Policy policy = PolicyServiceImpl.getByPolicyId(id);
+		System.out.println(policy);
 		if (policy == null) {
-			throw new PolicyNotFoundException("Policy not found with Id" + policyId + "");
+			throw new PolicyNotFoundException("Policy not found with Id" + id + "");
 		}
 
 		return new ResponseEntity<Policy>(policy, HttpStatus.OK);
