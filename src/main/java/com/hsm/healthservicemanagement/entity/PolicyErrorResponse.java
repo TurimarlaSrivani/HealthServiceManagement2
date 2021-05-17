@@ -7,6 +7,7 @@ public class PolicyErrorResponse {
 
 	public PolicyErrorResponse() {
 	}
+	
 
 	public PolicyErrorResponse(int status, String message, long timeStamp) {
 		super();

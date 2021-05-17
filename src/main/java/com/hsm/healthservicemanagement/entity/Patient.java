@@ -6,130 +6,75 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 
 @Entity
-public class Patient{ 
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
+public class Patient {
+
 	
-    @Id
+	@Id
+	@NonNull
 	private int patientId;
+	@NonNull
 	private String patientName;
+	@NonNull
 	private int patientAge;
+	@NonNull
 	private int registrationFee;
+	@NonNull
 	private String patientContactNumber;
+	@NonNull
 	private String symptoms;
+	@NonNull
 	private LocalDate createdAt;
+	@NonNull
 	private LocalDate updatedAt;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="address")
-	private Address address;
-	
-	//Constructors
-	public Patient() {}
-	
-	public Patient(int patientId,String patientName,int patientAge,int registrationFee,String patientContactNumber,String symptoms,
-	LocalDate createdAt, LocalDate updatedAt) 
-	{
-	this.patientId = patientId;
-	this.patientName = patientName;
-	this.patientAge = patientAge;
-	this.registrationFee = registrationFee;
-	this.patientContactNumber = patientContactNumber;
-	this.symptoms = symptoms;
-	this.createdAt = createdAt;
-	this.updatedAt = updatedAt;
-    }   
-	
-	//Getters and Setters
-	public int getPatientId() {
-		return patientId;
-	}
+	// doctor-patient
+		@JsonIgnore
+		@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+		private Doctor doctor;
 
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
-	}
+		// patient-patientCase
+		@JsonIgnore
+		@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+		private PatientCase patientcase;
 
-	public String getPatientName() {
-		return patientName;
-	}
+		// patient-address
+		@OneToOne(cascade = CascadeType.ALL)
+		@JoinColumn(name = "address")
+		private Address address;
 
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
-	}
+		// patient-policy
+		@JsonIgnore
+		@OneToOne(cascade = CascadeType.ALL)
+		@JoinColumn(name = "policy_fk", referencedColumnName = "policyId")
+		private Policy policy;
 
-	public int getPatientAge() {
-		return patientAge;
-	}
+		// patient-patienthistory
+		@OneToMany(cascade = CascadeType.ALL)
+		@JoinColumn(name = "patientid_fk", referencedColumnName = "patientId")
+		private List<PatientHistory> patienthistory = new ArrayList<>();
 
-	public void setPatientAge(int patientAge) {
-		this.patientAge = patientAge;
-	}
-
-	public int getRegistrationFee() {
-		return registrationFee;
-	}
-
-	public void setRegistrationFee(int registrationFee) {
-		this.registrationFee = registrationFee;
-	}
-
-
-	public String getPatientContactNumber() {
-		return patientContactNumber;
-	}
-
-	public void setPatientContactNumber(String patientContactNumber) {
-		this.patientContactNumber = patientContactNumber;
-	}
-
-	public LocalDate getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDate createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public LocalDate getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDate updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-	
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	
-
-	public String getSymptoms() {
-		return symptoms;
-	}
-
-	public void setSymptoms(String symptoms) {
-		this.symptoms = symptoms;
-	}
-
-	@Override
-	public String toString() {
-		return "Patient [patientId=" + patientId + ", patientName=" + patientName + ", patientAge=" + patientAge
-				+ ", registrationFee=" + registrationFee + ", patientContactNumber=" + patientContactNumber
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", address=" + address + ", symptoms="
-				+ symptoms + "]";
-	}
-
-
-
+		
 }

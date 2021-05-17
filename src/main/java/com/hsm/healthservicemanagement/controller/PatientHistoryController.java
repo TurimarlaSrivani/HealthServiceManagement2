@@ -68,5 +68,13 @@ public class PatientHistoryController {
 					"Patient History not found with given patient Id :" + patientHistoryId);
 		return hs.updatePatientHistory(his);
 	}
+	
+	@GetMapping("/history/id/{id}")
+	public PatientHistory findByPatientId(@PathVariable("id") int patientId)
+	{
+		if(hs.findByPatientId(patientId)==null)
+			throw new PatientHistoryNotFoundException("Patient History not found with given patient Id :"+patientId);
+		return hs.findByPatientId(patientId);
+	}
 
 }

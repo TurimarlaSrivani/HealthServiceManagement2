@@ -18,9 +18,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.hsm.healthservicemanagement.entity.Treatment;
-import  com.hsm.healthservicemanagement.entity.TreatmentStatus;
+
+import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 import  com.hsm.healthservicemanagement.repository.ITreatmentRepository;
 import  com.hsm.healthservicemanagement.service.TreatmentServiceImpl;
+
 
 @ExtendWith(SpringExtension.class)
  class TreatmentServiceMockitoTests {
@@ -48,13 +50,14 @@ import  com.hsm.healthservicemanagement.service.TreatmentServiceImpl;
 	// findAllTreatmentDetails
 		@Test
 		void testFindAllTreatment() {
-			Treatment t1 = new Treatment(1, LocalDate.of(2021, 10, 02), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
-			Treatment t2 = new Treatment(2, LocalDate.of(2021, 10, 01), 5000, "angioplasty",TreatmentStatus.APPOINTED);
-			Treatment t3 = new Treatment(3, LocalDate.of(2021, 10, 03), 5000, "vasectomy",TreatmentStatus.APPOINTED);
-			Treatment t4 = new Treatment(4, LocalDate.of(2021, 10, 04), 5000, "tubectomy",TreatmentStatus.APPOINTED);
-			Treatment t5 = new Treatment(5, LocalDate.of(2021, 10, 05), 5000, "dialysis",TreatmentStatus.APPOINTED);
-			Treatment t6 = new Treatment(6, LocalDate.of(2021, 10, 06), 5000, "lyphoplasty",TreatmentStatus.APPOINTED);
-			Treatment t7 = new Treatment(7, LocalDate.of(2021, 10, 07), 5000, "rhinoplasty",TreatmentStatus.APPOINTED);
+
+			Treatment t1 = new Treatment(1, "rhinoplasty", 5000, LocalDate.of(2021, 10, 02),TreatmentStatus.APPOINTED);
+			Treatment t2 = new Treatment(2, "angioplasty", 5000, LocalDate.of(2021, 10, 01),TreatmentStatus.APPOINTED);
+			Treatment t3 = new Treatment(3, "vasectomy", 5000, LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
+			Treatment t4 = new Treatment(4, "tubectomy", 5000, LocalDate.of(2021, 10, 04),TreatmentStatus.APPOINTED);
+			Treatment t5 = new Treatment(5, "dialysis", 5000, LocalDate.of(2021, 10, 05),TreatmentStatus.APPOINTED);
+			Treatment t6 = new Treatment(6, "lyphoplasty", 5000, LocalDate.of(2021, 10, 06),TreatmentStatus.APPOINTED);
+			Treatment t7 = new Treatment(7, "rhinoplasty", 5000, LocalDate.of(2021, 10, 07),TreatmentStatus.APPOINTED);
 
 			List<Treatment> treatmentList = new ArrayList<>();
 			treatmentList.add(t1);
@@ -74,7 +77,9 @@ import  com.hsm.healthservicemanagement.service.TreatmentServiceImpl;
 	void testSave() {
 		
 
-		Treatment t = new Treatment(8, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
+
+		Treatment t = new Treatment(8, "cataract", 5000, LocalDate.of(2021, 10, 8),TreatmentStatus.APPOINTED);
+
 		Mockito.when(treatmentRepo.save(t)).thenReturn(t);
 
 		Treatment persistedt = treatmentService.save(t);
@@ -125,7 +130,8 @@ import  com.hsm.healthservicemanagement.service.TreatmentServiceImpl;
 	// deleteTreatmentByPatientId
 	@Test
 	void deleteTreatmentByTreatmentId() {
-		Treatment t = new Treatment(8, LocalDate.of(2021, 10, 8), 5000, "cataract",TreatmentStatus.APPOINTED);
+
+		Treatment t = new Treatment(8, "cataract", 5000, LocalDate.of(2021, 10, 8),TreatmentStatus.APPOINTED);
 
 		Mockito.when(treatmentRepo.findById(8)).thenReturn(Optional.of(t));
 		treatmentRepo.deleteById(3);

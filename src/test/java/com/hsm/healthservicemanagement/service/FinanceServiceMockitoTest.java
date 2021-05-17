@@ -21,6 +21,7 @@ import com.hsm.healthservicemanagement.repository.IFinanceRepository;
 @ExtendWith(SpringExtension.class)
 public class FinanceServiceMockitoTest {
 
+	
 	@InjectMocks
 	FinanceServiceImpl financeService;
 
@@ -35,12 +36,12 @@ public class FinanceServiceMockitoTest {
 	// findAllFinanceDetails
 	@Test
 	void testFindAllFinanceDetails() {
-		Finance f1 = new Finance(101, "Radhe", 40, 20, 30, 90, 1);
-		Finance f2 = new Finance(102, "Abhinaya", 40, 50, 50, 140, 2);
-		Finance f3 = new Finance(103, "Sagar", 20, 40, 20, 90, 3);
-		Finance f4 = new Finance(104, "Vidhya", 30, 10, 60, 100, 4);
-		Finance f5 = new Finance(105, "Anny", 30, 50, 50, 130, 5);
-		Finance f6 = new Finance(106, "Reeti", 10, 20, 50, 80, 6);
+		Finance f1 = new Finance(101, 40, "Radhe", 20, 30, 90, 1);
+		Finance f2 = new Finance(102, 40, "Abhinaya", 50, 50, 140, 2);
+		Finance f3 = new Finance(103, 20, "Sagar", 40, 20, 90, 3);
+		Finance f4 = new Finance(104, 30, "Vidhya", 10, 60, 100, 4);
+		Finance f5 = new Finance(105, 30, "Anny", 50, 50, 130, 5);
+		Finance f6 = new Finance(106, 10, "Reeti", 20, 50, 80, 6);
 		
 		List<Finance> financeList = new ArrayList<>();
 		financeList.add(f1);
@@ -58,7 +59,7 @@ public class FinanceServiceMockitoTest {
 	// save
 	@Test
 	void testSave() {
-		Finance fin = new Finance(107, "Vinay", 40, 100, 10, 150, 7);
+		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
 		Mockito.when(financeRepo.save(fin)).thenReturn(fin);
 
 		Finance persistedFin = financeService.save(fin);
@@ -76,7 +77,7 @@ public class FinanceServiceMockitoTest {
 	// findByPatientId
 	@Test
 	void testFindByPatientId() {
-		Finance fin = new Finance(102, "Abhinaya", 40, 50, 50, 140, 2);
+		Finance fin = new Finance(102, 40, "Abhinaya", 50, 50, 140, 2);
 
 		Mockito.when(financeRepo.findById(2)).thenReturn(Optional.of(fin));
 		Finance persistedFin = financeService.findByPatientId(2);
@@ -93,7 +94,7 @@ public class FinanceServiceMockitoTest {
 	// deleteFinanceByPatientId
 	@Test
 	void testDeleteFinanceByPatientId() {
-		Finance fin = new Finance(107, "Vinay", 40, 100, 10, 150, 7);
+		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
 
 		Mockito.when(financeRepo.findById(107)).thenReturn(Optional.of(fin));
 		financeRepo.deleteById(107);
@@ -112,7 +113,7 @@ public class FinanceServiceMockitoTest {
 	// update
 	@Test
 	void testUpdateFinance() {
-		Finance fin = new Finance(102, "Abhi", 40, 60, 20, 120, 2);
+		Finance fin = new Finance(102, 40, "Abhi", 60, 20, 120, 2);
 
 		Mockito.when(financeRepo.findById(2)).thenReturn(Optional.of(fin));
 		Mockito.when(financeRepo.save(fin)).thenReturn(fin);

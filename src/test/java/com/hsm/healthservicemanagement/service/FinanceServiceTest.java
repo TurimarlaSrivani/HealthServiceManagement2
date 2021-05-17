@@ -13,6 +13,7 @@ import com.hsm.healthservicemanagement.entity.Finance;
 @SpringBootTest
 class FinanceServiceTest {
 
+	
 	@Autowired
 	IFinanceService financeService;
 
@@ -26,10 +27,9 @@ class FinanceServiceTest {
 	// save
 	@Test
 	void testSave() {
-		Finance fin = new Finance(107, "Vinay", 40, 100, 10, 150, 7);
+		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
 
 		Finance persistedFin = financeService.save(fin);
-
 		assertEquals(107, persistedFin.getPatientId());
 		assertEquals("Vinay", persistedFin.getPatientName());
 		assertEquals(40, persistedFin.getRegistrationFee());
@@ -50,7 +50,7 @@ class FinanceServiceTest {
 	// deleteFinanceByPatientId
 	@Test
 	void testDeleteFinanceByPatientId() {
-		Finance fin = new Finance(107, "Vinay", 40, 100, 10, 150, 7);
+		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
 		Finance persistedFin = financeService.save(fin);
 
 		assertEquals(107, persistedFin.getPatientId());

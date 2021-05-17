@@ -1,112 +1,51 @@
 package com.hsm.healthservicemanagement.entity;
 
+import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Finance {
+
+	
 	@Id
+	@NonNull
 	private int financeId;
+	@NonNull
 	private int patientId;
+	@NonNull
 	private String patientName;
+	@NonNull
 	private double registrationFee;
+	@NonNull
 	private double doctorFee;
+	@NonNull
 	private double medicinesAmount;
+	@NonNull
 	private double totalFee;
 
-	// @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	// @JoinColumn(name="patient", referencedColumnName = "patientId")
-	// private Patient patient;
-
-	// Constructors
-	public Finance() {
-	}
-
-	public Finance(int patientId, String patientName, double registrationFee, double doctorFee, double medicinesAmount,
-			double totalFee, int financeId) {
-		this.patientId = patientId;
-		this.patientName = patientName;
-		this.registrationFee = registrationFee;
-		this.doctorFee = doctorFee;
-		this.medicinesAmount = medicinesAmount;
-		this.totalFee = totalFee;
-		this.financeId = financeId;
-	}
-
-	// Getters & setters
-	public int getPatientId() {
-		return patientId;
-	}
-
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
-	}
-
-	public String getPatientName() {
-		return patientName;
-	}
-
-	public void setPatientName(String patientName) {
-		this.patientName = patientName;
-	}
-
-	public double getRegistrationFee() {
-		return registrationFee;
-	}
-
-	public void setRegistrationFee(double registrationFee) {
-		this.registrationFee = registrationFee;
-	}
-
-	public double getDoctorFee() {
-		return doctorFee;
-	}
-
-	public void setDoctorFee(double doctorFee) {
-		this.doctorFee = doctorFee;
-	}
-
-	public double getMedicinesAmount() {
-		return medicinesAmount;
-	}
-
-	public void setMedicinesAmount(double medicinesAmount) {
-		this.medicinesAmount = medicinesAmount;
-	}
-
-	public double getTotalFee() {
-		return totalFee;
-	}
-
-	public void setTotalFee(double totalFee) {
-		this.totalFee = totalFee;
-	}
-
-	public int getFinanceId() {
-		return financeId;
-	}
-
-	public void setFinanceId(int financeId) {
-		this.financeId = financeId;
-	}
-
-	@Override
-	public String toString() {
-		return "Finance [patientId=" + patientId + ", patientName=" + patientName + ", registrationFee="
-				+ registrationFee + ", doctorFee=" + doctorFee + ", medicinesAmount=" + medicinesAmount + ", totalFee="
-				+ totalFee + ", financeId=" + financeId + "]";
-	}
-
-	/*
-	 * public Patient getPatient() { return patient; }
-	 * 
-	 * public void setPatient(Patient patient) { this.patient = patient; }
-	 * 
-	 * @Override public String toString() { return "Finance [patientId=" + patientId
-	 * + ", patientName=" + patientName + ", registrationFee=" + registrationFee +
-	 * ", doctorFee=" + doctorFee + ", medicinesAmount=" + medicinesAmount +
-	 * ", totalFee=" + totalFee + ", financeId=" + financeId + ", patient=" +
-	 * patient + "]"; }
-	 */
+	 @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	 @JoinColumn(name="patient_fk", referencedColumnName = "patientId")
+	 private Patient patient;
 
 }

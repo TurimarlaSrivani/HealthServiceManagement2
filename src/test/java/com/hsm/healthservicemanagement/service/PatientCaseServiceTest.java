@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.hsm.healthservicemanagement.entity.PatientCase;
 
 
-
 @SpringBootTest
 public class PatientCaseServiceTest {
 	
@@ -58,7 +57,7 @@ public class PatientCaseServiceTest {
 	@Test
 	void testDeletePatientCase()
 	{
-		PatientCase patientcase = new PatientCase(101,"Dart","Sam",500,"11-05-2021","Headache","Medication",10);
+		PatientCase patientcase = new PatientCase(101, "Dart","Sam",500,"11-05-2021","Headache","Medication",10);
 		PatientCase persistedPt = pcService.deletePatientCase(101);
 		assertEquals("Sam",persistedPt.getAssociateDoctorName());
 		assertEquals(101,persistedPt.getPatientCaseId());
