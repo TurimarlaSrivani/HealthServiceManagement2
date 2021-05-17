@@ -55,6 +55,13 @@ public class Doctor {
 	@JoinColumn(name = "patient_fk", referencedColumnName = "patientId")
 	private Patient patient;
 	
+
+
+	@JsonManagedReference
+	public Patient getPatient() {
+		return patient;
+	}
+
 	
 /*	@ManyToMany(cascade = CascadeType.ALL,
 			fetch = FetchType.LAZY)
