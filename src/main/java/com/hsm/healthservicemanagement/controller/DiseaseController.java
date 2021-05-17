@@ -89,7 +89,18 @@ public class DiseaseController {
 	public Disease updatedesName(@PathVariable("id") int id, @RequestBody Disease disease) {
 		return desService.update(disease);
 	}
+	/*@GetMapping("/disease/{desId}")
+	findAllPatientCasesByDiseaseId(int diseaseId): List<PatientCase>
 	
+	
+	@GetMapping("/patientCase/{patientCaseId}/disease/{diseaseId}/treatment")
+	findPatientCaseTreatmentByDiseaseId(int patientCaseId,int diseaseId): String
+	
+	@GetMapping("/patientCase/{patientCaseId}/disease/{diseaseId}/medicines")
+	findPatientCaseMedicinesByDiseaseId(int patientCaseId,int diseaseId): String
+	
+	@GetMapping("/patientCase/{patientCaseId}/disease/{diseaseId}/doctor")
+	findPatientCaseDoctorByDiseaseId(int patientCaseId,int diseaseId): String*/
 }
 
 

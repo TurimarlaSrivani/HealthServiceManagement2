@@ -26,6 +26,7 @@ public class Doctor {
 	@JoinColumn(name = "Doctors_patient", referencedColumnName = "patientId")
 	private Patient patient;
 	
+	
 	@JsonManagedReference
 	public Patient getPatient() {
 		return patient;

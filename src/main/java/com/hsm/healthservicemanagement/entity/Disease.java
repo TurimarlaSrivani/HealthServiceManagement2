@@ -1,8 +1,13 @@
 package com.hsm.healthservicemanagement.entity;
 
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Disease{
@@ -15,9 +20,13 @@ public class Disease{
 	private String desDur;
 	
 
-	/*@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="address")
-	private Address address;*/
+	@OneToMany(targetEntity = Doctor.class,cascade = CascadeType.ALL)
+	@JoinColumn(name= "desName",referencedColumnName = "desName")
+	private List<Doctor> doctors; 
+	
+	/*@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "disease_",referencedColumnName = "")
+	private List<Skill> skill = new ArrayList<>(); */
 	
 	
 	
