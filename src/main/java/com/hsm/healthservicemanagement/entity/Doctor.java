@@ -28,6 +28,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class Doctor {
+
 	
 	@Id
 	@NonNull

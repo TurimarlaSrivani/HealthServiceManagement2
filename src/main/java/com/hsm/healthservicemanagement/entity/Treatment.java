@@ -23,6 +23,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 public class Treatment {
 
+	
 	@Id
 	@NonNull
 	private int treatmentId;

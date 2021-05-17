@@ -23,6 +23,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class Diet
 {
+	
 	@Id
 	@NonNull
 	private int dietId;

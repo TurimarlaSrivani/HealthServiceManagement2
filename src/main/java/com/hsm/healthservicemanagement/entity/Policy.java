@@ -26,6 +26,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Policy {
 
+	
 	@Id
 	@NonNull
 	private int policyId;

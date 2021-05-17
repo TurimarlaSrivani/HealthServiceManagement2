@@ -31,6 +31,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Patient {
 
+	
 	@Id
 	@NonNull
 	private int patientId;

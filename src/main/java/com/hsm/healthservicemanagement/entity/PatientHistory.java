@@ -26,6 +26,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class PatientHistory {
+
 	
 	@Id
 	@NonNull

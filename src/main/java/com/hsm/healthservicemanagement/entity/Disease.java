@@ -26,6 +26,7 @@ import lombok.ToString;
 @ToString
 @RequiredArgsConstructor
 public class Disease{
+
 	
 	@Id
 	@NonNull
