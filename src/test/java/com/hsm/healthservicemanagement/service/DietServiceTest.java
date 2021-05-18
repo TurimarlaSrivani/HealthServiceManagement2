@@ -65,11 +65,4 @@ public class DietServiceTest {
 		d.setDietDuration("two days");
 	}
 
-/*	// deleteDietById
-	@Test
-	public void deleteDiet() {
-		Diet d = dtService.deleteDiet(104);
-		assertEquals(104, d.getDietId());
-	}*/
-
 }
