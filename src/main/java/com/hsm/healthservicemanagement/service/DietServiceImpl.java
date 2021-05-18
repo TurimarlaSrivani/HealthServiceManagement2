@@ -80,11 +80,9 @@ public class DietServiceImpl implements IDietService {
 		return drepository.save(d);
 	}
 
-	// deleteDietDetails
 	@Override
 	public Diet delete(Diet diet) {
 		drepository.delete(diet);
 		return diet;
 	}
-
 }

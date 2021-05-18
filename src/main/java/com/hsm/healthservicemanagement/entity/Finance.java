@@ -1,7 +1,5 @@
 package com.hsm.healthservicemanagement.entity;
 
-import java.time.LocalDate;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Entity
 @Getter
 @Setter
@@ -27,7 +24,6 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Finance {
 
-	
 	@Id
 	@NonNull
 	private int financeId;
@@ -44,8 +40,8 @@ public class Finance {
 	@NonNull
 	private double totalFee;
 
-	 @OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	 @JoinColumn(name="patient_fk", referencedColumnName = "patientId")
-	 private Patient patient;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "patient_fk", referencedColumnName = "patientId")
+	private Patient patient;
 
 }

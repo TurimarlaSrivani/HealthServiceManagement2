@@ -14,8 +14,8 @@ import com.hsm.healthservicemanagement.*;
 public class PolicyExceptionHandler {
 
 	@ExceptionHandler
-	   public ResponseEntity<PolicyErrorResponse> handleException(PolicyNotFoundException exception){
-	        PolicyErrorResponse error =new PolicyErrorResponse();
+	   public ResponseEntity<HmsErrorResponse> handleException(PolicyNotFoundException exception){
+	        HmsErrorResponse error =new HmsErrorResponse();
 	        
 			error.setStatus(HttpStatus.NOT_FOUND.value());
 			error.setMessage(exception.getMessage());
@@ -26,8 +26,8 @@ public class PolicyExceptionHandler {
 
 	
 	@ExceptionHandler
-	   public ResponseEntity<PolicyErrorResponse> handleException(Exception exception){
-	        PolicyErrorResponse error =new PolicyErrorResponse();
+	   public ResponseEntity<HmsErrorResponse> handleException(Exception exception){
+	        HmsErrorResponse error =new HmsErrorResponse();
 	        
 			error.setStatus(HttpStatus.BAD_REQUEST.value());
 			error.setMessage("Bad Request");

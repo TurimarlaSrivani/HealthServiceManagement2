@@ -9,9 +9,6 @@ import com.hsm.healthservicemanagement.entity.Doctor;
 @Repository
 public interface IDocterRepository extends JpaRepository<Doctor, Integer > {
 	
-	//find by username
-	Doctor findByUserName(String userName);
-	
 	//find by docter id
 	Doctor findByDoctorId(int doctorId);
 	

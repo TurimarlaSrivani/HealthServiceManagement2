@@ -13,7 +13,6 @@ public interface IDoctorService {
 	Doctor findByDoctId(int id);
 	
 	//custom methods
-	Doctor findByUserName(String userName);
 	Doctor findByDoctorName(String doctorName);
 	Doctor findByspecialization(String specialization);
 	Doctor delete(Doctor doctor);

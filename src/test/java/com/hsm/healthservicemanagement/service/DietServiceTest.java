@@ -19,15 +19,15 @@ public class DietServiceTest {
 	@Test
 	void testViewAllDiet() {
 		List<Diet> diet = dtService.viewAll();
-		assertEquals(1, diet.size());
+		assertEquals(3, diet.size());
 
 	}
 
 	// viewDietById
 	@Test
 	void testViewDietById() {
-		Diet diet = dtService.viewDietById(30);
-		assertEquals("veggieiet", diet.getDietType());
+		Diet diet = dtService.viewDietById(101);
+		assertEquals("keto", diet.getDietType());
 
 	}
 
@@ -35,40 +35,41 @@ public class DietServiceTest {
 	@Test
 	void testSaveDiet() {
 
-		Diet diet = new Diet(40, "cardinodiet", "vegetables", 50);
+		Diet diet = new Diet(104,"low-crab","nuts","one week");
 		Diet persistedDi = dtService.save(diet);
-		assertEquals("cardinodiet", persistedDi.getDietType());
-		assertEquals(40, persistedDi.getDietId());
-		assertEquals("vegetables", persistedDi.getFoodtoEat());
+		assertEquals("low-crab", persistedDi.getDietType());
+		assertEquals(104, persistedDi.getDietId());
+		assertEquals("nuts", persistedDi.getFoodtoEat());
+		assertEquals("one week", persistedDi.getDietDuration());
 	}
 
 	// delete diet
 	@Test
-	void testDeleteDiet() {
+	void testDelete() {
 
-		Diet diet = new Diet(40, "cardinodiet", "vegetables", 50);
+		Diet diet = new Diet(104 , "low-crab", "nuts", "one week");
 		Diet persistedDi = dtService.delete(diet);
-		assertEquals("cardinodiet", persistedDi.getDietType());
-		assertEquals(40, persistedDi.getDietId());
-		assertEquals("vegetables", persistedDi.getFoodtoEat());
-
+		assertEquals("low-crab", persistedDi.getDietType());
+		assertEquals(104, persistedDi.getDietId());
+		assertEquals("nuts", persistedDi.getFoodtoEat());
+		assertEquals("one week", persistedDi.getDietDuration());
 	}
 
 	// update
 	@Test
 	public void updateDiet() {
 		Diet d = new Diet();
-		d.setDietId(30);
-		d.setDietType("cardinodiet");
-		d.setFoodtoEat("fruits");
-		d.setDietDuration(40);
+		d.setDietId(103);
+		d.setDietType("low-crab");
+		d.setFoodtoEat("nuts");
+		d.setDietDuration("two days");
 	}
 
-	// deleteDietById
+/*	// deleteDietById
 	@Test
 	public void deleteDiet() {
-		Diet d = dtService.deleteDiet(30);
-		assertEquals(30, d.getDietId());
-	}
+		Diet d = dtService.deleteDiet(104);
+		assertEquals(104, d.getDietId());
+	}*/
 
 }

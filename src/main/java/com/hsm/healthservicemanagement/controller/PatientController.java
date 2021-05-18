@@ -2,8 +2,6 @@ package com.hsm.healthservicemanagement.controller;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +13,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hsm.healthservicemanagement.entity.Patient;
-import com.hsm.healthservicemanagement.entity.PatientErrorResponse;
+import com.hsm.healthservicemanagement.entity.HmsErrorResponse;
 import com.hsm.healthservicemanagement.exception.PatientNotFoundException;
 import com.hsm.healthservicemanagement.service.IPatientService;
 
@@ -30,8 +27,8 @@ public class PatientController {
 	IPatientService patientService;
 
 	@ExceptionHandler
-	public ResponseEntity<PatientErrorResponse> handleException(PatientNotFoundException exception) {
-		PatientErrorResponse error = new PatientErrorResponse();
+	public ResponseEntity<HmsErrorResponse> handleException(PatientNotFoundException exception) {
+		HmsErrorResponse error = new HmsErrorResponse();
 
 		error.setStatus(HttpStatus.NOT_FOUND.value()); // 404
 		error.setMessage(exception.getMessage());

@@ -36,12 +36,11 @@ public class FinanceServiceMockitoTest {
 	// findAllFinanceDetails
 	@Test
 	void testFindAllFinanceDetails() {
-		Finance f1 = new Finance(101, 40, "Radhe", 20, 30, 90, 1);
-		Finance f2 = new Finance(102, 40, "Abhinaya", 50, 50, 140, 2);
-		Finance f3 = new Finance(103, 20, "Sagar", 40, 20, 90, 3);
-		Finance f4 = new Finance(104, 30, "Vidhya", 10, 60, 100, 4);
-		Finance f5 = new Finance(105, 30, "Anny", 50, 50, 130, 5);
-		Finance f6 = new Finance(106, 10, "Reeti", 20, 50, 80, 6);
+		Finance f1 = new Finance(1,101,"Sam",20,30,500,550);
+		Finance f2 = new Finance(2,102,"Gagana",60,20,600,680);
+		Finance f3 = new Finance(3,103,"Krithi",60,20,400,480);
+		Finance f4 = new Finance(4,104,"Deepa",60,20,500,580);
+		Finance f5 = new Finance(5,105,"Roopa",60,20,600,680);
 		
 		List<Finance> financeList = new ArrayList<>();
 		financeList.add(f1);
@@ -49,84 +48,82 @@ public class FinanceServiceMockitoTest {
 		financeList.add(f3);
 		financeList.add(f4);
 		financeList.add(f5);
-		financeList.add(f6);
 		Mockito.when(financeRepo.findAll()).thenReturn(financeList);
 		List<Finance> fin = financeService.findAllFinanceDetails();
-		assertEquals(6, fin.size());
+		assertEquals(5, fin.size());
 	}
 
 	
 	// save
 	@Test
 	void testSave() {
-		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
+		Finance fin = new Finance(6,106,"Vinay",400,30,20,490);
 		Mockito.when(financeRepo.save(fin)).thenReturn(fin);
 
 		Finance persistedFin = financeService.save(fin);
 
-		assertEquals(107, persistedFin.getPatientId());
+		assertEquals(106, persistedFin.getPatientId());
 		assertEquals("Vinay", persistedFin.getPatientName());
-		assertEquals(40, persistedFin.getRegistrationFee());
-		assertEquals(100, persistedFin.getDoctorFee());
-		assertEquals(10, persistedFin.getMedicinesAmount());
-		assertEquals(150, persistedFin.getTotalFee());
-		assertEquals(7, persistedFin.getFinanceId());
+		assertEquals(400, persistedFin.getRegistrationFee());
+		assertEquals(30, persistedFin.getDoctorFee());
+		assertEquals(20, persistedFin.getMedicinesAmount());
+		assertEquals(490, persistedFin.getTotalFee());
+		assertEquals(6, persistedFin.getFinanceId());
 	}
 
 
 	// findByPatientId
 	@Test
 	void testFindByPatientId() {
-		Finance fin = new Finance(102, 40, "Abhinaya", 50, 50, 140, 2);
+		Finance fin = new Finance(2,102,"Gagana",600,60,20,680);
 
-		Mockito.when(financeRepo.findById(2)).thenReturn(Optional.of(fin));
-		Finance persistedFin = financeService.findByPatientId(2);
+		Mockito.when(financeRepo.findById(102)).thenReturn(Optional.of(fin));
+		Finance persistedFin = financeService.findByPatientId(102);
 
 		assertEquals(102, persistedFin.getPatientId());
-		assertEquals("Abhinaya", persistedFin.getPatientName());
-		assertEquals(40, persistedFin.getRegistrationFee());
-		assertEquals(50, persistedFin.getDoctorFee());
-		assertEquals(50, persistedFin.getMedicinesAmount());
-		assertEquals(140, persistedFin.getTotalFee());
+		assertEquals("Gagana", persistedFin.getPatientName());
+		assertEquals(600, persistedFin.getRegistrationFee());
+		assertEquals(60, persistedFin.getDoctorFee());
+		assertEquals(20, persistedFin.getMedicinesAmount());
+		assertEquals(680, persistedFin.getTotalFee());
 		assertEquals(2, persistedFin.getFinanceId());
 	}
 
 	// deleteFinanceByPatientId
 	@Test
 	void testDeleteFinanceByPatientId() {
-		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
+		Finance fin = new Finance(6,106,"Vinay",400,30,20,490);
 
-		Mockito.when(financeRepo.findById(107)).thenReturn(Optional.of(fin));
-		financeRepo.deleteById(107);
+		Mockito.when(financeRepo.findById(106)).thenReturn(Optional.of(fin));
+		financeRepo.deleteById(106);
 
-		Finance persistedFin = financeService.deleteFinanceByPatientId(107);
-
-		assertEquals(107, persistedFin.getPatientId());
+		Finance persistedFin = financeService.deleteFinanceByPatientId(106);
+		assertEquals(106, persistedFin.getPatientId());
 		assertEquals("Vinay", persistedFin.getPatientName());
-		assertEquals(40, persistedFin.getRegistrationFee());
-		assertEquals(100, persistedFin.getDoctorFee());
-		assertEquals(10, persistedFin.getMedicinesAmount());
-		assertEquals(150, persistedFin.getTotalFee());
-		assertEquals(7, persistedFin.getFinanceId());
+		assertEquals(400, persistedFin.getRegistrationFee());
+		assertEquals(30, persistedFin.getDoctorFee());
+		assertEquals(20, persistedFin.getMedicinesAmount());
+		assertEquals(490, persistedFin.getTotalFee());
+		assertEquals(6, persistedFin.getFinanceId());
 	}
 
 	// update
 	@Test
 	void testUpdateFinance() {
-		Finance fin = new Finance(102, 40, "Abhi", 60, 20, 120, 2);
+		Finance fin = new Finance(3,103,"Krithi",400,60,20,480);
 
-		Mockito.when(financeRepo.findById(2)).thenReturn(Optional.of(fin));
+		Mockito.when(financeRepo.findById(103)).thenReturn(Optional.of(fin));
 		Mockito.when(financeRepo.save(fin)).thenReturn(fin);
 
 		Finance persistedFin = financeService.updateFinance(fin);
-
-		assertEquals(102, persistedFin.getPatientId());
-		assertEquals("Abhi", persistedFin.getPatientName());
-		assertEquals(40, persistedFin.getRegistrationFee());
+		
+		assertEquals(3, persistedFin.getFinanceId());
 		assertEquals(60, persistedFin.getDoctorFee());
 		assertEquals(20, persistedFin.getMedicinesAmount());
-		assertEquals(120, persistedFin.getTotalFee());
-		assertEquals(2, persistedFin.getFinanceId());
+		assertEquals(103, persistedFin.getPatientId());
+		assertEquals("Krithi", persistedFin.getPatientName());
+		assertEquals(400, persistedFin.getRegistrationFee());
+		assertEquals(480, persistedFin.getTotalFee());
 	}
 
 }

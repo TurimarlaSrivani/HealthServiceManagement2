@@ -3,7 +3,7 @@ package com.hsm.healthservicemanagement.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,83 +17,76 @@ class DoctorServiceTest {
 	IDoctorService doctService;
 	
 	@Test
+	@Order(2)
 	void  testFindAllDoctors() {
 		List<Doctor> doctor = doctService.findAll(); 
-		assertEquals(5, doctor.size());
+		assertEquals(2, doctor.size());
 	}
 	
 	@Test
+	@Order(3)
 	void testFindByDoctorId() {
-		Doctor doctor = doctService.findByDoctId(1);
-		assertEquals("priya", doctor.getUserName());
-		assertEquals(8, doctor.getYearsOfExperience());
+		Doctor doctor = doctService.findByDoctId(802);
+		assertEquals("abhilash", doctor.getDoctorName());
+		assertEquals(2, doctor.getYearsOfExperience());
 	}
 	
 	@Test
+	@Order(4)
 	void testFindByDoctorName() {
 		Doctor doctor = doctService.findByDoctorName("vidya shree");
-		assertEquals(2, doctor.getDoctorId());
-		assertEquals("vidya", doctor.getUserName());
+		assertEquals(801, doctor.getDoctorId());
+		assertEquals("dentist", doctor.getSpecialization());
 	}
-	
+		
 	@Test
-	void testFindByUserName() {
-		Doctor doctor = doctService.findByUserName("deepak");
-		assertEquals(3, doctor.getDoctorId());
-		assertEquals(6, doctor.getHoursOfAvailability());
-	}
-	
-	@Test
+	@Order(5)
 	void findByspecialization() {
-		Doctor doctor = doctService.findByspecialization("oncologist");
-		assertEquals(6, doctor.getHoursOfAvailability());
+		Doctor doctor = doctService.findByspecialization("cardiologist");
+		assertEquals(8, doctor.getHoursOfAvailability());
 	}
 	
 	@Test
+	@Order(6)
 	void testFindByContactNumber() {
-		Doctor doctor = doctService.findByContactNumber("9876678954");
-		assertEquals(1, doctor.getDoctorId());
-		assertEquals(4, doctor.getHoursOfAvailability());
+		Doctor doctor = doctService.findByContactNumber("9867785643");
+		assertEquals(801, doctor.getDoctorId());
+		assertEquals(5, doctor.getHoursOfAvailability());
 	}
 	
-/*	@Test
+	@Test
+	@Order(1)
 	void testCreateDoctor() {
-	Doctor doctor =new Doctor(7, "aishwarya", "6789487654", 10, "dentist", "mbbs", 5, 800, "aishu");
+	Doctor doctor =new Doctor(803, "aishwarya", "6789487654", 10, "oncologist", "md", 5, 800);
 	
-	List<Patient> patients = new ArrayList<Patient>();
-	patients.addAll(1, patients);
-	//patients.add(new Patient());
-	//Patient patient = patients.get(1);
-	
-	//Patient[] patient = new Patient[2];
-	//Patient patient = new Patient(1, "akash");
-	//doctor.setPatient(patient);
+	//Patient m1= new Patient (103, "2021-05-08", 22, "9243552265", "Gagana", 600, "Fever", "2021-05-08", 4, 202);
+	//	Patient m2 = new Patient ();
+		//List<Patient> patient =Stream.of(m1).collect(Collectors.toList());
 	
 	Doctor persisteddoct = doctService.save(doctor);
-	assertEquals(7, persisteddoct.getDoctorId());
+	assertEquals(803, persisteddoct.getDoctorId());
 	assertEquals("aishwarya", persisteddoct.getDoctorName());
 	assertEquals("6789487654", persisteddoct.getContactNumber());
 	assertEquals(10, persisteddoct.getHoursOfAvailability());
-	assertEquals("dentist", persisteddoct.getSpecialization());
-	assertEquals("mbbs", persisteddoct.getDegree());
+	assertEquals("oncologist", persisteddoct.getSpecialization());
+	assertEquals("md", persisteddoct.getDegree());
 	assertEquals(5, persisteddoct.getYearsOfExperience());
 	assertEquals(800, persisteddoct.getDoctorFee());
-	assertEquals("aishu", persisteddoct.getUserName());
 	
-    }*/
+    }
 	
-/*	@Test
+	@Test
+	@Order(7)
 	void testDeleteDoctor() {
-		Doctor doctor =new Doctor(7, "aishwarya", "6789487654", 10, "dentist", "mbbs", 5, 800, "aishu");	
+		Doctor doctor =new Doctor(803, "aishwarya", "6789487654", 10, "oncologist", "md", 5, 800);	
 		Doctor persisteddoct = doctService.delete(doctor);
-		assertEquals(7, persisteddoct.getDoctorId());
+		assertEquals(803, persisteddoct.getDoctorId());
 		assertEquals("aishwarya", persisteddoct.getDoctorName());
 		assertEquals("6789487654", persisteddoct.getContactNumber());
 		assertEquals(10, persisteddoct.getHoursOfAvailability());
-		assertEquals("dentist", persisteddoct.getSpecialization());
-		assertEquals("mbbs", persisteddoct.getDegree());
+		assertEquals("oncologist", persisteddoct.getSpecialization());
+		assertEquals("md", persisteddoct.getDegree());
 		assertEquals(5, persisteddoct.getYearsOfExperience());
 		assertEquals(800, persisteddoct.getDoctorFee());
-		assertEquals("aishu", persisteddoct.getUserName());
-	}*/
+	}
 }

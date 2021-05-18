@@ -1,82 +1,86 @@
 package com.hsm.healthservicemanagement.service;
 
-import java.time.LocalDate;
-
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import com.hsm.healthservicemanagement.entity.Address;
 import com.hsm.healthservicemanagement.entity.Patient;
-
-import org.junit.jupiter.api.Test;
 
 @SpringBootTest
 class PatientServiceTest {
 
-	
 	@Autowired
 	IPatientService patientService;
 
-	//findAll
+	// findByPatientId
+	@Order(2)
 	@Test
-	void testFindAllPatients() {
-		List<Patient> patients = patientService.findAll();
-		assertEquals(7, patients.size());
-	}
-	
-    //findByPatientId
-	@Test
-	void findByPatientId() {
+	void testfindByPatientId() {
 		Patient patient = patientService.findByPatientId(103);
 		assertEquals("Krithi", patient.getPatientName());
 	}
-	
-    //findPatientByName
+
+	// findPatientByName
+	@Order(3)
 	@Test
-	void findByPatientName() {
+	void testfindByPatientName() {
 		Patient patient = patientService.findByPatientName("Sam");
 		assertEquals("Sam", patient.getPatientName());
 		assertEquals("Cold", patient.getSymptoms());
 	}
-	
-	//createPatient
+
+	// findAll
+	@Order(4)
 	@Test
+	void testFindAllPatients() {
+		List<Patient> patients = patientService.findAll();
+		assertEquals(6, patients.size());
+	}
+	
+	// createPatient
+	@Test
+	@Order(1)
 	void testCreatePatient() {
-		Patient patient = new Patient(107, "Manu", 25, 400, "9101135114", "BodyPain", LocalDate.parse("2021-05-05"),
-				LocalDate.parse("2021-05-09"));
+		Patient patient = new Patient(106, "Yashu",22, 400, "9101135114", "BodyPain", LocalDate.parse("2021-05-14"),
+				LocalDate.parse("2021-05-14"));
 		Address address = new Address("MG Road", "Hyderabad");
 		patient.setAddress(address);
 		Patient persistedPatient = patientService.save(patient);
-		assertEquals(107, persistedPatient.getPatientId());
-		assertEquals("Manu", persistedPatient.getPatientName());
-		assertEquals(25, persistedPatient.getPatientAge());
+		assertEquals(106, persistedPatient.getPatientId());
+		assertEquals("Yashu", persistedPatient.getPatientName());
+		assertEquals(22, persistedPatient.getPatientAge());
 		assertEquals(400, persistedPatient.getRegistrationFee());
 		assertEquals("9101135114", persistedPatient.getPatientContactNumber());
 		assertEquals("BodyPain", persistedPatient.getSymptoms());
-		assertEquals(LocalDate.parse("2021-05-05"), persistedPatient.getCreatedAt());
-		assertEquals(LocalDate.parse("2021-05-09"), persistedPatient.getUpdatedAt());
+		assertEquals(LocalDate.parse("2021-05-14"), persistedPatient.getCreatedAt());
+		assertEquals(LocalDate.parse("2021-05-14"), persistedPatient.getUpdatedAt());
 
 	}
-	
-	//deletePatient
+
+	// deletePatient
+	@Order(5)
 	@Test
 	void testDeletePatient() {
-		Patient patient = new Patient(106, "Abi", 28, 700, "8254252566", "Cough", LocalDate.parse("2021-05-01"),
-				LocalDate.parse("2021-05-03"));
-		Address address = new Address("T Nagar", "Chennai");
+		Patient patient = new Patient(106, "Yashu",22, 400, "9101135114", "BodyPain", LocalDate.parse("2021-05-14"),
+				LocalDate.parse("2021-05-14"));
+		Address address = new Address("MG Road", "Hyderabad");
 		patient.setAddress(address);
-		Patient persistedPatient = patientService.delete(patient);
+		Patient persistedPatient = patientService.save(patient);
 		assertEquals(106, persistedPatient.getPatientId());
-		assertEquals("Abi", persistedPatient.getPatientName());
-		assertEquals(28, persistedPatient.getPatientAge());
-		assertEquals(700, persistedPatient.getRegistrationFee());
-		assertEquals("8254252566" , persistedPatient.getPatientContactNumber());
-		assertEquals("Cough", persistedPatient.getSymptoms());
-		assertEquals(LocalDate.parse("2021-05-01"), persistedPatient.getCreatedAt());
-		assertEquals(LocalDate.parse("2021-05-03"), persistedPatient.getUpdatedAt());
+		assertEquals("Yashu", persistedPatient.getPatientName());
+		assertEquals(22, persistedPatient.getPatientAge());
+		assertEquals(400, persistedPatient.getRegistrationFee());
+		assertEquals("9101135114", persistedPatient.getPatientContactNumber());
+		assertEquals("BodyPain", persistedPatient.getSymptoms());
+		assertEquals(LocalDate.parse("2021-05-14"), persistedPatient.getCreatedAt());
+		assertEquals(LocalDate.parse("2021-05-14"), persistedPatient.getUpdatedAt());
 
 	}
 }

@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-
 @ControllerAdvice
 public class ValidationHandler extends ResponseEntityExceptionHandler {
 
-	//validation
+	// validation
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		Map<String, String> errors = new HashMap();
@@ -25,7 +24,7 @@ public class ValidationHandler extends ResponseEntityExceptionHandler {
 			errors.put(fieldName, message);
 		});
 		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-	  
-}
+
+	}
 
 }

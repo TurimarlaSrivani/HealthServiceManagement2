@@ -21,21 +21,14 @@ import com.hsm.healthservicemanagement.repository.IDiseaseRepository;
 @ExtendWith(SpringExtension.class)
 class DiseaseServiceMockitoTest {
 
-		// Mock - imitating
-		// DB -
-		// Product -
 
-		// @InjectMock - injects EmployeeService and inject dependent classes/interfaces
-		// that are annotated with @Mock
 		@InjectMocks
 		DiseaseServiceImpl desService;
 
-		// @MockBean - injecting external services
 
 		@MockBean
 		IDiseaseRepository desRepo;
 
-		// Initialization of mock objects
 		@BeforeEach
 		void init() {
 			MockitoAnnotations.openMocks(this);
@@ -43,39 +36,39 @@ class DiseaseServiceMockitoTest {
 
 		@Test
 		void testCreateDisease() {
-			Disease disease = new Disease(602,"Covid","Infectious","Cold","one week");
+			Disease disease = new Disease(902, "Cardiovascular", "Physological","Fatigue","Two days");
 			
 			Mockito.when(desRepo.save(disease)).thenReturn(disease);
 			
 			Disease persistedDes = desService.save(disease);
 			
-			assertEquals(602, persistedDes.getDesId());
-			assertEquals("Covid", persistedDes.getDesName());
-			assertEquals("Infectious", persistedDes.getDesType());
-			assertEquals("Cold", persistedDes.getDesSym());
-			assertEquals("one week", persistedDes.getDesDur());
+			assertEquals(902, persistedDes.getDesId());
+			assertEquals("Two days", persistedDes.getDesDur());
+			assertEquals("Cardiovascular", persistedDes.getDesName());
+			assertEquals("Fatigue", persistedDes.getDesSym());
+			assertEquals("Physological", persistedDes.getDesType());
+		
 		}
 		
 		@Test
 		void testDiseaseById() {
-			Disease disease = new Disease(503,"Alzheimers","Heridity","shorttermmemoryloss","two months");
+			Disease disease = new Disease(903,"Alzheimers","Deficiency","Memoryloss","two months");
 			
-			Mockito.when(desRepo.findById(503)).thenReturn(Optional.of(disease));
+			Mockito.when(desRepo.findById(903)).thenReturn(Optional.of(disease));
 			
-			Disease persistedDes = desService.findByDesId(503);
-			
-			assertEquals(503, persistedDes.getDesId());
-			assertEquals("Alzheimers", persistedDes.getDesName());
-			assertEquals("Heridity", persistedDes.getDesType());
-			assertEquals("shorttermmemoryloss", persistedDes.getDesSym());
-			assertEquals("two months", persistedDes.getDesDur());
+			Disease persistedDes = desService.findByDesId(903);
+				
+			assertEquals(903, disease.getDesId());
+			assertEquals("Alzheimers", disease.getDesName());
+			assertEquals("Memoryloss", disease.getDesSym());
+			assertEquals("Deficiency", disease.getDesType());
 		}
 		
 		@Test
 		void testAllDisease() {
-			Disease disease1 = new Disease(501,"Allergy","Dificiency","Itching","two days");
-			Disease disease2 = new Disease(502,"Covid","Infectious","Cold","one week");
-			Disease disease3 = new Disease(503,"Alzheimers","Heridity","shorttermmemoryloss","two months");
+			Disease disease1 = new Disease(901,"One year","Diabetes","Weakness","Heriditory");
+			Disease disease2 = new Disease( 902,"Two days","Cardiovascular","Fatigue","Physological");
+			Disease disease3 = new Disease( 903,"Three months"," Alzeihmers","Memoryloss","Deficiency");
 			
 			List<Disease> diseaseList = new ArrayList<>();
 			diseaseList.add(disease1);
@@ -92,35 +85,34 @@ class DiseaseServiceMockitoTest {
 		
 		@Test
 		void testUpdateDisease() {
-			Disease  disease = new Disease (504,"Allergy","Dificiency","Itching","five days");
 			
-			Mockito.when(desRepo.findById(504)).thenReturn(Optional.of(disease));
+			Disease disease= new Disease(904,"Kidney disease","Deficiency","Swollen limbs","One month");
+			
+			Mockito.when(desRepo.findById(904)).thenReturn(Optional.of(disease));
 			Mockito.when(desRepo.save(disease)).thenReturn(disease);
 			
-			Disease persistedDes = desService.update(disease);
+					
+			Disease persistedDes = desService.save(disease);
+			assertEquals(904, persistedDes.getDesId());
+			assertEquals("One month", persistedDes.getDesDur());
+			assertEquals("Kidney disease", persistedDes.getDesName());
+			assertEquals("Swollen limbs", persistedDes.getDesSym());
+			assertEquals("Deficiency", persistedDes.getDesType());
+				}
 			
-			assertEquals(504, persistedDes.getDesId());
-			assertEquals("Allergy", persistedDes.getDesName());
-			assertEquals("Dificiency", persistedDes.getDesType());
-			assertEquals("Itching", persistedDes.getDesSym());
-			assertEquals("five days", persistedDes.getDesDur());
-		}
+			
 		
 		@Test
 		void testDeleteDisease() {
-			Disease disease = new Disease(504,"Allergy","Dificiency","Itching","five days");
-			
-			Mockito.when(desRepo.findById(504)).thenReturn(Optional.of(disease));
-			desRepo.deleteById(504);
-			Disease persistedDes = desService.deleteByDesId(504);
-			
-			assertEquals(504, persistedDes.getDesId());
-			assertEquals("Allergy", persistedDes.getDesName());
-			assertEquals("Dificiency", persistedDes.getDesType());
-			assertEquals("Itching", persistedDes.getDesSym());
-			assertEquals("five days", persistedDes.getDesDur());
-		}
-		
-
-	}
-
+				Disease disease= new Disease(904,"Kidney disease","Deficiency","Swollen limbs", "One month");
+				
+				Mockito.when(desRepo.findById(904)).thenReturn(Optional.of(disease));
+				Mockito.when(desRepo.save(disease)).thenReturn(disease);
+				Disease persistedDes = desService.save(disease);
+				assertEquals(904, persistedDes.getDesId());
+				assertEquals("One month", persistedDes.getDesDur());
+				assertEquals("Kidney disease", persistedDes.getDesName());
+				assertEquals("Swollen limbs", persistedDes.getDesSym());
+				assertEquals("Deficiency", persistedDes.getDesType());
+			}
+}

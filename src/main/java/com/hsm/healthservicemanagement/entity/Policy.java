@@ -5,7 +5,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -39,6 +38,7 @@ public class Policy {
 	@NonNull
 	private Integer maximumAmount;
 	
+	//policy-patient(bidirectional)
 	@JsonIgnore
 	@OneToOne(mappedBy="policy", cascade = CascadeType.ALL)
 	private Patient patient;

@@ -8,15 +8,9 @@ import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 
 public interface ITreatmentService {
 
-	/*
-	 * +findAllTreatent() +saveTreatment() +findByTreatmentId() +findByDocName()
-	 * +findByDate() +deleteTreatmentByTreatmentId() +updateTreatment()
-	 */
-//----------------------POST------------------------------------------------------------
 	// save
 	Treatment save(Treatment treatment);
 
-//----------------------GET--------------------------------------------------
 	// findAllTreatmentDetails
 	List<Treatment> findAllTreatment();
 
@@ -29,11 +23,9 @@ public interface ITreatmentService {
 	//findByTreatmentStatus
 	List<Treatment> findByTreatmentStatus(TreatmentStatus treatmentStatus); 
 	
-//--------------------DELETE------------------------------------------------------
 	// deleteTreatmentByTreatmentId
 	Treatment deleteTreatmentByTreatmentId(int treatmentId);
 
-//-------------------UPDATE-------------------------------------------------------
 	// updateTreatment
 	Treatment updateTreatment(Treatment treatment);
     

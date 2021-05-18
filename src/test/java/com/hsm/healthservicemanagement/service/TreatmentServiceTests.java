@@ -25,17 +25,6 @@ class TreatmentServiceTests {
 	// save
 	@Test
 	 void testSave() {
-		
-		
-		/* Treatment t1 = new Treatment(1,"2021-10-02",5000,"angioplasty");
-		Treatment t2 = new Treatment(2,"2021-10-01",50000,"rhinoplasty");
-		Treatment t3 = new Treatment(3,"2021-10-03",5000,"vasectomy");
-		Treatment t4 = new Treatment(4,"2021-10-04",5000,"tubectomy");
-		Treatment t5 = new Treatment(5,"2021-10-05",10000,"dialysis");
-		Treatment t6 = new Treatment(6,"2021-10-06",15000,"appendectomy");
-		Treatment t7 = new Treatment(7,"2021-10-06",5000,"cataract");
-		Treatment t8 = new Treatment(8,"2021-10-07",5000,"rhinoplasty");  */
-
 		Treatment t = new Treatment(8,"rhinoplasty",5000,LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
 		Treatment persistedt = treatmentService.save(t);
 

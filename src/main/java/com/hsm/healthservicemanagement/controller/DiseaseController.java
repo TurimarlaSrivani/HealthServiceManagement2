@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hsm.healthservicemanagement.entity.Disease;
-import com.hsm.healthservicemanagement.entity.DiseaseErrorResponse;
+import com.hsm.healthservicemanagement.entity.HmsErrorResponse;
 import com.hsm.healthservicemanagement.exception.*;
-//import com.cg.hsm.service.DiseaseServiceImpl;
 import com.hsm.healthservicemanagement.service.IDiseaseService;
 
 @RestController
@@ -28,8 +27,8 @@ public class DiseaseController {
 	IDiseaseService desService;
 
 	@ExceptionHandler
-	public ResponseEntity<DiseaseErrorResponse> handleException(DiseaseNotFoundException exception) {
-		DiseaseErrorResponse error = new DiseaseErrorResponse();
+	public ResponseEntity<HmsErrorResponse> handleException(DiseaseNotFoundException exception) {
+		HmsErrorResponse error = new HmsErrorResponse();
 
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(exception.getMessage());

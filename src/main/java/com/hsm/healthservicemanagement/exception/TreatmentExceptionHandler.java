@@ -5,15 +5,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.hsm.healthservicemanagement.controller.TreatmentErrorResponse;
+import com.hsm.healthservicemanagement.entity.HmsErrorResponse;
 
 @ControllerAdvice
 public class TreatmentExceptionHandler {
 
 	// Create method to handle exception
 	@ExceptionHandler
-	public ResponseEntity<TreatmentErrorResponse> handleException(TreatmentNotFoundException exception) {
-		TreatmentErrorResponse error = new TreatmentErrorResponse();
+	public ResponseEntity<HmsErrorResponse> handleException(TreatmentNotFoundException exception) {
+		HmsErrorResponse error = new HmsErrorResponse();
 
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(exception.getMessage());
@@ -23,8 +23,8 @@ public class TreatmentExceptionHandler {
 	}
 
 	@ExceptionHandler
-	public ResponseEntity<TreatmentErrorResponse> handleException(Exception exception) {
-		TreatmentErrorResponse error = new TreatmentErrorResponse();
+	public ResponseEntity<HmsErrorResponse> handleException(Exception exception) {
+		HmsErrorResponse error = new HmsErrorResponse();
 
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage("Bad Request");

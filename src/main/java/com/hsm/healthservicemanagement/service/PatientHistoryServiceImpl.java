@@ -14,27 +14,16 @@ public class PatientHistoryServiceImpl implements IPatientHistoryService {
 
 	@Autowired
 	IPatientHistoryRepository rep;
-	
+
 	@Override
 	public PatientHistory addPatientHistory(PatientHistory his) {
 		return rep.save(his);
 	}
 
-	/*@Override
-	public PatientHistory findByPatientId(int patientId) {
-		Optional<PatientHistory> his=Optional.of(rep.findByPatientId(patientId));
-		if(!his.isPresent())
-		{
-			return null;
-		}
-		return rep.findByPatientId(patientId);
-	}*/
-
 	@Override
 	public PatientHistory findByPatientHistoryId(int patientHistoryId) {
-		Optional<PatientHistory> his=rep.findById(patientHistoryId);
-		if(!his.isPresent())
-		{
+		Optional<PatientHistory> his = rep.findById(patientHistoryId);
+		if (!his.isPresent()) {
 			return null;
 		}
 		return his.get();
@@ -42,28 +31,25 @@ public class PatientHistoryServiceImpl implements IPatientHistoryService {
 
 	@Override
 	public String deleteByPatientHistoryId(int patientHistoryId) {
-		Optional<PatientHistory> his=rep.findById(patientHistoryId);
-		if(!his.isPresent())
-		{
+		Optional<PatientHistory> his = rep.findById(patientHistoryId);
+		if (!his.isPresent()) {
 			return null;
 		}
-		//PatientHistory p=his.get();
+		// PatientHistory p=his.get();
 		rep.deleteById(patientHistoryId);
-		System.out.print("Successfully deleted :"+patientHistoryId);
-		return patientHistoryId+"";
-		
-		
+		System.out.print("Successfully deleted :" + patientHistoryId);
+		return patientHistoryId + "";
+
 	}
 
 	@Override
 	public PatientHistory updatePatientHistory(PatientHistory his) {
-		Optional<PatientHistory> history=rep.findById(his.getPatientHistoryId());
-		if(!history.isPresent())
-		{
+		Optional<PatientHistory> history = rep.findById(his.getPatientHistoryId());
+		if (!history.isPresent()) {
 			return null;
 		}
-		PatientHistory p=history.get();
-		//p.setPatientId(his.getPatientId());
+		PatientHistory p = history.get();
+		// p.setPatientId(his.getPatientId());
 		p.setRecordedDate(his.getRecordedDate());
 		return rep.save(p);
 	}
@@ -72,15 +58,5 @@ public class PatientHistoryServiceImpl implements IPatientHistoryService {
 	public List<PatientHistory> getAllPatientHistory() {
 		return rep.findAll();
 	}
-	
-	@Override
-		public PatientHistory findByPatientId(int patientId) {
-			Optional<PatientHistory> his=rep.findById(patientId);
-			if(!his.isPresent())
-			{
-				return null;
-			}
-			return his.get();
-		}
 
 }
