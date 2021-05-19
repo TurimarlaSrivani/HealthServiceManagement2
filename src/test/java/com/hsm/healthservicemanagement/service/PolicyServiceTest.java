@@ -47,6 +47,11 @@ class PolicyServiceTest {
 		Policy updatePol = policyService.updatePolicy(policy);
 		assertEquals(201, updatePol.getPolicyId());
 
+		Policy policy = new Policy(104, "Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
+		Policy persistedPolicy = policyService.create(policy);
+		assertEquals(104, persistedPolicy.getPolicyId());
+		assertEquals("Travel", persistedPolicy.getPolicyName());
+
 	}
 
 	@Test
@@ -78,4 +83,8 @@ class PolicyServiceTest {
 		assertEquals(120000, persistedPolicy.getMaximumAmount());
 	}
 
+
 }
+
+}
+
