@@ -48,12 +48,14 @@ public class DoctorController {
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 
 	}
-
+    
+	//post method(insert)
 	@PostMapping("/doctor")
 	public Doctor addDoctor(  @RequestBody Doctor doctor) {
 		return doctService.save(doctor);
 	}
-
+    
+	//get method(findbyId)
 	@GetMapping("/doctors/{id}")
 	public Doctor findByDoctId(@PathVariable("id") int doctorId) {
 		if (doctService.findByDoctId(doctorId) == null) {
@@ -61,7 +63,8 @@ public class DoctorController {
 		}
 		return doctService.findByDoctId(doctorId);
 	}
-
+    
+	//delete method(byId)
 	@DeleteMapping("/doctors/{id}")
 	public String deleteByDoctorid(@PathVariable("id") int doctorId) {
 		if (doctService.deleteByDoctorid(doctorId) == null) {
@@ -69,12 +72,14 @@ public class DoctorController {
 		}
 		return doctService.deleteByDoctorid(doctorId);
 	}
-
+    
+	//put method(update)
 	@PutMapping("/doctors")
 	public Doctor update(  @RequestBody Doctor doctor) {
 		return doctService.update(doctor);
 	}
-
+    
+	//get method(alldoctors)
 	@GetMapping("/doctors/alldoctors")
 	public List<Doctor> getAllDoctors() {
 		return doctService.findAll();
