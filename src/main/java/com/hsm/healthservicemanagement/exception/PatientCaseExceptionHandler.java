@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.hsm.healthservicemanagement.*;
-import com.hsm.healthservicemanagement.entity.PatientCaseErrorResponse;
+import com.hsm.healthservicemanagement.entity.HmsErrorResponse;
 
 @ControllerAdvice
 public class PatientCaseExceptionHandler {
 	
 	@ExceptionHandler
-	public ResponseEntity<PatientCaseErrorResponse>handleException(PatientCaseNotFoundException exception)
+	public ResponseEntity<HmsErrorResponse>handleException(PatientCaseNotFoundException exception)
 	{
-		PatientCaseErrorResponse  error = new PatientCaseErrorResponse();
+		HmsErrorResponse  error = new HmsErrorResponse();
 		
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(exception.getMessage());
@@ -24,9 +24,9 @@ public class PatientCaseExceptionHandler {
 	}
 	
 	@ExceptionHandler
-	public ResponseEntity<PatientCaseErrorResponse>handleException(Exception exception)
+	public ResponseEntity<HmsErrorResponse>handleException(Exception exception)
 	{
-		PatientCaseErrorResponse  error = new PatientCaseErrorResponse();
+		HmsErrorResponse  error = new HmsErrorResponse();
 		
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage(exception.getMessage());

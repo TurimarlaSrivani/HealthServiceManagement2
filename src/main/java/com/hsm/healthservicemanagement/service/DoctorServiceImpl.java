@@ -47,7 +47,7 @@ public class DoctorServiceImpl implements IDoctorService{
 		doc.setYearsOfExperience(doctor.getYearsOfExperience());
 		doc.setDegree(doctor.getDegree());
 		doc.setSpecialization(doctor.getSpecialization());
-		doc.setUserName(doctor.getUserName());
+		doc.setDoctorName(doctor.getDoctorName());
 		doc.setDoctorFee(doctor.getDoctorFee());
 		doc.setHoursOfAvailability(doctor.getHoursOfAvailability());
 		return doctRepo.save(doc);
@@ -56,12 +56,6 @@ public class DoctorServiceImpl implements IDoctorService{
 	@Override
 	public List<Doctor> findAll() {
 		return  doctRepo.findAll();
-	}
-	 
-	 
-	@Override
-	public Doctor findByUserName(String userName) {
-		return doctRepo.findByUserName(userName);
 	}
 	
 	@Override
@@ -84,4 +78,5 @@ public class DoctorServiceImpl implements IDoctorService{
 	public Doctor findByDoctorName(String doctorName) {
 		return doctRepo.findByDoctorName(doctorName);
 	}
+
 }

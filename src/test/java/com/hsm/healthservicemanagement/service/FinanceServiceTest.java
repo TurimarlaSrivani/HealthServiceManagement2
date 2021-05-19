@@ -3,7 +3,6 @@ package com.hsm.healthservicemanagement.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,60 +19,70 @@ class FinanceServiceTest {
 	@Test
 	void testFindAllFinanceDetails() {
 		List<Finance> fin = financeService.findAllFinanceDetails();
-		assertEquals(7, fin.size());
+		assertEquals(6, fin.size());
 	}
 
 	// save
 	@Test
 	void testSave() {
-		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
-
+		Finance fin = new Finance(6,106,"Vinay",400,30,20,490);
+		
 		Finance persistedFin = financeService.save(fin);
-		assertEquals(107, persistedFin.getPatientId());
+		
+		assertEquals(106, persistedFin.getPatientId());
 		assertEquals("Vinay", persistedFin.getPatientName());
-		assertEquals(40, persistedFin.getRegistrationFee());
-		assertEquals(100, persistedFin.getDoctorFee());
-		assertEquals(10, persistedFin.getMedicinesAmount());
-		assertEquals(150, persistedFin.getTotalFee());
-		assertEquals(7, persistedFin.getFinanceId());
+		assertEquals(400, persistedFin.getRegistrationFee());
+		assertEquals(30, persistedFin.getDoctorFee());
+		assertEquals(20, persistedFin.getMedicinesAmount());
+		assertEquals(490, persistedFin.getTotalFee());
+		assertEquals(6, persistedFin.getFinanceId());
 	}
 
-	// findByPatientId
+	// findByPatientId	
 	@Test
-	void testFindByPatientId() {
-		Finance fin = financeService.findByPatientId(2);
-		System.out.println(fin);
-		assertEquals("ABhi", fin.getPatientName());
+	void testFindByPatientId(){
+		Finance fin = new Finance(6,106,"Vinay",400,30,20,490);
+		
+		Finance persistedFin = financeService.save(fin);
+		
+		assertEquals(106, persistedFin.getPatientId());
+		assertEquals("Vinay", persistedFin.getPatientName());
+		assertEquals(400, persistedFin.getRegistrationFee());
+		assertEquals(30, persistedFin.getDoctorFee());
+		assertEquals(20, persistedFin.getMedicinesAmount());
+		assertEquals(490, persistedFin.getTotalFee());
+		assertEquals(6, persistedFin.getFinanceId());
 	}
 
 	// deleteFinanceByPatientId
 	@Test
 	void testDeleteFinanceByPatientId() {
-		Finance fin = new Finance(107, 40, "Vinay", 100, 10, 150, 7);
+		Finance fin = new Finance(6,106,"Vinay",400,30,20,490);
+		
 		Finance persistedFin = financeService.save(fin);
-
-		assertEquals(107, persistedFin.getPatientId());
+		
+		assertEquals(106, persistedFin.getPatientId());
 		assertEquals("Vinay", persistedFin.getPatientName());
-		assertEquals(40, persistedFin.getRegistrationFee());
-		assertEquals(100, persistedFin.getDoctorFee());
-		assertEquals(10, persistedFin.getMedicinesAmount());
-		assertEquals(150, persistedFin.getTotalFee());
-		assertEquals(7, persistedFin.getFinanceId());
+		assertEquals(400, persistedFin.getRegistrationFee());
+		assertEquals(30, persistedFin.getDoctorFee());
+		assertEquals(20, persistedFin.getMedicinesAmount());
+		assertEquals(490, persistedFin.getTotalFee());
+		assertEquals(6, persistedFin.getFinanceId());
 	}
 
 	// updateFinance
 	@Test
 	void testUpdateFinance() {
 		Finance fin = new Finance();
-		fin.setPatientId(102);
-		fin.setPatientName("ABhi");
-		fin.setRegistrationFee(40);
+		fin.setPatientId(103);
+		fin.setPatientName("Krithi s");
+		fin.setRegistrationFee(400);
 		fin.setDoctorFee(60);
 		fin.setMedicinesAmount(20);
-		fin.setTotalFee(120);
-		fin.setFinanceId(2);
+		fin.setTotalFee(480);
+		fin.setFinanceId(3);
 		Finance update = financeService.updateFinance(fin);
-		assertEquals(2, update.getFinanceId());
+		assertEquals(3, update.getFinanceId());
 	}
 	
 }

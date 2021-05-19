@@ -1,3 +1,4 @@
+
 package com.hsm.healthservicemanagement.controller;
 
 import java.util.List;
@@ -16,22 +17,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hsm.healthservicemanagement.entity.Disease;
-import com.hsm.healthservicemanagement.entity.DiseaseErrorResponse;
+import com.hsm.healthservicemanagement.entity.HmsErrorResponse;
 import com.hsm.healthservicemanagement.exception.*;
-//import com.cg.hsm.service.DiseaseServiceImpl;
 import com.hsm.healthservicemanagement.service.IDiseaseService;
 
 @RestController
 public class DiseaseController {
 
-	
 	@Autowired
 	IDiseaseService desService;
 
-
 	@ExceptionHandler
-	public ResponseEntity<DiseaseErrorResponse> handleException(DiseaseNotFoundException exception) {
-		DiseaseErrorResponse error = new DiseaseErrorResponse();
+	public ResponseEntity<HmsErrorResponse> handleException(DiseaseNotFoundException exception) {
+		HmsErrorResponse error = new HmsErrorResponse();
 
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(exception.getMessage());
@@ -94,20 +92,5 @@ public class DiseaseController {
 	public Disease updatedesName(@PathVariable("id") int id, @RequestBody Disease disease) {
 		return desService.update(disease);
 	}
-
-	/*
-	 * @GetMapping("/disease/{desId}") findAllPatientCasesByDiseaseId(int
-	 * diseaseId): List<PatientCase>
-	 * 
-	 * 
-	 * @GetMapping("/patientCase/{patientCaseId}/disease/{diseaseId}/treatment")
-	 * findPatientCaseTreatmentByDiseaseId(int patientCaseId,int diseaseId): String
-	 * 
-	 * @GetMapping("/patientCase/{patientCaseId}/disease/{diseaseId}/medicines")
-	 * findPatientCaseMedicinesByDiseaseId(int patientCaseId,int diseaseId): String
-	 * 
-	 * @GetMapping("/patientCase/{patientCaseId}/disease/{diseaseId}/doctor")
-	 * findPatientCaseDoctorByDiseaseId(int patientCaseId,int diseaseId): String
-	 */
 
 }

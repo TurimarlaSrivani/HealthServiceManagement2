@@ -10,22 +10,19 @@ import org.springframework.stereotype.Service;
 import com.hsm.healthservicemanagement.entity.Treatment;
 import com.hsm.healthservicemanagement.entity.TreatmentStatus;
 import com.hsm.healthservicemanagement.repository.ITreatmentRepository;
-import com.hsm.healthservicemanagement.service.ITreatmentService;
 
 @Service
 public class TreatmentServiceImpl implements ITreatmentService {
 
 	@Autowired
 	ITreatmentRepository treatmentRepo;
-
-//--------------------------POST----------------------------------------------------------	
+	
 	//save
 	@Override
 	public Treatment save(Treatment treatment) {
 		return treatmentRepo.save(treatment);
 	}
-
-//---------------------GET----------------------------------------------------------	
+	
 	//findAllTreatment
 	@Override
 	public List<Treatment> findAllTreatment() {
@@ -52,7 +49,6 @@ public class TreatmentServiceImpl implements ITreatmentService {
 	} 
 
 
-// ---------------DELETE----------------------------------------------------------------------	
 	@Override
 	public Treatment deleteTreatmentByTreatmentId(int treatmentId) {
 		Optional<Treatment> opt = treatmentRepo.findById(treatmentId);
@@ -65,7 +61,6 @@ public class TreatmentServiceImpl implements ITreatmentService {
 	}
 	
 	
-// ---------------UPDATE----------------------------------------------------------------------	
 	//updateAll
 	@Override
 	public Treatment updateTreatment(Treatment treatment) {

@@ -17,92 +17,75 @@ public class PatientCaseServiceTest {
 	@Autowired
 	IPatientCaseService pcService;
 	
+	
+	//viewall patientcase
 	@Test
 	void testviewAllPatientCase()
 	{
 		List<PatientCase> patientcase = pcService.viewAll();
-		assertEquals(2,patientcase.size());
+		assertEquals(3,patientcase.size());
 	}
 	
+	//viewpatientcasebyId
 	@Test
 	void testviewPatientCaseById()
 	{
-		PatientCase pa = pcService.viewPatientCaseById(102);
-		assertEquals("Ram",pa.getAssociateDoctorName());
-		assertEquals(102,pa.getPatientCaseId());
-		assertEquals("Dolo",pa.getMedicines());
-		assertEquals(400,pa.getMedicineFee());
-		assertEquals("21-05-2021",pa.getAppointmentDate());
-		assertEquals("Fever",pa.getDiseaseDescription());
-		assertEquals("injectionn",pa.getCurrentTreatment());
-		assertEquals(11,pa.getPatientId());
+		PatientCase pa = pcService.viewPatientCaseById(10);
+		assertEquals("harini",pa.getAssociateDoctorName());
+		assertEquals(10,pa.getPatientCaseId());
+		assertEquals("NSAID",pa.getMedicines());
+		assertEquals(2000,pa.getMedicineFee());
+		assertEquals("2021-01-05",pa.getAppointmentDate());
+		assertEquals("EyeSight",pa.getDiseaseDescription());
+		assertEquals("Lasik",pa.getCurrentTreatment());
+		assertEquals(101,pa.getPatientId());
 	}
 	
-	
+	//savepatientcase
 	@Test
 	void testSavePatientCase()
 	{
-		PatientCase patientcase = new PatientCase(101,"Dart","Sam",500,"11-05-2021","Headache","Medication",10);
+		PatientCase patientcase = new PatientCase(13,"Motrin","hari",6000,"2021-15-05","Pregnancytest","vasectomy",104);
 		PatientCase persistedPt = pcService.save(patientcase);
-		assertEquals("Sam",persistedPt.getAssociateDoctorName());
-		assertEquals(101,persistedPt.getPatientCaseId());
-		assertEquals("Dart",persistedPt.getMedicines());
-		assertEquals(500,persistedPt.getMedicineFee());
-		assertEquals("11-05-2021",persistedPt.getAppointmentDate());
-		assertEquals("Headache",persistedPt.getDiseaseDescription());
-		assertEquals("Medication",persistedPt.getCurrentTreatment());
-		assertEquals(10,persistedPt.getPatientId());
+		assertEquals("hari",persistedPt.getAssociateDoctorName());
+		assertEquals(13,persistedPt.getPatientCaseId());
+		assertEquals("Motrin",persistedPt.getMedicines());
+		assertEquals(6000,persistedPt.getMedicineFee());
+		assertEquals("2021-15-05",persistedPt.getAppointmentDate());
+		assertEquals("Pregnancytest",persistedPt.getDiseaseDescription());
+		assertEquals("vasectomy",persistedPt.getCurrentTreatment());
+		assertEquals(104,persistedPt.getPatientId());
 	}
 	
+	//deletepatientcase
 	@Test
 	void testDeletePatientCase()
 	{
-		PatientCase patientcase = new PatientCase(101, "Dart","Sam",500,"11-05-2021","Headache","Medication",10);
-		PatientCase persistedPt = pcService.deletePatientCase(101);
-		assertEquals("Sam",persistedPt.getAssociateDoctorName());
-		assertEquals(101,persistedPt.getPatientCaseId());
-		assertEquals("Dart",persistedPt.getMedicines());
-		assertEquals(500,persistedPt.getMedicineFee());
-		assertEquals("11-05-2021",persistedPt.getAppointmentDate());
-		assertEquals("Headache",persistedPt.getDiseaseDescription());
-		assertEquals("Medication",persistedPt.getCurrentTreatment());
-		assertEquals(10,persistedPt.getPatientId());
+		PatientCase patientcase = new PatientCase(13,"Motrin","hari",6000,"2021-15-05","Pregnancytest","vasectomy",104);
+		PatientCase persistedPt = pcService.deletePatientCase(13);
+		assertEquals("hari",persistedPt.getAssociateDoctorName());
+		assertEquals(13,persistedPt.getPatientCaseId());
+		assertEquals("Motrin",persistedPt.getMedicines());
+		assertEquals(6000,persistedPt.getMedicineFee());
+		assertEquals("2021-15-05",persistedPt.getAppointmentDate());
+		assertEquals("Pregnancytest",persistedPt.getDiseaseDescription());
+		assertEquals("vasectomy",persistedPt.getCurrentTreatment());
+		assertEquals(104,persistedPt.getPatientId());
 	}
 	
-	
+	//update patientcase
 	@Test
 	public void updatePatientCase()
 	{
 		PatientCase p = new PatientCase();
-		p.setPatientCaseId(101);
-		p.setAppointmentDate("11-05-2021");
-		p.setAssociateDoctorName("Sam");
-		p.setCurrentTreatment("Medication");
-		p.setDiseaseDescription("Fever");
-		p.setMedicineFee(500);
-		p.setMedicines("Dart");
-		p.setPatientId(10);
+		p.setPatientCaseId(10);
+		p.setAppointmentDate("2021-01-05");
+		p.setAssociateDoctorName("Rashmi");
+		p.setCurrentTreatment("Lasik");
+		p.setDiseaseDescription("EyeSight");
+		p.setMedicineFee(2000);
+		p.setMedicines("NSAID");
+		p.setPatientId(101);
 	}
 	
-	
-	
-	
-}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
+}

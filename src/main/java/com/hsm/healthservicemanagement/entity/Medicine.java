@@ -1,13 +1,12 @@
 package com.hsm.healthservicemanagement.entity;
 
+import java.time.LocalDate;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -15,17 +14,21 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@RequiredArgsConstructor
 @ToString
-public class Address {
-
+@AllArgsConstructor
+public class Medicine {
 	@Id
-	@GeneratedValue
-	private int id;
 	@NonNull
-	private String streetName;
+	private int medicineId;
 	@NonNull
-	private String city;
+	private String medicineName;
+	@NonNull
+	private float medicineCost;
+	@NonNull
+	private LocalDate mfd;
+	@NonNull
+	private LocalDate expiryDate;
+	@NonNull
+	private int medicineQuantity;
 
 }

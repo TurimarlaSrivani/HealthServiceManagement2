@@ -29,16 +29,12 @@ public class TreatmentController {
 	@Autowired
 	ITreatmentService treatmentService;
 
-	//2a9cd2a343db7071dfae046ee031e367156dad7d
-//-----------------------POST-------------------------------------------------------------------			
-
 	// WRITE
 	// saveTreatment
 	@PostMapping("/treatment")
 	public ResponseEntity<Treatment> save(@RequestBody Treatment treatment) {
-		return new ResponseEntity<> (treatmentService.save(treatment),HttpStatus.OK);
+		return new ResponseEntity<>(treatmentService.save(treatment), HttpStatus.OK);
 	}
-// ---------------DELETE----------------------------------------------------------------------
 
 	// deleteTreatmentByTreatmentId
 	@DeleteMapping("/treatment/delId/{treatmentId}")
@@ -46,43 +42,45 @@ public class TreatmentController {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
 			throw new TreatmentNotFoundException("Treatment not found with this id");
 		}
-		return new ResponseEntity<> (treatmentService.deleteTreatmentByTreatmentId(treatmentId),HttpStatus.OK);
+		return new ResponseEntity<>(treatmentService.deleteTreatmentByTreatmentId(treatmentId), HttpStatus.OK);
 	}
 
-// ---------------UPDATE----------------------------------------------------------------------
 	// updateAllTreatmentdata
 	@PatchMapping("/treatment/{treatmentId}")
 	public ResponseEntity<Treatment> updateTreatment(@PathVariable int treatmentId, @RequestBody Treatment treatment) {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
 			throw new TreatmentNotFoundException("Treatment not found with this id");
 		}
-		return new ResponseEntity<> (treatmentService.updateTreatment(treatment),HttpStatus.OK);
+		return new ResponseEntity<>(treatmentService.updateTreatment(treatment), HttpStatus.OK);
 	}
 
-	//updateTreatmentDateByTreatmentId
+	// updateTreatmentDateByTreatmentId
 	@PutMapping("/treatment/{treatmentId}")
-	public ResponseEntity<Treatment> updateTreatmentDateByTreatmentId(@PathVariable int treatmentId, @RequestBody Treatment treatment) {
+	public ResponseEntity<Treatment> updateTreatmentDateByTreatmentId(@PathVariable int treatmentId,
+			@RequestBody Treatment treatment) {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
 			throw new TreatmentNotFoundException("Treatment not found with this id to update");
 		}
-		return new ResponseEntity<> (treatmentService.updateTreatmentDateByTreatmentId(treatmentId, treatment),HttpStatus.OK);
+		return new ResponseEntity<>(treatmentService.updateTreatmentDateByTreatmentId(treatmentId, treatment),
+				HttpStatus.OK);
 	}
-	
-	//updateTreatmentStatusByTreatmentId
-		@PutMapping("/treatment/stat/{treatmentId}")
-		public ResponseEntity<Treatment> updateTreatmentStatusByTreatmentId(@PathVariable int treatmentId, @RequestBody Treatment treatment) {
-			if (treatmentService.findByTreatmentId(treatmentId) == null) {
-				throw new TreatmentNotFoundException("Id Not Found");
-			}
-			return new ResponseEntity<> (treatmentService.updateTreatmentStatusByTreatmentId(treatmentId, treatment),HttpStatus.OK);
-		}
 
-//-----------------GET----------------------------------------------------------------------
+	// updateTreatmentStatusByTreatmentId
+	@PutMapping("/treatment/stat/{treatmentId}")
+	public ResponseEntity<Treatment> updateTreatmentStatusByTreatmentId(@PathVariable int treatmentId,
+			@RequestBody Treatment treatment) {
+		if (treatmentService.findByTreatmentId(treatmentId) == null) {
+			throw new TreatmentNotFoundException("Id Not Found");
+		}
+		return new ResponseEntity<>(treatmentService.updateTreatmentStatusByTreatmentId(treatmentId, treatment),
+				HttpStatus.OK);
+	}
+
 	// Read
 	// findAlltreatmentDetails
 	@GetMapping("/treatment")
 	public ResponseEntity<List<Treatment>> findAllTreatment() {
-		return new ResponseEntity<> (treatmentService.findAllTreatment(),HttpStatus.OK);
+		return new ResponseEntity<>(treatmentService.findAllTreatment(), HttpStatus.OK);
 	}
 
 	// findByTreatmentId
@@ -91,25 +89,26 @@ public class TreatmentController {
 		if (treatmentService.findByTreatmentId(treatmentId) == null) {
 			throw new TreatmentNotFoundException("TREATMENT NOT FOUND WITH THIS ID: " + treatmentId);
 		}
-		return new ResponseEntity<> (treatmentService.findByTreatmentId(treatmentId),HttpStatus.OK);
+		return new ResponseEntity<>(treatmentService.findByTreatmentId(treatmentId), HttpStatus.OK);
 	}
 
 	// findByTreatmentDate
 	@GetMapping("/treatment/getDate/{treatmentDate}")
-	public ResponseEntity<List<Treatment>> findByTreatmentDate(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("treatmentDate") LocalDate treatmentDate) {
+	public ResponseEntity<List<Treatment>> findByTreatmentDate(
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("treatmentDate") LocalDate treatmentDate) {
 		if (treatmentService.findByTreatmentDate(treatmentDate) == null) {
 			throw new TreatmentNotFoundException("NO TREATMENT SCHEDULED ON: " + treatmentDate);
 		}
-		return new ResponseEntity<> (treatmentService.findByTreatmentDate(treatmentDate),HttpStatus.OK);
+		return new ResponseEntity<>(treatmentService.findByTreatmentDate(treatmentDate), HttpStatus.OK);
 	}
-	
-    //findByTreatmentStatus
-		@GetMapping("/treatment/status/{treatmentStatus}")
-		public ResponseEntity<List<Treatment>> findByTreatmentStatus(@PathVariable TreatmentStatus treatmentStatus) {
-			if (treatmentService.findByTreatmentStatus(treatmentStatus) == null) {
-				throw new TreatmentNotFoundException("PATIENT STATUS NOT FOUND: " + treatmentStatus);
-			} 
-			return new ResponseEntity<> ( treatmentService.findByTreatmentStatus(treatmentStatus), HttpStatus.OK);
 
-		} 
+	// findByTreatmentStatus
+	@GetMapping("/treatment/status/{treatmentStatus}")
+	public ResponseEntity<List<Treatment>> findByTreatmentStatus(@PathVariable TreatmentStatus treatmentStatus) {
+		if (treatmentService.findByTreatmentStatus(treatmentStatus) == null) {
+			throw new TreatmentNotFoundException("PATIENT STATUS NOT FOUND: " + treatmentStatus);
+		}
+		return new ResponseEntity<>(treatmentService.findByTreatmentStatus(treatmentStatus), HttpStatus.OK);
+
+	}
 }

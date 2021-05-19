@@ -26,7 +26,9 @@ public interface IDietService {
 
 	// updateDietByDietId
 	public Diet updateDietType(int id, Diet diet);
-
-	// deleteDiet
+	
+	// delete diet
 	public Diet delete(Diet diet);
+
+
 }

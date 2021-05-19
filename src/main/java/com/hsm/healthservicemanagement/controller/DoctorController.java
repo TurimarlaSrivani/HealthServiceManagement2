@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hsm.healthservicemanagement.entity.Doctor;
-import com.hsm.healthservicemanagement.entity.DoctorErrorResponse;
+import com.hsm.healthservicemanagement.entity.HmsErrorResponse;
 import com.hsm.healthservicemanagement.exception.DoctorNotFoundException;
 import com.hsm.healthservicemanagement.service.IDoctorService;
 
@@ -26,8 +26,8 @@ public class DoctorController {
 	IDoctorService doctService;
 
 	@ExceptionHandler
-	public ResponseEntity<DoctorErrorResponse> handleException(DoctorNotFoundException exception) {
-		DoctorErrorResponse error = new DoctorErrorResponse();
+	public ResponseEntity<HmsErrorResponse> handleException(DoctorNotFoundException exception) {
+		HmsErrorResponse error = new HmsErrorResponse();
 
 		error.setStatus(HttpStatus.NOT_FOUND.value());
 		error.setMessage(exception.getMessage());
@@ -38,8 +38,8 @@ public class DoctorController {
 	}
 
 	@ExceptionHandler
-	public ResponseEntity<DoctorErrorResponse> handleException(Exception exception) {
-		DoctorErrorResponse error = new DoctorErrorResponse();
+	public ResponseEntity<HmsErrorResponse> handleException(Exception exception) {
+		HmsErrorResponse error = new HmsErrorResponse();
 
 		error.setStatus(HttpStatus.BAD_REQUEST.value());
 		error.setMessage("Bad Request");
@@ -50,7 +50,7 @@ public class DoctorController {
 	}
 
 	@PostMapping("/doctor")
-	public Doctor addDoctor(@RequestBody Doctor doctor) {
+	public Doctor addDoctor(  @RequestBody Doctor doctor) {
 		return doctService.save(doctor);
 	}
 
@@ -71,7 +71,7 @@ public class DoctorController {
 	}
 
 	@PutMapping("/doctors")
-	public Doctor update(@RequestBody Doctor doctor) {
+	public Doctor update(  @RequestBody Doctor doctor) {
 		return doctService.update(doctor);
 	}
 

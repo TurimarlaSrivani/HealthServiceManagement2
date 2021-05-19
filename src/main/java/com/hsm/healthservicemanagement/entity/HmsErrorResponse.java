@@ -1,21 +1,22 @@
 package com.hsm.healthservicemanagement.entity;
-public class PolicyErrorResponse {
 
-	private int status;
-	private String message;
+public class HmsErrorResponse {
+	private int status; // error code 404
+	private String message; // finance not found with the given id
 	private long timeStamp;
 
-	public PolicyErrorResponse() {
+	// Constructors
+	public HmsErrorResponse() {
 	}
-	
 
-	public PolicyErrorResponse(int status, String message, long timeStamp) {
+	public HmsErrorResponse(int status, String message, long timeStamp) {
 		super();
 		this.status = status;
 		this.message = message;
 		this.timeStamp = timeStamp;
 	}
 
+	// getters and setters
 	public int getStatus() {
 		return status;
 	}
@@ -40,9 +41,10 @@ public class PolicyErrorResponse {
 		this.timeStamp = timeStamp;
 	}
 
+	//ToString
 	@Override
 	public String toString() {
-		return "PolicyErrorResponse [status=" + status + ", message=" + message + ", timeStamp=" + timeStamp + "]";
+		return "HmsErrorResponse [status=" + status + ", message=" + message + ", timeStamp=" + timeStamp + "]";
 	}
 
 }
