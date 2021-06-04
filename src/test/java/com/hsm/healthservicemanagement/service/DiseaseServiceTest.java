@@ -3,6 +3,8 @@ package com.hsm.healthservicemanagement.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,64 +14,74 @@ import com.hsm.healthservicemanagement.entity.Disease;
 
 @SpringBootTest
 class DiseaseServiceTest {
+	// Logger Declare
+	org.apache.logging.log4j.Logger logger = LogManager.getLogger(DiseaseServiceTest.class);
 
+	@Autowired
+	IDiseaseService diseaseService;
 
-		@Autowired
-		IDiseaseService desService;
-		
-		@Test
-		@Order(2)
-		void testFindAllDisease() {
-			List<Disease> diseases = desService.findAll();
-			assertEquals(4, diseases.size());
-		}
-		
-		
-		@Test
-		@Order(3)
-		void testFindDiseaseById() {
-			Disease disease = desService.findByDesId(901);
-			assertEquals("Diabetes", disease.getDesName());
-			
-		}
-		
-		// findEmployeeByName
-		@Test
-		@Order(4)
-		void testFindDiseaseByName() {
-			Disease disease = desService.findByDesName("Alzeihmers");
-			assertEquals(903, disease.getDesId());
-			assertEquals("Alzeihmers", disease.getDesName());
-			assertEquals("Memoryloss", disease.getDesSym());
-			assertEquals("Deficiency", disease.getDesType());
-			
-		}
-	
-		@Test
-		@Order(1)
-		void testCreateDisease() {
-			Disease disease= new Disease(904, "Kidney disease","Deficiency","Swollen limbs", "One month");
-			
-			Disease persistedDes = desService.save(disease);
-			assertEquals(904, persistedDes.getDesId());
-			assertEquals("One month", persistedDes.getDesDur());
-			assertEquals("Kidney disease", persistedDes.getDesName());
-			assertEquals("Swollen limbs", persistedDes.getDesSym());
-			assertEquals("Deficiency", persistedDes.getDesType());
-		}
-		
-		@Test
-		@Order(5)
-		void testDisease() {
-            Disease disease= new Disease(904, "Kidney disease","Deficiency","Swollen limbs", "One month");
-			
-			Disease persistedDes = desService.save(disease);
-			assertEquals(904, persistedDes.getDesId());
-			assertEquals("One month", persistedDes.getDesDur());
-			assertEquals("Kidney disease", persistedDes.getDesName());
-			assertEquals("Swollen limbs", persistedDes.getDesSym());
-			assertEquals("Deficiency", persistedDes.getDesType());
-		
-		}
-		
+	// Testing whether disease database has disease or null
+	@Test
+	@Order(2)
+	void testFindAllDisease() {
+		List<Disease> diseases = diseaseService.findAll();
+		assertEquals(4, diseases.size());
+		logger.info(diseases);
+		logger.info("logger added to FindAllDisease");
 	}
+
+	// Testing whether the disease is found by using disease id in database
+	@Test
+	@Order(3)
+	void testFindDiseaseById() {
+		Disease disease = diseaseService.findByDiseaseId(901);
+		assertEquals("Diabetes", disease.getDiseaseName());
+		logger.info("logger view disease by FindDiseaseById ");
+
+	}
+
+	// Testing whether the disease gets updated in the database
+	// findDiseaseByName
+	@Test
+	@Order(4)
+	void testFindDiseaseByName() {
+		Disease disease = diseaseService.findByDiseaseName("Alzeihmers");
+		assertEquals(903, disease.getDiseaseId());
+		assertEquals("Alzeihmers", disease.getDiseaseName());
+		assertEquals("Memoryloss", disease.getDiseaseSymptoms());
+		assertEquals("Deficiency", disease.getDiseaseType());
+		assertEquals("Diabetes", disease.getDiseaseName());
+		logger.info("logger view disease by FindDiseaseByName ");
+
+	}
+
+	// Testing whether the disease gets created at the database
+	@Test
+	@Order(1)
+	void testCreateDisease() {
+		Disease disease = new Disease(904, "Kidney disease", "Deficiency", "Swollen limbs");
+
+		Disease persistedDisease = diseaseService.save(disease);
+		assertEquals(904, persistedDisease.getDiseaseId());
+		assertEquals("Kidney disease", persistedDisease.getDiseaseName());
+		assertEquals("Deficiency", persistedDisease.getDiseaseType());
+		assertEquals("Swollen limbs", persistedDisease.getDiseaseSymptoms());
+		logger.info("Logger save to Disease");
+	}
+
+	// Testing whether the disease detail gets removed from the database
+	@Test
+	@Order(5)
+	void testDisease() {
+		Disease disease = new Disease(904, "Kidney disease", "Deficiency", "Swollen limbs");
+
+		Disease persistedDisease = diseaseService.save(disease);
+		assertEquals(904, persistedDisease.getDiseaseId());
+		assertEquals("Kidney disease", persistedDisease.getDiseaseName());
+		assertEquals("Deficiency", persistedDisease.getDiseaseType());
+		assertEquals("Swollen limbs", persistedDisease.getDiseaseSymptoms());
+		logger.info("Deleted succesfully");
+
+	}
+
+}

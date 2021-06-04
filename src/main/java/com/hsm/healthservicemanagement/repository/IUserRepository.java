@@ -9,8 +9,6 @@ import com.hsm.healthservicemanagement.entity.User;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User, String> {
-
-	
 	 
 }
 

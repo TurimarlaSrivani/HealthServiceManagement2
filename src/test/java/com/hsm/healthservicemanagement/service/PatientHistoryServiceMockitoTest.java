@@ -34,7 +34,7 @@ class PatientHistoryServiceMockitoTest {
 		MockitoAnnotations.openMocks(this);
 	}
 	
-	//getAllPatentHistory
+		//Testing whether all patient history gets fetched
 		@Test
 		void testGetAllPatientHistory() {
 			 PatientHistory his1=new PatientHistory(123,LocalDate.parse("2013-09-13"));
@@ -51,7 +51,7 @@ class PatientHistoryServiceMockitoTest {
 			 assertEquals(3, his.size());
 		}
 		
-		//AddPatientHistory
+		//Testing whether the new data is getting created 
 		@Test
 		void testAddPatientHistory() {
 			 PatientHistory his=new PatientHistory(567,LocalDate.parse("2013-09-23"));
@@ -63,7 +63,7 @@ class PatientHistoryServiceMockitoTest {
 			 assertEquals(LocalDate.parse("2013-09-23"),persistedHis.getRecordedDate());
 		}
 		
-		//FindByPatientHistoryId
+		//Testing whether the specific id is is present
 		@Test
 		void testFindByPatientHistoryId() {
 			 PatientHistory his=new PatientHistory(123,LocalDate.parse("2013-09-13"));
@@ -75,7 +75,7 @@ class PatientHistoryServiceMockitoTest {
 			 assertEquals(LocalDate.parse("2013-09-13"),persistedHis.getRecordedDate());
 		}
 		
-		//UpdatePatientHistory
+		//Testing whether the patient history gets updated
 		@Test
 		void testUpdatePatientHistory() {
 			 PatientHistory his=new PatientHistory(567,LocalDate.parse("2013-09-23"));
@@ -88,7 +88,7 @@ class PatientHistoryServiceMockitoTest {
 			 assertEquals(LocalDate.parse("2013-09-23"),persistedHis.getRecordedDate());
 		}
 		
-		//DeletePatientHistory
+		//Testing whether the given data gets deleted
 		@Test
 		void testDeletePatientHistoryId() {
 			 PatientHistory his=new PatientHistory(123,LocalDate.parse("2013-09-13"));

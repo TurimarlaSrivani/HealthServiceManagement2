@@ -22,7 +22,7 @@ import com.hsm.healthservicemanagement.repository.IPolicyRepository;
 @ExtendWith(SpringExtension.class)
 public class PolicyServiceMockitoTest {
 
-	// @InjectMocks - Injects EmployeeService and inject dependency
+	// @InjectMocks - Injects PolicyService and inject dependency
 	// classes/interfaces
 	@InjectMocks
 	PolicyServiceImpl policyService;
@@ -37,79 +37,80 @@ public class PolicyServiceMockitoTest {
 		MockitoAnnotations.openMocks(this);
 	}
 
+	// testing getByPolicyId using mockito
 	@Test
 	void testGetByPoliciesId() {
-		Policy policy = new Policy(150, "Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
+		Policy policy = new Policy(200, "health policy", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"),
+				40000, null);
 
 		Mockito.when(policyRepo.findById(150)).thenReturn(Optional.of(policy));
 
 		Policy persistedPolicy = policyService.getByPolicyId(150);
-		assertEquals(150, persistedPolicy.getPolicyId());
-		assertEquals("Travel", persistedPolicy.getPolicyName());
+		assertEquals(200, persistedPolicy.getPolicyId());
+		assertEquals("health policy", persistedPolicy.getPolicyName());
 		assertEquals(LocalDate.parse("2014-04-12"), persistedPolicy.getCreateDate());
 		assertEquals(LocalDate.parse("2015-04-11"), persistedPolicy.getEndDate());
 		assertEquals(40000, persistedPolicy.getMaximumAmount());
 
 	}
 
+	// testing allPolicies using mockito
 	@Test
 	void testAllPolicies() {
-		Policy policy1 = new Policy(102,"Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
-		Policy policy2 = new Policy(106,"health23", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"),
-				4000);
-		Policy policy3 = new Policy(103, "heal", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 400);
-
+		Policy policy1 = new Policy(102, "health policy", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"),
+				40000, null);
+		Policy policy2 = new Policy(106, "health23 policy", LocalDate.parse("2014-04-12"),
+				LocalDate.parse("2015-04-11"), 4000, null);
+		Policy policy3 = new Policy(103, "heal policy", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"),
+				400, null);
 		List<Policy> policyList = new ArrayList<>();
 		policyList.add(policy1);
 		policyList.add(policy2);
 		policyList.add(policy3);
-
 		Mockito.when(policyRepo.findAll()).thenReturn(policyList);
-
 		List<Policy> policies = policyService.getAllPolicies();
 		assertEquals(3, policies.size());
-
 	}
 
+	// testing createPolicy using mockito
 	@Test
 	void testCreatePolicy() {
-		Policy policy = new Policy(104,"Travel", LocalDate.parse("2014-04-12"), LocalDate.parse("2015-04-11"), 40000);
-
+		Policy policy = new Policy(104, "individual policy", LocalDate.parse("2014-04-12"),
+				LocalDate.parse("2015-04-11"), 40000, null);
 		Mockito.when(policyRepo.save(policy)).thenReturn(policy);
-
 		Policy persistedPolicy = policyService.create(policy);
 		assertEquals(104, persistedPolicy.getPolicyId());
-		assertEquals("Travel", persistedPolicy.getPolicyName());
+		assertEquals("individual policy", persistedPolicy.getPolicyName());
 		assertEquals(LocalDate.parse("2014-04-12"), persistedPolicy.getCreateDate());
 		assertEquals(LocalDate.parse("2015-04-11"), persistedPolicy.getEndDate());
 		assertEquals(40000, persistedPolicy.getMaximumAmount());
 	}
 
+	// testing deletePolicy using mockito
 	@Test
 	void testDeletePolicy() {
-		Policy policy = new Policy(13,"History", LocalDate.parse("2014-04-23"), LocalDate.parse("2015-04-21"), 4);
-
+		Policy policy = new Policy(13, "individual policy", LocalDate.parse("2014-04-23"),
+				LocalDate.parse("2015-04-21"), 4, null);
 		Mockito.when(policyRepo.findById(13)).thenReturn(Optional.of(policy));
 		policyRepo.deleteById(123);
-
 		Policy persistedPolicy = policyService.deleteByPolId(13);
 		assertEquals(13, persistedPolicy.getPolicyId());
-		assertEquals("History", persistedPolicy.getPolicyName());
+		assertEquals("individual policy", persistedPolicy.getPolicyName());
 		assertEquals(LocalDate.parse("2014-04-23"), persistedPolicy.getCreateDate());
 		assertEquals(LocalDate.parse("2015-04-21"), persistedPolicy.getEndDate());
 		assertEquals(4, persistedPolicy.getMaximumAmount());
 	}
 
+	// testing updatePolicy using mockito
 	@Test
 	void testUpdatePolicy() {
-		Policy policy = new Policy(123,"History", LocalDate.parse("2014-04-23"), LocalDate.parse("2015-04-21"), 4);
-
+		Policy policy = new Policy(123, "individual policy", LocalDate.parse("2014-04-23"),
+				LocalDate.parse("2015-04-21"), 4, null);
 		Mockito.when(policyRepo.findById(123)).thenReturn(Optional.of(policy));
 		Mockito.when(policyRepo.save(policy)).thenReturn(policy);
-
 		Policy persistedPolicy = policyService.updatePolicy(policy);
 		assertEquals(123, persistedPolicy.getPolicyId());
-		assertEquals("History", persistedPolicy.getPolicyName());
+		assertEquals("individual policy", persistedPolicy.getPolicyName());
 		assertEquals(LocalDate.parse("2014-04-23"), persistedPolicy.getCreateDate());
 		assertEquals(LocalDate.parse("2015-04-21"), persistedPolicy.getEndDate());
 		assertEquals(4, persistedPolicy.getMaximumAmount());

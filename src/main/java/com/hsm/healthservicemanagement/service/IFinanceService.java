@@ -6,8 +6,10 @@ import com.hsm.healthservicemanagement.entity.Finance;
 
 public interface IFinanceService {
 
-	// findByPatientId
-	public Finance findByPatientId(int patientId);
+	// Service layer method
+	// Method to be override by the implementing class
+	// findByFinanceId
+	public Finance findByFinanceId(int financeId);
 
 	// findAllFinanceDetails
 	public List<Finance> findAllFinanceDetails();
@@ -16,13 +18,12 @@ public interface IFinanceService {
 	public Finance save(Finance finance);
 
 	// deleteFinanceByFinanceId
-	public Finance deleteFinanceByPatientId(int patientId);
+	public Finance deleteFinanceByFinanceId(int financeId);
 
-	// update
+	// updateFinance
 	public Finance updateFinance(Finance finance);
+	
+	// custom methods // find based on patient name 
+		List<Finance> findByPatientName(String patientName);
 
-	public Finance updateFinanceByPatientName(int financeId, Finance finance);
-
-	// custom queries
-	public Finance findByPatientName(String patientName);
 }
