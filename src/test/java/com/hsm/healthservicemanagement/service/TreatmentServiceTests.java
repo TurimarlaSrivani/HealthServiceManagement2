@@ -24,8 +24,8 @@ class TreatmentServiceTests {
 
 	// save
 	@Test
-	 void testSave() {
-		Treatment t = new Treatment(8,"rhinoplasty",5000,LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
+	void testSave() {
+		Treatment t = new Treatment(8, "rhinoplasty", 5000, LocalDate.of(2021, 10, 03), TreatmentStatus.APPOINTED);
 		Treatment persistedt = treatmentService.save(t);
 
 		assertEquals(8, persistedt.getTreatmentId());
@@ -37,43 +37,44 @@ class TreatmentServiceTests {
 
 	// findAlltreatmentDetails
 	@Test
-	 void testfindAllTreatment() {
+	void testfindAllTreatment() {
 		List<Treatment> t = treatmentService.findAllTreatment();
 		assertEquals(7, t.size());
 	}
 
 	// findByTreatmentId
 	@Test
-	 void testfindByTreatmentId() {
+	void testfindByTreatmentId() {
 		Treatment t = treatmentService.findByTreatmentId(1);
 		assertEquals("Lasik", t.getCurrentTreatment());
 	}
-	
-    //findByTreatmentDate
+
+	// findByTreatmentDate
 	@Test
-	 void testfindByTreatmentDate() {
-		List<Treatment> t=treatmentService.findByTreatmentDate(LocalDate.of(2021, 10, 05));
-		assertThat(treatmentService.findByTreatmentDate(LocalDate.of(2021, 10, 05)),hasItem(hasProperty("treatmentDate", is(LocalDate.of(2021, 10, 05)))));
-	} 
+	void testfindByTreatmentDate() {
+		List<Treatment> t = treatmentService.findByTreatmentDate(LocalDate.of(2021, 10, 05));
+		assertThat(treatmentService.findByTreatmentDate(LocalDate.of(2021, 10, 05)),
+				hasItem(hasProperty("treatmentDate", is(LocalDate.of(2021, 10, 05)))));
+	}
 
 	// deleteTreatmentByTreatmentId
 	@Test
-	 void testdeleteTreatmentByTreatmentId() {
+	void testdeleteTreatmentByTreatmentId() {
 
-	Treatment t = new Treatment(8,"rhinoplasty",5000,LocalDate.of(2021, 10, 03),TreatmentStatus.APPOINTED);
+		Treatment t = new Treatment(8, "rhinoplasty", 5000, LocalDate.of(2021, 10, 03), TreatmentStatus.APPOINTED);
 
-	Treatment persistedt = treatmentService.deleteTreatmentByTreatmentId(8);
+		Treatment persistedt = treatmentService.deleteTreatmentByTreatmentId(8);
 
-	assertEquals(8, persistedt.getTreatmentId());
-	assertEquals("rhinoplasty", persistedt.getCurrentTreatment());
-	assertEquals(5000, persistedt.getTreatmentFee());
-	assertEquals(LocalDate.of(2021, 10, 03), persistedt.getTreatmentDate());
-	assertEquals(TreatmentStatus.APPOINTED, persistedt.getTreatmentStatus());
+		assertEquals(8, persistedt.getTreatmentId());
+		assertEquals("rhinoplasty", persistedt.getCurrentTreatment());
+		assertEquals(5000, persistedt.getTreatmentFee());
+		assertEquals(LocalDate.of(2021, 10, 03), persistedt.getTreatmentDate());
+		assertEquals(TreatmentStatus.APPOINTED, persistedt.getTreatmentStatus());
 	}
 
 	// update
 	@Test
-	 void testUpdateTreatment() {
+	void testUpdateTreatment() {
 		Treatment t = new Treatment();
 		t.setTreatmentId(1);
 		t.setCurrentTreatment("Lasik");
@@ -84,16 +85,16 @@ class TreatmentServiceTests {
 		assertEquals(5000, updTreatment.getTreatmentFee());
 		assertEquals(LocalDate.of(2021, 10, 03), updTreatment.getTreatmentDate());
 	}
-	
-	//updateTreatmentDate
+
+	// updateTreatmentDate
 	@Test
-	 void testUpdateTreatmentDateByTreatmentId() {
+	void testUpdateTreatmentDateByTreatmentId() {
 		Treatment t = new Treatment();
 		t.setTreatmentId(1);
 		t.setTreatmentDate(LocalDate.of(2021, 10, 03));
-		
-		Treatment updTreatment = treatmentService.updateTreatmentDateByTreatmentId(1,t);
+
+		Treatment updTreatment = treatmentService.updateTreatmentDateByTreatmentId(1, t);
 		assertEquals(LocalDate.of(2021, 10, 03), updTreatment.getTreatmentDate());
 	}
-	
+
 }

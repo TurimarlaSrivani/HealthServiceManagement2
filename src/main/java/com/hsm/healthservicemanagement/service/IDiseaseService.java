@@ -9,35 +9,48 @@ import com.hsm.healthservicemanagement.entity.Disease;
 
 @Service
 public interface IDiseaseService {
-	
-		Disease findByDesId(int id);
-		List<Disease> findAll();
-		Disease update(Disease disease);
-		Disease save(Disease disease);
-		Disease updateDesType(int desId, Disease disease);
-		Disease updateDesSym(int desId, Disease disease);
-		Disease updateDesDur(int desId, Disease disease);
-		Disease updateDesName(int desId, Disease disease);
-		Disease deleteByDesId(int desId);
-		Disease delete(Disease disease);
-		Disease updateDesId(int id, Disease disease);
-		Disease findByDesName(String name);
-		
-	
-		
 
-		// custom methods
-		// find by name
+		// Method to be override by the implementing class
+		// findByDiseaseId
+		Disease findByDiseaseId(int id);
+		// Method to be override by the implementing class
+		// findAll
+		List<Disease> findAll();
+		// Method to be override by the implementing class
+		// update
+		Disease update(Disease disease);
+		// Method to be override by the implementing class
+		// save
+		Disease save(Disease disease);
+		// Method to be override by the implementing class
+		// updateDiseaseType
+		Disease updateDiseaseType(int diseaseId, Disease disease);
+		// Method to be override by the implementing class
+		// updateDiseaseSymptoms
+		Disease updateDiseaseSymptoms(int diseaseId, Disease disease);
+		// Method to be override by the implementing class
+		// updateDiseaseName
+		Disease updateDiseaseName(int diseaseId, Disease disease);
+		// Method to be override by the implementing class
+		// deleteByDiseaseId
+		Disease deleteByDiseaseId(int diseaseId);
+		// Method to be override by the implementing class
+		// delete
+		Disease delete(Disease disease);
+		// Method to be override by the implementing class
+		// updateDiseaseId
+		Disease updateDiseaseId(int id, Disease disease);
+		// Method to be override by the implementing class
+		// updateDiseaseName
+		Disease findByDiseaseName(String name);
+		// Method to be override by the implementing class
+		// findByDiseaseIdLessThan
+		List<Disease> findByDiseaseIdLessThan(int id);
 		
-		// Find emp's based on department
 		
-		List<Disease> findByDesIdLessThan(int id);
+		
 		
 		
 
 
 	}
-
-			
-
-

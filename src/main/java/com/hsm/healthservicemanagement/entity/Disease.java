@@ -1,15 +1,16 @@
-
 package com.hsm.healthservicemanagement.entity;
-
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -33,20 +34,24 @@ public class Disease{
 	
 	@Id
 	@NonNull
-	private int desId;
+	private int diseaseId;
+	
 	@NonNull
-	private String desName;
+	@Size(min = 3, message = "Minimum charecters in  name should be 3.")
+	@Column(name = "diseaseName")
+	private String diseaseName;
+	
 	@NonNull
-	private String desType;
+	private String diseaseType;
+	
 	@NonNull
-	private String desSym;
-	@NonNull
-	private String desDur;
+	private String diseaseSymptoms;
+
 	
 	//disease-patient
 	@ManyToMany(targetEntity = Patient.class,cascade = CascadeType.ALL)
-	@JoinTable(name ="disease_pat",
-	joinColumns = {@JoinColumn(name ="desId")},
+	@JoinTable(name ="disease_patient",
+	joinColumns = {@JoinColumn(name ="diseaseId")},
 	inverseJoinColumns = {@JoinColumn(name="patientId")})
 	
 	private List<Patient> patientList = new ArrayList<>();

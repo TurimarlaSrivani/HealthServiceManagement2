@@ -1,11 +1,13 @@
 package com.hsm.healthservicemanagement.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,28 +23,25 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-@RequiredArgsConstructor
 @AllArgsConstructor
+@Table(name = "finance")
+
 public class Finance {
 
 	@Id
-	@NonNull
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "finance_id", nullable = false)
 	private int financeId;
-	@NonNull
-	private int patientId;
-	@NonNull
-	private String patientName;
-	@NonNull
-	private double registrationFee;
-	@NonNull
-	private double doctorFee;
-	@NonNull
-	private double medicinesAmount;
-	@NonNull
-	private double totalFee;
 
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "patient_fk", referencedColumnName = "patientId")
-	private Patient patient;
+	@Size(min = 3, message = "Minimum charecters in  name should be 3.")
+	private String patientName;
+
+	private double registrationFee;
+
+	private double doctorFee;
+
+	private double medicinesAmount;
+
+	private double totalFee;
 
 }
