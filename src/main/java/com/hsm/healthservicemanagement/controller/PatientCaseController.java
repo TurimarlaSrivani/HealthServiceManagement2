@@ -33,7 +33,7 @@ public class PatientCaseController {
 	// it
 	// to the service layer.
 	// save patientCase
-	@PostMapping("/patients")
+	@PostMapping("/patientCase")
 	public ResponseEntity<PatientCase> savePatientCase(@RequestBody PatientCase patientcase) {
 		// setting logger info
 		logger.info("save the details of the patientCase");
@@ -45,7 +45,7 @@ public class PatientCaseController {
 	// and request the service to perform the action and return the message as
 	// deleted else throw exception.
 	// deletePatientCaseByPatientCaseId
-	@DeleteMapping("/patients/{patientid}")
+	@DeleteMapping("/patientCase/{patientid}")
 	public ResponseEntity<PatientCase> deletePatientCase(@PathVariable("patientid") int patientCaseId)
 			throws PatientCaseNotFoundException {
 
@@ -63,7 +63,7 @@ public class PatientCaseController {
 	// This controller is used to return and list all the patientCase found in the
 	// database and request to the service to perform the action.
 	// viewAllPatientCaseDetails
-	@GetMapping("/patients/all")
+	@GetMapping("/patientCase")
 	public ResponseEntity<List<PatientCase>> viewAll() {
 		// setting logger info
 		logger.info("Find the details of the patientCase");
@@ -73,7 +73,7 @@ public class PatientCaseController {
 
 	// This controller is used to get a specific patientCase on basis of Id.
 	// viewByPatientCaseId
-	@GetMapping("/patients/{patientid}")
+	@GetMapping("/patientCase/{patientid}")
 	public ResponseEntity<PatientCase> viewById(@PathVariable("patientid") int Id) throws PatientCaseNotFoundException {
 		// setting logger info
 		logger.info("Get the patientCase details By Id");
@@ -88,7 +88,7 @@ public class PatientCaseController {
 	// This function is used to update a specific patientCase on basis of given
 	// patientCase id and returns exception if given patientCase id is not found.
 	// updatePatientCase
-	@PutMapping("/patients/{patientId}")
+	@PutMapping("/patientCase/{patientId}")
 	public ResponseEntity<PatientCase> updatePatientCaseById(@PathVariable("patientId") int patientCaseId,
 			@RequestBody PatientCase patientCase) throws PatientCaseNotFoundException {
 		// setting logger info
