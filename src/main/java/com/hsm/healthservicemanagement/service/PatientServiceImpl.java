@@ -84,31 +84,22 @@ public class PatientServiceImpl implements IPatientService {
 		return patient;
 	}
 
-	// Used to update the patient of given id.
-	// updateByPatientId
+	// Used to update the patient.
+	// updateByPatient
 	@Override
-	public Patient updateByPatientId(int id) {
+	public Patient updatePatient(Patient patient) {
 		// setting logger info
-		logger.info("update the specific property by id");
-		Optional<Patient> patient = patientRepo.findById(id);
-		if (!patient.isPresent()) {
-			return null;
-		}
-		return patient.get();
-	}
+		logger.info("update the patient details ");
 
-	// Used to update the patient of given name.
-	// updateByPatientName
-	@Override
-	public Patient updatePatientName(int patientId, Patient patient) {
-		// setting logger info
-		logger.info("update the specific property by name");
-		Optional<Patient> pat = patientRepo.findById(patientId);
-		if (!pat.isPresent()) {
-			return null;
-		}
-		pat.get().setPatientName(patient.getPatientName());
-		return patientRepo.save(pat.get());
+		Patient p = patientRepo.findById(patient.getPatientId()).get();
+		p.setPatientName(patient.getPatientName());
+		p.setPatientAge(patient.getPatientAge());
+		p.setRegistrationFee(patient.getRegistrationFee());
+		p.setPatientContactNumber(patient.getPatientContactNumber());
+		p.setSymptoms(patient.getSymptoms());
+		p.setCreatedAt(patient.getCreatedAt());
+		p.setUpdatedAt(patient.getUpdatedAt());
+		return patientRepo.save(p);
 	}
 
 }

@@ -26,7 +26,7 @@ class DoctorServiceTest {
 	void testFindAllDoctors() {
 		List<Doctor> doctor = doctService.findAll();
 		logger.info(doctor);
-		assertEquals(2, doctor.size());
+		assertEquals(3, doctor.size());
 	}
 
 	// Testing whether the given id fetches the given doctor or not.
