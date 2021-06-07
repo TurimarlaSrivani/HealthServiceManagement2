@@ -29,7 +29,7 @@ import lombok.ToString;
 public class Finance {
 
 	@Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "finance_id", nullable = false)
 	private int financeId;
 

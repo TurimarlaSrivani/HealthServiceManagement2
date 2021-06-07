@@ -80,18 +80,18 @@ public class PatientCaseServiceMockitoTest {
 	@Test
 	void testupdatePatientCase()
 	{
-		PatientCase patientcase = new PatientCase(101,"Dart","Sam",500,"11-05-2021","Headache","Medication",10);
-		Mockito.when(crepository.findById(101)).thenReturn(Optional.of(patientcase));
+		PatientCase patientcase = new PatientCase(10,"2021-01-05","harini",2000,"EyeSight","Lasik","NSAID",101);
+		Mockito.when(crepository.findById(10)).thenReturn(Optional.of(patientcase));
 		Mockito.when(crepository.save(patientcase)).thenReturn(patientcase);
 		PatientCase persistedPt = pService.update(patientcase);
 		assertEquals("Sam",persistedPt.getAssociateDoctorName());
-		assertEquals(101,persistedPt.getPatientCaseId());
-		assertEquals("Dart",persistedPt.getMedicines());
-		assertEquals(500,persistedPt.getMedicineFee());
-		assertEquals("11-05-2021",persistedPt.getAppointmentDate());
-		assertEquals("Headache",persistedPt.getDiseaseDescription());
-		assertEquals("Medication",persistedPt.getCurrentTreatment());
-		assertEquals(10,persistedPt.getPatientId());
+		assertEquals(10,persistedPt.getPatientCaseId());
+		assertEquals("NSAID",persistedPt.getMedicines());
+		assertEquals(2000,persistedPt.getMedicineFee());
+		assertEquals("2021-01-05",persistedPt.getAppointmentDate());
+		assertEquals("EyeSight",persistedPt.getDiseaseDescription());
+		assertEquals("Lasik",persistedPt.getCurrentTreatment());
+		assertEquals(101,persistedPt.getPatientId());
 		
 	}
 	

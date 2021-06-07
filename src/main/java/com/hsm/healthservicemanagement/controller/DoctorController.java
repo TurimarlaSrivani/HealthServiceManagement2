@@ -19,7 +19,7 @@ import com.hsm.healthservicemanagement.service.IDoctorService;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RestController
 public class DoctorController {
 
@@ -48,8 +48,8 @@ public class DoctorController {
 	// viewByDoctorId
 
 	// get method(findbyId)
-	@GetMapping("/doctors/{id}")
-	public Doctor findByDoctId(@PathVariable("id") int doctorId) {
+	@GetMapping("/doctors/{doctorId}")
+	public Doctor findByDoctId(@PathVariable("doctorId") int doctorId) {
 
 		// setting logger info
 		logger.info("Get the doctor details By Id");
@@ -66,8 +66,8 @@ public class DoctorController {
 	// deleteDoctorByDoctorId
 
 	// delete method(byId)
-	@DeleteMapping("/doctors/{id}")
-	public String deleteByDoctorid(@PathVariable("id") int doctorId) {
+	@DeleteMapping("/doctors/{doctorId}")
+	public String deleteByDoctorid(@PathVariable("doctorId") int doctorId) {
 
 		// setting logger info
 		logger.info(" delete the delete Doctor By Id");
@@ -83,8 +83,8 @@ public class DoctorController {
 	// updateDoctor
 
 	// put method(update)
-	@PutMapping("/doctors/{id}")
-	public ResponseEntity<Doctor> update(@PathVariable("id") int doctorId, @RequestBody Doctor doctor) throws DoctorNotFoundException {
+	@PutMapping("/doctors/{doctorId}")
+	public ResponseEntity<Doctor> update(@PathVariable("doctorId") int doctorId, @RequestBody Doctor doctor) throws DoctorNotFoundException {
 
 		// setting logger info
 		logger.info("update the doctor details by id");
@@ -101,7 +101,7 @@ public class DoctorController {
 	// viewAllDoctorDetails
 
 	// get method(alldoctors)
-	@GetMapping("/doctors/alldoctors")
+	@GetMapping("/doctors")
 	public List<Doctor> getAllDoctors() {
 
 		// setting logger info
@@ -110,7 +110,7 @@ public class DoctorController {
 		return doctService.findAll();
 	}
 
-	@GetMapping("/doctor/{doctorname}")
+	@GetMapping("/doctors/{doctorname}")
 	public Doctor findByDoctorName(@PathVariable("doctorname") String doctorName) {
 		// setting logger info
 		logger.info("Find the details of the doctor");

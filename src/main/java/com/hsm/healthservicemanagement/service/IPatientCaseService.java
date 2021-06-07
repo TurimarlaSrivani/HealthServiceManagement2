@@ -28,9 +28,4 @@ public interface IPatientCaseService // Service layer method
 	// Method to be override by the implementing class
 	// update
 	public PatientCase update(PatientCase PatientCase);
-
-	// Method to be override by the implementing class
-	// updatePatientCaseByPatientCaseId
-		public PatientCase updateById(int Id,PatientCase PatientCase);
-		
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -31,6 +33,7 @@ public class Doctor {
 
 	@Id
 	@NonNull
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int doctorId;
 	@NonNull
 	@Size(min = 3, message = "Minimum charecters in  name should be 3.")
