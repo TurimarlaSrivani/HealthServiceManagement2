@@ -177,5 +177,3 @@ public class DiseaseController {
 		}
 		return new ResponseEntity<Disease>(diseases, HttpStatus.OK);
 	}
-
-}
