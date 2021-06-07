@@ -94,21 +94,4 @@ public class PatientCaseServiceImpl implements IPatientCaseService {
 		pc.setMedicines(PatientCase.getMedicines());
 		return patientRepository.save(pc);
 	}
-
-	// Used to update the patientCase by id
-	// updatePatientCaseById
-	@Override
-	public PatientCase updateById(int Id, PatientCase PatientCase) {
-		// setting logger info
-		logger.info("update the patientCase details by id");
-
-		Optional<PatientCase> opt = patientRepository.findById(Id);
-		if (!opt.isPresent()) {
-			return null;
-		}
-		PatientCase pc = opt.get();
-		pc.setMedicines(PatientCase.getMedicines());
-		return patientRepository.save(pc);
-	}
-
 }

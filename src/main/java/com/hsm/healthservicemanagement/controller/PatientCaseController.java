@@ -18,7 +18,7 @@ import com.hsm.healthservicemanagement.entity.PatientCase;
 import com.hsm.healthservicemanagement.exception.PatientCaseNotFoundException;
 import com.hsm.healthservicemanagement.service.IPatientCaseService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RestController
 public class PatientCaseController {
 
@@ -89,15 +89,15 @@ public class PatientCaseController {
 	// patientCase id and returns exception if given patientCase id is not found.
 	// updatePatientCase
 	@PutMapping("/patientCase/{patientId}")
-	public ResponseEntity<PatientCase> updatePatientCaseById(@PathVariable("patientId") int patientCaseId,
+	public ResponseEntity<PatientCase> update(@PathVariable("patientId") int patientCaseId,
+
 			@RequestBody PatientCase patientCase) throws PatientCaseNotFoundException {
 		// setting logger info
 		logger.info("update the patientCase details by id");
-		PatientCase pc = patService.updateById(patientCaseId, patientCase);
+		PatientCase pc = patService.update( patientCase);
 		if (pc == null) {
-			throw new PatientCaseNotFoundException("PatientCase not found with this id to update" + patientCaseId);
+			throw new PatientCaseNotFoundException("PatientCase not found with this id to update" );
 		}
 		return new ResponseEntity<PatientCase>(pc, HttpStatus.OK);
 	}
-
 }
