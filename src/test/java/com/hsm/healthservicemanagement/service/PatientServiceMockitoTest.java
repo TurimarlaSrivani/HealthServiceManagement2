@@ -116,7 +116,7 @@ class PatientServiceMockitoTest {
 		Mockito.when(patientRepo.findById(105)).thenReturn(Optional.of(patient));
 		Mockito.when(patientRepo.save(patient)).thenReturn(patient);
 
-		Patient persistedPatient = patientService.updateByPatientId(105);
+		Patient persistedPatient = patientService.updatePatient(patient);
 		assertEquals(105, persistedPatient.getPatientId());
 		assertEquals("Ram", persistedPatient.getPatientName());
 		assertEquals(23, persistedPatient.getPatientAge());

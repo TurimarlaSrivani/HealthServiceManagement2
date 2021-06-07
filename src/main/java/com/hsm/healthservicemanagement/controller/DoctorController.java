@@ -2,7 +2,8 @@ package com.hsm.healthservicemanagement.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -82,16 +83,17 @@ public class DoctorController {
 	// updateDoctor
 
 	// put method(update)
-	@PutMapping("/doctors")
-	public Doctor update(@PathVariable("id") int doctorId, @RequestBody Doctor doctor) {
+	@PutMapping("/doctors/{id}")
+	public ResponseEntity<Doctor> update(@PathVariable("id") int doctorId, @RequestBody Doctor doctor) throws DoctorNotFoundException {
 
 		// setting logger info
-		logger.info("update the doctor details");
+		logger.info("update the doctor details by id");
 
-		if (doctService.findByDoctId(doctorId) == null) {
-			throw new DoctorNotFoundException("Doctor not found with this doctor id");
+		Doctor doct = doctService.update(doctor);
+		if (doct == null) {
+			throw new DoctorNotFoundException("Doctor not found with this doctor id: " + doctorId);
 		}
-		return doctService.update(doctor);
+		return new ResponseEntity<>(doct, HttpStatus.OK);
 	}
 
 	// This controller is used to return and list all the doctor found in the

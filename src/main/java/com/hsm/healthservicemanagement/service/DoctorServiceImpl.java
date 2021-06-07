@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hsm.healthservicemanagement.entity.Doctor;
+import com.hsm.healthservicemanagement.entity.Finance;
 import com.hsm.healthservicemanagement.repository.IDocterRepository;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DoctorServiceImpl implements IDoctorService { // Implementation of service layer method by extend that
@@ -67,19 +69,21 @@ public class DoctorServiceImpl implements IDoctorService { // Implementation of 
 		
 		// setting logger info
 				logger.info("update the specific property by id");
-
+				Optional<Doctor> doct = doctRepo.findById(doctor.getDoctorId());
+				if (doct.isPresent()) {
 		
-		Doctor doc = doctRepo.findById(doctor.getDoctorId()).get();
-		doc.setDoctorName(doctor.getDoctorName());
-		doc.setContactNumber(doctor.getContactNumber());
-		doc.setYearsOfExperience(doctor.getYearsOfExperience());
-		doc.setDegree(doctor.getDegree());
-		doc.setSpecialization(doctor.getSpecialization());
-		doc.setDoctorName(doctor.getDoctorName());
-		doc.setDoctorFee(doctor.getDoctorFee());
-		doc.setHoursOfAvailability(doctor.getHoursOfAvailability());
-		return doctRepo.save(doc);
-	}
+		doct.get().setDoctorName(doctor.getDoctorName());
+		doct.get().setContactNumber(doctor.getContactNumber());
+		doct.get().setYearsOfExperience(doctor.getYearsOfExperience());
+		doct.get().setDegree(doctor.getDegree());
+		doct.get().setSpecialization(doctor.getSpecialization());
+		doct.get().setDoctorName(doctor.getDoctorName());
+		doct.get().setDoctorFee(doctor.getDoctorFee());
+		doct.get().setHoursOfAvailability(doctor.getHoursOfAvailability());
+		}
+		return doctRepo.save(doctor);
+
+   }
 
 	// Used to list all the doctor from the database
 	// viewAllDoctorDetails

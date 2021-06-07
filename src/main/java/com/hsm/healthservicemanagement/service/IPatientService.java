@@ -24,13 +24,10 @@ public interface IPatientService {
 	// save patient
 	Patient save(Patient patient);
 
-	// Method to be override by the implementing class
-	// updatePatientByPatientId
-	Patient updateByPatientId(int id);
 
 	// Method to be override by the implementing class
-	// updatePatientByPatientName
-	Patient updatePatientName(int patientId, Patient patient);
+	// updatePatient
+	Patient updatePatient( Patient patient);
 
 	// custom methods
 

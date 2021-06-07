@@ -40,6 +40,7 @@ public class Doctor {
 	@NonNull
 	private int hoursOfAvailability;
 	@NonNull
+	@Size(min = 3, message = "Minimum charecters in  name should be 3.")
 	private String specialization;
 	@NonNull
 	private String degree;

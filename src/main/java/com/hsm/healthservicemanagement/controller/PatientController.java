@@ -1,11 +1,12 @@
 package com.hsm.healthservicemanagement.controller;
 
 import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,7 @@ import com.hsm.healthservicemanagement.entity.Patient;
 import com.hsm.healthservicemanagement.exception.PatientNotFoundException;
 import com.hsm.healthservicemanagement.service.IPatientService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 @RestController
 public class PatientController {
 
@@ -101,33 +102,16 @@ public class PatientController {
 	// Updating specific property
 	// updatePatientId
 
-	@PatchMapping("/patient/id/{id}")
-	public Patient updateByPatientId(@PathVariable("id") int patientId) {
+	@PutMapping("/patient/{id}")
+	public Patient updatePatient(@PathVariable("id") int patientId,@RequestBody Patient patient) {
 		// setting logger info
-		logger.info("update the specific property by id");
+		logger.info("update the patient details by id");
 
-		if (patientService.updateByPatientId(patientId) == null) {
+		if (patientService.findByPatientId(patientId) == null) {
 			throw new PatientNotFoundException("Patient not found with given id: " + patientId);
 		}
-		return patientService.updateByPatientId(patientId);
+		return patientService.updatePatient(patient);
 
-	}
-
-	// This function is used to update a specific patient on basis of given
-	// patient name and returns exception if given patient name is not found.
-	// UPDATE
-	// Updating specific property
-	// updatePatientName
-
-	@PatchMapping("/patient/{name}")
-	public Patient updatePatientName(@PathVariable("name") int id, @RequestBody Patient patient) {
-		// setting logger info
-		logger.info("update the specific property by name");
-
-		if (patientService.updatePatientName(id, patient) == null) {
-			throw new PatientNotFoundException("Patient not found with given name: " + patient);
-		}
-		return patientService.updatePatientName(id, patient);
 	}
 
 }
