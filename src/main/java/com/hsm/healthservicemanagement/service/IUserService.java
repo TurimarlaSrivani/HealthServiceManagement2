@@ -10,13 +10,25 @@ import com.hsm.healthservicemanagement.entity.User;
 
 @Service
 public interface IUserService {
-	public User findUserByUserId(String userid) throws Exception;
-
+	/**
+	 * Retrieves user records with userid
+	 * @param userid
+	 * @return UserEntity
+	 */
+	public User findUserByUserId(String userid);
+/**
+ * Retrieves user
+ * @return
+ */
 	public List<User> getAllUsers();
+	/**
+	 * Creates user record in the entity table
+	 * @param UserEntity
+	 * @return UserEntity
+	 */
+	public User createUser(User user);
 
-	public User save(User user) throws Exception;
-
-	public User updateUser(User user)throws Exception;
+	public User updateUser(User user);
 
 	public User deleteUserByUserId(String userid);
 

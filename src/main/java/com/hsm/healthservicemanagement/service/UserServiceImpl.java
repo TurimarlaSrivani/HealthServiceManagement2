@@ -8,23 +8,26 @@ import org.springframework.stereotype.Service;
 
 import com.hsm.healthservicemanagement.entity.User;
 import com.hsm.healthservicemanagement.repository.IUserRepository;
-import com.hsm.healthservicemanagement.validationhandler.Validate;
+
+
 
 @Service
 public class UserServiceImpl implements IUserService {
 
 	@Autowired
 	IUserRepository regRepo;
-
+/**
+ * creating a user in database
+ * 
+ */
 	@Override
-	public User save(User user) throws Exception {
-		Validate.validateUser(user);
+	public User createUser(User user){
 		return regRepo.save(user);
 
 	}
 
 	@Override
-	public User findUserByUserId(String userid) throws Exception {
+	public User findUserByUserId(String userid) {
 		Optional<User> optional = regRepo.findById(userid);
 		if (!optional.isPresent()) {
 			return null;
@@ -39,27 +42,37 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public User updateUser(User user) throws Exception {
-		User dbUser = regRepo.findById(user.getUserid()).get();
-		if (dbUser != null) {
-			if (user.getFirstname() != null && !user.getFirstname().equals("")) {
-				dbUser.setFirstname(user.getFirstname());
-			}
-			if (user.getLastname() != null && !user.getLastname().equals("")) {
-				dbUser.setLastname(user.getLastname());
-			}
-			if (user.getEmail() != null && !user.getEmail().equals("")) {
-				dbUser.setEmail(user.getEmail());
-			}
-			if (user.getPassword() != null && !user.getPassword().equals("")) {
-				dbUser.setPassword(user.getPassword());
-			}
-			if (user.getMobile_no() != null && !user.getMobile_no().equals("")) {
-				dbUser.setMobile_no(user.getMobile_no());
-			}
+	public User updateUser(User user) {
+		User dbUser = getUser(user);
+		if (isNullOrEmpty(dbUser.getFirstname())) {
+			dbUser.setFirstname(user.getFirstname());
 		}
-		Validate.validateUser(dbUser);
+		if (isNullOrEmpty(dbUser.getLastname())) {
+			dbUser.setLastname(user.getLastname());
+		}
+		if (isNullOrEmpty(dbUser.getEmail())) {
+			dbUser.setEmail(user.getEmail());
+		}
+		if (isNullOrEmpty(dbUser.getPassword())) {
+			dbUser.setPassword(user.getPassword());
+		}
+		if (isNullOrEmpty(dbUser.getMobileNumber())) {
+			dbUser.setMobileNumber(user.getMobileNumber());
+		}
 		return regRepo.save(dbUser);
+	}
+
+	private boolean isNullOrEmpty(String value) {
+		return value != null && !value.equals("");
+	}
+
+	private User getUser(User user) {
+		Optional<User> userfield = regRepo.findById(user.getUserid());
+		User dbUser=null;
+		if (userfield.isPresent()) {
+			dbUser = userfield.get();
+		}
+		return dbUser;
 	}
 
 	@Override

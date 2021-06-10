@@ -13,5 +13,5 @@ public interface IFinanceRepository extends JpaRepository<Finance, Integer> {
 
 	// Custom Methods
 		// find based on patient name and display
-		List<Finance> findByPatientName(String patientName);
+		//List<Finance> findByPatientName(String patientName);
 }

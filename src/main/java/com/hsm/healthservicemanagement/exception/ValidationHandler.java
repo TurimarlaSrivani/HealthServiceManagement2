@@ -1,4 +1,4 @@
-package com.hsm.healthservicemanagement.validationhandler;
+package com.hsm.healthservicemanagement.exception;
 
 import java.net.http.HttpHeaders;
 import java.util.HashMap;

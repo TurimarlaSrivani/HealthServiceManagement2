@@ -109,13 +109,13 @@ public class FinanceController {
 
 	// custom method // findByPatientName
 
-	@GetMapping("/finance/{patientname}")
+/*	@GetMapping("/finance/{patientname}")
 	public List<Finance> findByPatientName(@PathVariable("patientname") String patientName) {
 		// setting logger info
 		logger.info("Find the details of the Finance");
 		return (financeService.findByPatientName(patientName));
 		// return new ResponseEntity<>(financeService.findByPatientName(patientName)),
 		// HttpStatus.OK);
-	}
+	}*/
 
 }
