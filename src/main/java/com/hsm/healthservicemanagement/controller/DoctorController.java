@@ -109,14 +109,4 @@ public class DoctorController {
 
 		return doctService.findAll();
 	}
-
-	@GetMapping("/doctors/{doctorname}")
-	public Doctor findByDoctorName(@PathVariable("doctorname") String doctorName) {
-		// setting logger info
-		logger.info("Find the details of the doctor");
-		return (doctService.findByDoctorName(doctorName));
-		// return new ResponseEntity<>(financeService.findByPatientName(patientName)),
-		// HttpStatus.OK);
-	}
-
 }

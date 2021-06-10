@@ -24,6 +24,6 @@ public interface IFinanceService {
 	public Finance updateFinance(Finance finance);
 	
 	// custom methods // find based on patient name 
-		List<Finance> findByPatientName(String patientName);
+	//	List<Finance> findByPatientName(String patientName);
 
 }

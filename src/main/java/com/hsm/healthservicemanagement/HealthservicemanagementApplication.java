@@ -34,11 +34,11 @@ public class HealthservicemanagementApplication {
 				.apis(RequestHandlerSelectors.basePackage("com.hsm.healthservicemanagement")).build();
 		
 	}
-	@Bean CommandLineRunner cmdLineRunner(IFinanceRepository financeRepo) {
+	/*@Bean CommandLineRunner cmdLineRunner(IFinanceRepository financeRepo) {
 		 return args -> {
 		  
-			 logger.info(financeRepo.findByPatientName("Sam"));
+			 //logger.info(financeRepo.findByPatientName("Sam"));
 		 };
-	}
+	}*/
     
 }

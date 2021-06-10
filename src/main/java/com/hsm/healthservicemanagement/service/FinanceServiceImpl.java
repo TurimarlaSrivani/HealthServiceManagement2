@@ -87,13 +87,13 @@ public class FinanceServiceImpl implements IFinanceService {
 	}
 
 	// custom method // findByPatientName
-	@Override
+/*@Override
 	public List<Finance> findByPatientName(String patientName) {
 		// setting logger info
 		logger.info("Found by Patient Name Sucessfully");
 		// Finance f = //financeRepo.findByPatientName(patientName).get();
 		// return financeRepo.findByPatientName(patientName);
 		return financeRepo.findByPatientName(patientName);
-	}
+	}*/
 
 }

@@ -3,82 +3,71 @@ package com.hsm.healthservicemanagement.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@Table(name = "UserRegister")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "RegisterUser")
 public class User {
+	/**
+	 * UserId Validation
+	 */
 	@Id
+	@NotEmpty(message="Please Enter your UserId")
+	@Pattern(regexp = "[A-Za-z]+",message="UserId is Invalid")
+	@Size(min = 4, message = "Userid is should have atleast 4 character ")
 	private String userid;
+	
+	/*
+	 * Password Validation
+	 */
+	@NotEmpty(message="Please Enter your Password")
+	@Pattern(regexp = "[A-Za-z0-9]+",message="Password is Invalid")
+	@Size(min = 8, max = 15, message = "Password should have atleast 8 characters not less than 15 characters")
 	private String password;
+	
+	/**
+	 * FirstName Validation
+	 */
+	@NotEmpty(message="Please Enter your FirstName")
+	@Pattern(regexp = "[A-Za-z]+",message="FirstName is Invalid")
+	@Size(min = 2, max = 10, message = "Firstname should have atleast 7 characters not less than 10 characters")
 	private String firstname;
+	
+	/**
+	 * LastName Validation
+	 */
+	@NotEmpty(message="Please Enter your LastName")
+	@Pattern(regexp = "[A-Za-z]+",message="LastName is Invalid")
+	@Size(min = 1, max = 10, message = "Lastnmae should have atleast 7 characters not less than 10 characters")
 	private String lastname;
-	private String mobile_no;
+	
+	/**
+	 * MobileNumber Validation
+	 */
+	@NotEmpty(message="Please Enter Your EmailId")
+	@Pattern(regexp = "^[0-9]{10}$",message="Mobile Number is Invalid")
+	@Size(min = 10, max = 10, message = "Mobile Number less than 10 is Invalid")
+	private String mobileNumber;
+	
+	/*
+	 * Email Validation
+	 */
+	@Email
+	@NotEmpty(message="Please Enter Your Email Id")
 	private String email;
-
-	public User() {
-	}
-
-	public User(String userid, String password, String firstname, String lastname, String mobile_no, String email) {
-		this.userid = userid;
-		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.email = email;
-		this.mobile_no = mobile_no;
-	}
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public String getMobile_no() {
-		return mobile_no;
-	}
-
-	public void setMobile_no(String mobile_no) {
-		this.mobile_no = mobile_no;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "UserRegister [userid=" + userid + ", password=" + password + ", firstname=" + firstname + ", lastname="
-				+ lastname + ", mobile_no=" + mobile_no + ", email=" + email + "]";
-	}
 
 }
