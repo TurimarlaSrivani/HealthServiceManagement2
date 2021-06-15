@@ -25,8 +25,8 @@ class DiseaseServiceTest {
 	@Order(2)
 	void testFindAllDisease() {
 		List<Disease> diseases = diseaseService.findAll();
-		assertEquals(4, diseases.size());
-		logger.info(diseases);
+		assertEquals(7, diseases.size());
+		//logger.info(diseases);
 		logger.info("logger added to FindAllDisease");
 	}
 
@@ -50,7 +50,6 @@ class DiseaseServiceTest {
 		assertEquals("Alzeihmers", disease.getDiseaseName());
 		assertEquals("Memoryloss", disease.getDiseaseSymptoms());
 		assertEquals("Deficiency", disease.getDiseaseType());
-		assertEquals("Diabetes", disease.getDiseaseName());
 		logger.info("logger view disease by FindDiseaseByName ");
 
 	}

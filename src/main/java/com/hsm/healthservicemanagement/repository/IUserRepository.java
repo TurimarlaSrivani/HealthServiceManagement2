@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.hsm.healthservicemanagement.entity.User;
 
-
 @Repository
 public interface IUserRepository extends JpaRepository<User, String> {
 	 

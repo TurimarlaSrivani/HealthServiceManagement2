@@ -1,5 +1,6 @@
 package com.hsm.healthservicemanagement.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,8 +8,11 @@ import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hsm.healthservicemanagement.controller.PatientHistoryController;
+import com.hsm.healthservicemanagement.entity.Patient;
 import com.hsm.healthservicemanagement.entity.PatientHistory;
 import com.hsm.healthservicemanagement.repository.IPatientHistoryRepository;
+import com.hsm.healthservicemanagement.repository.IPatientRepository;
 
 @Service
 //Implementation of service layer method by extend that method
@@ -24,6 +28,7 @@ public class PatientHistoryServiceImpl implements IPatientHistoryService {
 	@Override
 	public PatientHistory addPatientHistory(PatientHistory history) {
 		logger.info("Save the details of the patient history");
+		logger.info(history);
 		return repository.save(history);
 	}
 
@@ -67,8 +72,10 @@ public class PatientHistoryServiceImpl implements IPatientHistoryService {
 			return null;
 		}
 		PatientHistory p = history.get();
-		// p.setPatientId(his.getPatientId());
 		p.setRecordedDate(his.getRecordedDate());
+		p.setPatient(his.getPatient());
+		p.setDisease(his.getDisease());
+		p.setDiet(his.getDiet());
 		return repository.save(p);
 	}
 
@@ -76,9 +83,17 @@ public class PatientHistoryServiceImpl implements IPatientHistoryService {
 	// getAllPatientHistory
 	@Override
 	public List<PatientHistory> getAllPatientHistory() {
-		// setting logger info
 		logger.info("Find the details of the patient history");
 		return repository.findAll();
+	}
+
+	// Get a specific patient history of the given date
+	// findByRecordedDate
+	@Override
+	public List<PatientHistory> findByRecordedDate(LocalDate recordedDate) {
+		logger.info("Get the patient history details By date");
+		return repository.findByRecordedDate(recordedDate);
+
 	}
 
 }

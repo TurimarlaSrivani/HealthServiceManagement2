@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
@@ -49,16 +50,15 @@ public class Disease{
 
 	
 	//disease-patient
+	@JsonIgnore
 	@ManyToMany(targetEntity = Patient.class,cascade = CascadeType.ALL)
 	@JoinTable(name ="disease_patient",
 	joinColumns = {@JoinColumn(name ="diseaseId")},
 	inverseJoinColumns = {@JoinColumn(name="patientId")})
-	
 	private List<Patient> patientList = new ArrayList<>();
 	
-	@JsonManagedReference
+	
 	public List<Patient> getPatient() {
 		return patientList;
 	}
-
 }

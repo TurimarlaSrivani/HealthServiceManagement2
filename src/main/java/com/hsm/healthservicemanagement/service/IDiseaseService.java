@@ -46,11 +46,5 @@ public interface IDiseaseService {
 		// Method to be override by the implementing class
 		// findByDiseaseIdLessThan
 		List<Disease> findByDiseaseIdLessThan(int id);
-		
-		
-		
-		
-		
-
 
 	}
