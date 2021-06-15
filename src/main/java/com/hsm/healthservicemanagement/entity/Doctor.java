@@ -52,6 +52,7 @@ public class Doctor {
 	@NonNull
 	private double doctorFee;
 
+
 	// doctor-patient(bidrectional)
 	@ManyToMany(targetEntity = Patient.class, cascade = CascadeType.ALL)
 	@JoinTable(name = "doctor_patient", joinColumns = { @JoinColumn(name = "doctorId") }, inverseJoinColumns = {

@@ -90,6 +90,7 @@ public class PatientCaseController {
 	// updatePatientCase
 	@PutMapping("/patientCase/{patientId}")
 	public ResponseEntity<PatientCase> update(@PathVariable("patientId") int patientCaseId,
+
 			@RequestBody PatientCase patientCase) throws PatientCaseNotFoundException {
 		// setting logger info
 		logger.info("update the patientCase details by id");

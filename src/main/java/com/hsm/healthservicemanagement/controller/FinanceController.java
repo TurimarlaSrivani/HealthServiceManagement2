@@ -28,7 +28,7 @@ import com.hsm.healthservicemanagement.service.IFinanceService;
 public class FinanceController {
 
 	// Logger Declare
-	Logger logger = LogManager.getLogger();
+	Logger logger = LogManager.getLogger(FinanceController.class);
 
 	// We are autowiring the finance service layer to this controller layer of
 	// finance

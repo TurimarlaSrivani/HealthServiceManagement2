@@ -61,5 +61,4 @@ public class Disease{
 	public List<Patient> getPatient() {
 		return patientList;
 	}
-
 }
