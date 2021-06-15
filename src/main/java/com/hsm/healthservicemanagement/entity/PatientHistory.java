@@ -53,5 +53,7 @@ public class PatientHistory {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "patient_id", referencedColumnName = "patientId")
 	private Patient patient;
+	
+	
 
 }

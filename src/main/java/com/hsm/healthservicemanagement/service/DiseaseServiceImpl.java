@@ -34,6 +34,7 @@ public class DiseaseServiceImpl implements IDiseaseService {
 		if(!disease.isPresent()) {
 			return null;
 		}
+		logger.info(disease.get());
 		return disease.get();
 	}
 	// Used to get list of all the disease from the database

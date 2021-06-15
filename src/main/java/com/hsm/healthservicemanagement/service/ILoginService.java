@@ -1,11 +1,13 @@
 package com.hsm.healthservicemanagement.service;
 
+import com.hsm.healthservicemanagement.dto.LoginDto;
 import com.hsm.healthservicemanagement.entity.Login;
 public interface ILoginService {
 	/*
 	 * Login User
 	 */
-	String login(Login user);
+	LoginDto login(Login user);
+	//String logindto(Login user);
 /*
  * Logout User
  */

@@ -1,9 +1,11 @@
 package com.hsm.healthservicemanagement.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hsm.healthservicemanagement.entity.Patient;
 import com.hsm.healthservicemanagement.entity.PatientHistory;
 import com.hsm.healthservicemanagement.exception.PatientHistoryNotFoundException;
 import com.hsm.healthservicemanagement.service.IPatientHistoryService;
@@ -38,7 +41,7 @@ public class PatientHistoryController {
 	@PostMapping("/history/add")
 	public ResponseEntity<PatientHistory> addPatientHistory(@RequestBody PatientHistory history) {
 		// setting logger info
-		logger.info("save the details of the patient history");
+		logger.info("Patient history details created");
 		return new ResponseEntity<PatientHistory>(service.addPatientHistory(history), HttpStatus.OK);
 	}
 
@@ -47,7 +50,7 @@ public class PatientHistoryController {
 	// database and request to the service to perform the action.
 	// getAllPatientHistory
 
-	@GetMapping("/history/all")
+	@GetMapping("/history")
 	public List<PatientHistory> getAllPatientHistory() {
 		// setting logger info
 		logger.info("Find the details of the patient history");
@@ -60,11 +63,27 @@ public class PatientHistoryController {
 	@GetMapping("/history/{id}")
 	public PatientHistory findByPatientHistoryId(@PathVariable("id") int patientHistoryId) {
 		// setting logger info
-		logger.info("Get the patient history details By Id");
+		logger.info("Get the patient history details By Id ");
 		if (service.findByPatientHistoryId(patientHistoryId) == null)
 			throw new PatientHistoryNotFoundException(
-					"Patient History not found with given patient Id :" + patientHistoryId);
+					"Patient History not found with given patient Id" + patientHistoryId);
 		return service.findByPatientHistoryId(patientHistoryId);
+	}
+
+	
+	// This controller is used to get a specific patient history on basis of date.
+	// findByRecordedDate
+
+	@GetMapping("/history/date/{date}")
+	public List<PatientHistory> findByRecordedDate(
+			@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate recordedDate) {
+
+		logger.info("Get the patient history details By date ");
+		if (service.findByRecordedDate(recordedDate) == null) {
+			throw new PatientHistoryNotFoundException("Patient History not found with given date :" + recordedDate);
+		}
+		return service.findByRecordedDate(recordedDate);
+
 	}
 
 	// This controller function perform deletion of a specific given patient history
@@ -75,7 +94,7 @@ public class PatientHistoryController {
 	@DeleteMapping("/history/{id}")
 	public String deleteByPatientHistoryId(@PathVariable("id") int patientHistoryId) {
 		// setting logger info
-		logger.info(" delete the patient history by Id");
+		logger.info("Patient history deleted with Id ");
 		String s = service.deleteByPatientHistoryId(patientHistoryId);
 		if (s == null)
 			throw new PatientHistoryNotFoundException(
@@ -92,7 +111,7 @@ public class PatientHistoryController {
 	public PatientHistory updatePatientHistory(@PathVariable("id") int patientHistoryId,
 			@RequestBody PatientHistory history) {
 		// setting logger info
-		logger.info("update the patient history details by id");
+		logger.info("Patient history details updated by id " + patientHistoryId);
 		if (service.findByPatientHistoryId(patientHistoryId) == null)
 			throw new PatientHistoryNotFoundException(
 					"Patient History not found with given patient Id :" + patientHistoryId);

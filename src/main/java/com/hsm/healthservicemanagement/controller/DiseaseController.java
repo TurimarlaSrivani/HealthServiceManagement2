@@ -35,17 +35,32 @@ public class DiseaseController {
 
 	// This controller is used to get a specific disease on basis of ID.
 	// viewByDiseaseId
-	@GetMapping("/disease/{id}")
+	@GetMapping("/disease/id/{id}")
 	public ResponseEntity<Disease> findByDiseaseId(@PathVariable("id") int id) throws DiseaseNotFoundException {
 		// setting logger info
 		logger.info("Get the disease details By Id");
 
 		Disease disease = diseaseService.findByDiseaseId(id);
+		logger.info(disease);
 		if (disease == null) {
 			throw new DiseaseNotFoundException("Disease not found with given id:" + id);
 		}
 		return new ResponseEntity<Disease>(disease, HttpStatus.OK);
 	}
+	// This controller is used to get a specific disease on basis of Name.
+	// viewByDiseaseName
+	@GetMapping("/disease/{name}")
+	public ResponseEntity<Disease> findByDiseaseName(@PathVariable("name") String name ) throws DiseaseNotFoundException {
+			// setting logger info
+			logger.info("Get the disease details By Name");
+
+			Disease disease = diseaseService.findByDiseaseName(name);
+			if (disease == null) {
+				throw new DiseaseNotFoundException("Disease not found with given name:" + name);
+			}
+			return new ResponseEntity<Disease>(disease, HttpStatus.OK);
+		}
+		
 
 	// This controller is used to return and list all the disease found in the
 	// database and request to the service to perform the action.
@@ -63,7 +78,7 @@ public class DiseaseController {
 	// save disease
 
 	@PostMapping("/disease")
-	public ResponseEntity<Disease> saveDiet(@Valid @RequestBody Disease disease) {
+	public ResponseEntity<Disease> saveDisease(@Valid @RequestBody Disease disease) {
 		// setting logger info
 		logger.info("save the details of the disease");
 
@@ -165,17 +180,15 @@ public class DiseaseController {
 	// disease id and returns exception if given disease id is not found.
 	// updateDisease
 	@PutMapping("/disease")
-	public ResponseEntity<Disease> updateDisease(@PathVariable("id") int id, @RequestBody Disease disease)
+	public ResponseEntity<Disease> updateDisease(@RequestBody Disease disease)
 			throws DiseaseNotFoundException {
-
 		// setting logger info
 		logger.info("update the disease details by id");
 		Disease diseases = diseaseService.update(disease);
 		if (diseases == null) {
-			throw new DiseaseNotFoundException("Disease not found with this id to update" + id);
+			throw new DiseaseNotFoundException("Disease not found with this id to update" );
 
 		}
 		return new ResponseEntity<Disease>(diseases, HttpStatus.OK);
 	}
-
 }

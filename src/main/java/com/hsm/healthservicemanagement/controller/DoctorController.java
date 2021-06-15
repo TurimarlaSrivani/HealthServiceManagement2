@@ -49,15 +49,16 @@ public class DoctorController {
 
 	// get method(findbyId)
 	@GetMapping("/doctors/{doctorId}")
-	public Doctor findByDoctId(@PathVariable("doctorId") int doctorId) {
+	public ResponseEntity<Doctor> findByDoctId(@PathVariable("doctorId") int doctorId) 
+	throws DoctorNotFoundException {
 
 		// setting logger info
 		logger.info("Get the doctor details By Id");
-
-		if (doctService.findByDoctId(doctorId) == null) {
-			throw new DoctorNotFoundException("Doctor not found with this doctor id");
+        Doctor doct = doctService.findByDoctId(doctorId);
+		if (doct == null) {
+			throw new DoctorNotFoundException("Doctor not found with this doctor id: " + doctorId);
 		}
-		return doctService.findByDoctId(doctorId);
+		return new ResponseEntity<>(doct, HttpStatus.OK);
 	}
 
 	// This controller function perform deletion of a specific given doctor

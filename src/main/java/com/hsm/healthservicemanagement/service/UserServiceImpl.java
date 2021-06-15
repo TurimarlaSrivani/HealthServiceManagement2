@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 import com.hsm.healthservicemanagement.entity.User;
 import com.hsm.healthservicemanagement.repository.IUserRepository;
 
-
-
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -44,20 +42,17 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public User updateUser(User user) {
 		User dbUser = getUser(user);
-		if (isNullOrEmpty(dbUser.getFirstname())) {
-			dbUser.setFirstname(user.getFirstname());
-		}
-		if (isNullOrEmpty(dbUser.getLastname())) {
-			dbUser.setLastname(user.getLastname());
+		if (isNullOrEmpty(dbUser.getUserName())) {
+			dbUser.setUserName(user.getUserName());
 		}
 		if (isNullOrEmpty(dbUser.getEmail())) {
 			dbUser.setEmail(user.getEmail());
 		}
-		if (isNullOrEmpty(dbUser.getPassword())) {
-			dbUser.setPassword(user.getPassword());
+		if (isNullOrEmpty(dbUser.getMobileNo())) {
+			dbUser.setMobileNo(user.getMobileNo());
 		}
-		if (isNullOrEmpty(dbUser.getMobileNumber())) {
-			dbUser.setMobileNumber(user.getMobileNumber());
+		if (isNullOrEmpty(dbUser.getRole())) {
+			dbUser.setRole(user.getRole());
 		}
 		return regRepo.save(dbUser);
 	}
