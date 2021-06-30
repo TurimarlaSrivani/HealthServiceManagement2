@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import javax.validation.constraints.DecimalMin;
 
 @Entity
 @Getter
@@ -17,7 +18,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Diet {
-    
+
 	@Id
 	private int dietId;
 	@NotEmpty  //Validation part
@@ -27,4 +28,5 @@ public class Diet {
 	@Size(min = 5, max = 25, message = "Enter foodtoEat in between 5 and 9")
 	private String foodtoEat;
 	private String dietDuration;
+
 }
