@@ -1,11 +1,10 @@
 package com.hsm.healthservicemanagement.service;
 
-
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.hsm.healthservicemanagement.entity.User;
+import com.hsm.healthservicemanagement.entity.UserEntity;
 
 
 @Service
@@ -15,21 +14,21 @@ public interface IUserService {
 	 * @param userid
 	 * @return UserEntity
 	 */
-	public User findUserByUserId(String userid);
+	public UserEntity findUserByUserId(String userId);
 /**
  * Retrieves user
  * @return
  */
-	public List<User> getAllUsers();
+	public List<UserEntity> getAllUsers();
 	/**
 	 * Creates user record in the entity table
 	 * @param UserEntity
 	 * @return UserEntity
 	 */
-	public User createUser(User user);
+	public UserEntity createUser(UserEntity user);
 
-	public User updateUser(User user);
+	public UserEntity updateUser(UserEntity user);
 
-	public User deleteUserByUserId(String userid);
+	public UserEntity deleteUserByUserId(String useriId);
 
 }

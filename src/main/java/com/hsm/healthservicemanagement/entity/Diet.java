@@ -17,8 +17,7 @@ import javax.validation.constraints.DecimalMin;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
-public class Diet{
+public class Diet {
 
 	@Id
 	private int dietId;

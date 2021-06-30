@@ -6,7 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hsm.healthservicemanagement.entity.User;
+import com.hsm.healthservicemanagement.entity.UserEntity;
+import com.hsm.healthservicemanagement.exception.UserNotFoundException;
 import com.hsm.healthservicemanagement.repository.IUserRepository;
 
 @Service
@@ -19,14 +20,19 @@ public class UserServiceImpl implements IUserService {
  * 
  */
 	@Override
-	public User createUser(User user){
+	public UserEntity createUser(UserEntity user){
+		
+		Optional<UserEntity> optional =regRepo.findById(user.getUserId());
+		if(optional.isPresent()) {
+			throw new UserNotFoundException("UserId already exists");
+		}
 		return regRepo.save(user);
 
 	}
 
 	@Override
-	public User findUserByUserId(String userid) {
-		Optional<User> optional = regRepo.findById(userid);
+	public UserEntity findUserByUserId(String userId) {
+		Optional<UserEntity> optional = regRepo.findById(userId);
 		if (!optional.isPresent()) {
 			return null;
 		}
@@ -35,24 +41,27 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public List<User> getAllUsers() {
+	public List<UserEntity> getAllUsers() {
 		return regRepo.findAll();
 	}
 
 	@Override
-	public User updateUser(User user) {
-		User dbUser = getUser(user);
-		if (isNullOrEmpty(dbUser.getUserName())) {
-			dbUser.setUserName(user.getUserName());
+	public UserEntity updateUser(UserEntity user) {
+		UserEntity dbUser = getUser(user);
+		if (isNullOrEmpty(dbUser.getFirstName())) {
+			dbUser.setFirstName(user.getFirstName());
+		}
+		if (isNullOrEmpty(dbUser.getLastName())) {
+			dbUser.setLastName(user.getLastName());
 		}
 		if (isNullOrEmpty(dbUser.getEmail())) {
 			dbUser.setEmail(user.getEmail());
 		}
-		if (isNullOrEmpty(dbUser.getMobileNo())) {
-			dbUser.setMobileNo(user.getMobileNo());
+		if (isNullOrEmpty(dbUser.getPassword())) {
+			dbUser.setPassword(user.getPassword());
 		}
-		if (isNullOrEmpty(dbUser.getRole())) {
-			dbUser.setRole(user.getRole());
+		if (isNullOrEmpty(dbUser.getMobileNumber())) {
+			dbUser.setMobileNumber(user.getMobileNumber());
 		}
 		return regRepo.save(dbUser);
 	}
@@ -61,9 +70,9 @@ public class UserServiceImpl implements IUserService {
 		return value != null && !value.equals("");
 	}
 
-	private User getUser(User user) {
-		Optional<User> userfield = regRepo.findById(user.getUserid());
-		User dbUser=null;
+	private UserEntity getUser(UserEntity user) {
+		Optional<UserEntity> userfield = regRepo.findById(user.getUserId());
+		UserEntity dbUser=null;
 		if (userfield.isPresent()) {
 			dbUser = userfield.get();
 		}
@@ -71,12 +80,12 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public User deleteUserByUserId(String userid) {
-		Optional<User> optional = regRepo.findById(userid);
+	public UserEntity deleteUserByUserId(String userId) {
+		Optional<UserEntity> optional = regRepo.findById(userId);
 		if (!optional.isPresent()) {
 			return null;
 		}
-		regRepo.deleteById(userid);
+		regRepo.deleteById(userId);
 		return optional.get();
 	}
 }
