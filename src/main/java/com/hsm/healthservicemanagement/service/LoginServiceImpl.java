@@ -19,22 +19,6 @@ public class LoginServiceImpl implements ILoginService {
 	@Autowired
 	ILoginRepository loginRepo;
 	
-
-/*	@Override
-	public String login(Login user) {
-		Optional<Login> dbUsr = loginRepo.findById(user.getUserid());
-		String message = null;
-		if (!dbUsr.isPresent() || !dbUsr.get().isLoggedIn()) {
-			user.setLoggedIn(true);
-			loginRepo.save(user);
-			message = "Succesfully logged in " + user.getUserid();
-		} else {
-			message = "Already logged in " + user.getUserid();
-		}
-
-		return message;
-	}*/
-
 	@Override
 	public String logout(String userId) {
 		Optional<Login> userfield = loginRepo.findById(userId);

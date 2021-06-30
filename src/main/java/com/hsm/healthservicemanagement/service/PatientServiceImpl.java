@@ -16,7 +16,6 @@ public class PatientServiceImpl implements IPatientService {
 	@Autowired
 	IPatientRepository patientRepo;
 	// Used to store the given patient Object passes from the controller
-
 	// Logger declare
 	org.apache.logging.log4j.Logger logger = LogManager.getLogger(PatientServiceImpl.class);
 
